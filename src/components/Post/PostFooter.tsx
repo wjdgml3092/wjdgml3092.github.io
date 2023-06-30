@@ -54,7 +54,7 @@ const DesContainer = styled.div`
     }
   }
 
-  @media (max-width: 360px) {
+  @media (max-width: 480px) {
     h3 {
       br {
         display: block;
