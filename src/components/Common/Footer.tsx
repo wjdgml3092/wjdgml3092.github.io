@@ -7,7 +7,7 @@ const FooterWrapper = styled.footer`
   font-size: 15px;
   text-align: center;
   line-height: 1.5;
-  position: absolute;
+  position: relative;
   bottom: 0;
   width: 100%;
 
