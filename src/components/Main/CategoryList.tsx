@@ -30,6 +30,10 @@ const CategoryListWrapper = styled.div`
     margin-top: 50px;
     padding: 0 20px;
   }
+
+  @media (max-width: 480px) {
+    margin-top: 10px;
+  }
 `
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars

@@ -20,6 +20,10 @@ const PostListWrapper = styled.div`
     width: 100%;
     padding: 50px 20px;
   }
+
+  @media (max-width: 480px) {
+    padding: 30px 20px;
+  }
 `
 const PostList = ({ selectedCategory, posts }: PostListProps) => {
   const { containerRef, postList }: useInfiniteScrollType = useInfiniteScroll(

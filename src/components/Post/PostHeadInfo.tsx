@@ -1,4 +1,5 @@
 import styled from '@emotion/styled'
+import { Category, CategoryItem } from 'components/Post/emotionComponents'
 export type PostHeadInfoProps = {
   title: string
   date: string
@@ -35,21 +36,25 @@ const Title = styled.div`
   }
 `
 
-const Category = styled.div`
-  font-size: 14px;
-  color: #747474;
-`
 const DateTxt = styled.div`
   margin-top: 10px;
   color: #4c4c4c;
 `
+
 const PostHeadInfo = ({ title, date, categories }: PostHeadInfoProps) => {
   return (
     <PostHeadInfoWrapper>
-      <Category>{categories.join(' / ')}</Category>
       <Title>{title}</Title>
 
-      <DateTxt>{date}</DateTxt>
+      <div>
+        <Category>
+          {categories.map(category => (
+            <CategoryItem key={category}>{category}</CategoryItem>
+          ))}
+        </Category>
+
+        <DateTxt>{date}</DateTxt>
+      </div>
     </PostHeadInfoWrapper>
   )
 }

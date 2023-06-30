@@ -1,4 +1,5 @@
 import styled from '@emotion/styled'
+import { Category, CategoryItem } from 'components/Post/emotionComponents'
 import { Link } from 'gatsby'
 import { PostFrontmatterType } from 'types/Post'
 
@@ -41,23 +42,6 @@ const Date = styled.div`
   font-size: 14px;
   font-weight: 400;
   opacity: 0.7;
-`
-
-const Category = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  margin-top: 10px;
-  margin: 10px -5px;
-`
-
-const CategoryItem = styled.div`
-  margin: 2.5px 5px;
-  padding: 3px 5px;
-  border-radius: 3px;
-  background: black;
-  font-size: 14px;
-  font-weight: 700;
-  color: white;
 `
 
 const Summary = styled.div`

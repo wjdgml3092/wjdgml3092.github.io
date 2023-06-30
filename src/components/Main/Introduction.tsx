@@ -9,8 +9,6 @@ type IntroductionProps = {
 
 const Background = styled.div`
   width: 100%;
-  // background: #d6e4ff;
-  // color: #ffffff;
 `
 
 const Container = styled.div`
@@ -23,8 +21,14 @@ const Container = styled.div`
 
   @media (max-width: 768px) {
     width: 100%;
-    height: 300px;
+
     padding: 0 20px;
+  }
+
+  @media (max-width: 480px) {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px 0;
   }
 `
 
@@ -38,6 +42,20 @@ const RightContainer = styled.div`
 
   h3 {
     margin-bottom: 2rem;
+  }
+
+  @media (max-width: 480px) {
+    margin-left: 0px;
+    padding: 0 20px;
+
+    h1 {
+      font-size: 1.7rem;
+    }
+
+    h3 {
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
   }
 `
 export const ContactContainer = styled.div`
@@ -57,9 +75,9 @@ const ProfileImageContainer = styled(GatsbyImage)`
   object-fit: contain;
   margin-bottom: 30px;
 
-  @media (max-width: 768px) {
-    width: 80px;
-    height: 80px;
+  @media (max-width: 480px) {
+    width: 150px;
+    height: 150px;
   }
 `
 

@@ -19,7 +19,6 @@ const PostFooterContainer = styled.div`
   border-top: 1px solid #c2c2c2;
 
   @media (max-width: 768px) {
-    //  flex-direction: column;
     width: 100%;
     padding: 20px 0px;
   }
@@ -49,13 +48,11 @@ const DesContainer = styled.div`
 
   @media (max-width: 768px) {
     margin: auto 0 auto 10px;
-    h3 {
-      font-size: 14px;
-    }
   }
 
   @media (max-width: 480px) {
     h3 {
+      // font-size: 1rem;
       br {
         display: block;
       }
