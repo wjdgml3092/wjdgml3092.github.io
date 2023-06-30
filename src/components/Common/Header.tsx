@@ -1,7 +1,8 @@
 import styled from '@emotion/styled'
+import { Link } from 'gatsby'
 
 const HeaderContainer = styled.header`
-  padding: 20px;
+  padding: 15px;
   font-size: 1.25rem;
   font-weight: 700;
 
@@ -9,7 +10,11 @@ const HeaderContainer = styled.header`
 `
 
 const Header = () => {
-  return <HeaderContainer>Jung's Blog</HeaderContainer>
+  return (
+    <HeaderContainer>
+      <Link to="/">Jung's Blog</Link>
+    </HeaderContainer>
+  )
 }
 
 export default Header

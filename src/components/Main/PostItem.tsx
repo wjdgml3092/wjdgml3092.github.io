@@ -78,15 +78,10 @@ const PostItem = ({
   date,
   categories,
   summary,
-  thumbnail: {
-    childImageSharp: { gatsbyImageData },
-  },
   link,
 }: PostItemProps) => {
   return (
     <PostItemWrapper to={link}>
-      {/* <ThumbnailImage image={gatsbyImageData} alt="Post Item Image" /> */}
-
       <PostItemContent>
         <Title>{title}</Title>
         <Date>{date}</Date>

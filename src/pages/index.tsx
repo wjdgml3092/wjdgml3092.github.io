@@ -42,7 +42,6 @@ const IndexPage = ({
     allMarkdownRemark: { edges },
     file: {
       childImageSharp: { gatsbyImageData },
-      publicURL,
     },
   },
 }: IndexPageProps) => {
@@ -78,12 +77,7 @@ const IndexPage = ({
   )
 
   return (
-    <Template
-      title={title}
-      description={description}
-      url={siteUrl}
-      image={publicURL}
-    >
+    <Template title={title} description={description} url={siteUrl}>
       <Header />
       <Introduction profileImage={gatsbyImageData} />
       <CategoryList
@@ -120,18 +114,13 @@ export const getPostList = graphql`
             summary
             date(formatString: "YYYY.MM.DD.")
             categories
-            thumbnail {
-              childImageSharp {
-                gatsbyImageData(width: 768, height: 400)
-              }
-            }
           }
         }
       }
     }
     file(name: { eq: "jung_avatar" }) {
       childImageSharp {
-        gatsbyImageData(width: 120, height: 120)
+        gatsbyImageData(width: 200, height: 200)
       }
       publicURL
     }

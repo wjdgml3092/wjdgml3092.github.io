@@ -1,6 +1,5 @@
 import styled from '@emotion/styled'
-import ProfileImage from 'components/Main/ProfileImage'
-import { IGatsbyImageData } from 'gatsby-plugin-image'
+import { GatsbyImage, IGatsbyImageData } from 'gatsby-plugin-image'
 import { MdOutlineEmail } from 'react-icons/md'
 import { AiFillGithub } from 'react-icons/ai'
 
@@ -41,7 +40,7 @@ const RightContainer = styled.div`
     margin-bottom: 2rem;
   }
 `
-const ContactContainer = styled.div`
+export const ContactContainer = styled.div`
   display: flex;
   align-items: center;
   margin-bottom: 10px;
@@ -52,15 +51,27 @@ const ContactContainer = styled.div`
     margin-right: 5px;
   }
 `
+const ProfileImageContainer = styled(GatsbyImage)`
+  width: 200px;
+  height: 200px;
+  object-fit: contain;
+  margin-bottom: 30px;
+
+  @media (max-width: 768px) {
+    width: 80px;
+    height: 80px;
+  }
+`
+
 const Introduction = ({ profileImage }: IntroductionProps) => {
   return (
     <Background>
       <Container>
-        <ProfileImage profileImage={profileImage} />
+        <ProfileImageContainer image={profileImage} alt="Profile Image" />
 
         <RightContainer>
           <h1>Welcome to Jung's Blog</h1>
-          <h3>경험과 지식을 기록하는 공간입니다. </h3>
+          <h3>사람 좋아하는 개발자의 기록 공간입니다. </h3>
           <ContactContainer>
             <MdOutlineEmail />
             <a href="mailto: junghee@gmail.com">junghee@gmail.com</a>

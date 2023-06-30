@@ -17,8 +17,7 @@ const FooterWrapper = styled.footer`
 const Footer = () => {
   return (
     <FooterWrapper>
-      지속적으로 기록하는 Jung's Blog
-      <br />© 2023 FrontDeveloper JungHee.
+      Jung's Blog © 2023 FrontDeveloper JungHee Kim.
     </FooterWrapper>
   )
 }
