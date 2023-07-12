@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react'
+import React, { Fragment, useMemo } from 'react'
 import CategoryList, { CategoryListProps } from 'components/Main/CategoryList'
 import Introduction from 'components/Main/Introduction'
 import PostList from 'components/Main/PostList'
@@ -8,6 +8,7 @@ import { PostListItemType } from 'types/Post'
 import queryString, { ParsedQuery } from 'query-string'
 import Template from 'components/Common/Template'
 import Header from 'components/Common/Header'
+import Footer from 'components/Common/Footer'
 
 type IndexPageProps = {
   location: {
@@ -77,15 +78,19 @@ const IndexPage = ({
   )
 
   return (
-    <Template title={title} description={description} url={siteUrl}>
+    <Fragment>
       <Header />
-      <Introduction profileImage={gatsbyImageData} />
-      <CategoryList
-        selectedCategory={selectedCategory}
-        categoryList={categoryList}
-      />
-      <PostList selectedCategory={selectedCategory} posts={edges} />
-    </Template>
+      <Template title={title} description={description} url={siteUrl}>
+        <Introduction profileImage={gatsbyImageData} />
+        <CategoryList
+          selectedCategory={selectedCategory}
+          categoryList={categoryList}
+        />
+        <PostList selectedCategory={selectedCategory} posts={edges} />
+      </Template>
+
+      <Footer />
+    </Fragment>
   )
 }
 

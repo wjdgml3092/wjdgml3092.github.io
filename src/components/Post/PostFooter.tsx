@@ -98,7 +98,7 @@ const IndexBackgroundContainer = styled(Link)`
   display: flex;
   align-items: center;
   padding: 5px 10px;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 `
 
 const PostFooter = () => {

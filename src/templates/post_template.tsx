@@ -5,6 +5,8 @@ import PostHead from 'components/Post/PostHead'
 import PostContent from 'components/Post/PostContent'
 import Header from 'components/Common/Header'
 import PostFooter from 'components/Post/PostFooter'
+import { Fragment } from 'react'
+import Footer from 'components/Common/Footer'
 
 export type PostPageItemType = {
   node: {
@@ -37,12 +39,16 @@ const PostTemplate = ({
   } = edges[0]
 
   return (
-    <Template title={title} description={summary} url={href}>
+    <Fragment>
       <Header />
-      <PostHead title={title} date={date} categories={categories} />
-      <PostContent html={html} />
-      <PostFooter />
-    </Template>
+      <Template title={title} description={summary} url={href}>
+        <PostHead title={title} date={date} categories={categories} />
+        <PostContent html={html} />
+
+        <PostFooter />
+      </Template>
+      <Footer />
+    </Fragment>
   )
 }
 

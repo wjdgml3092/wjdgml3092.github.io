@@ -1,7 +1,6 @@
 import { ReactNode } from 'react'
 import styled from '@emotion/styled'
 import GlobalStyle from 'components/Common/GlobalStyle'
-import Footer from 'components/Common/Footer'
 import { Helmet } from 'react-helmet'
 
 type TemplateProps = {
@@ -11,11 +10,7 @@ type TemplateProps = {
   children: ReactNode
 }
 
-const Container = styled.main`
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-`
+const Container = styled.main``
 
 const Template = ({ title, description, url, children }: TemplateProps) => {
   return (
@@ -44,7 +39,6 @@ const Template = ({ title, description, url, children }: TemplateProps) => {
 
       <GlobalStyle />
       {children}
-      <Footer />
     </Container>
   )
 }

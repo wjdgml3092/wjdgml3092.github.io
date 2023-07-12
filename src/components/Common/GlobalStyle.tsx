@@ -18,17 +18,15 @@ const defaultStyle = css`
     font-family: 'SUITE-Regular', serif;
   }
 
-  html,
-  body,
-  #___gatsby {
-    height: 100%;
-  }
-
   a,
   a:hover {
     color: inherit;
     text-decoration: none;
     cursor: pointer;
+  }
+
+  main {
+    min-height: calc(100vh - 100px);
   }
 `
 

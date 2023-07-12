@@ -5,6 +5,7 @@ const HeaderContainer = styled.header`
   padding: 15px;
   font-size: 1.25rem;
   font-weight: 700;
+  height: 50px;
 
   border-bottom: 1px solid #d9d9d9;
 `
