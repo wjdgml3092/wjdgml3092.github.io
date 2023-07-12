@@ -1,5 +1,4 @@
 import { ReactNode } from 'react'
-import styled from '@emotion/styled'
 import GlobalStyle from 'components/Common/GlobalStyle'
 import { Helmet } from 'react-helmet'
 
@@ -10,11 +9,9 @@ type TemplateProps = {
   children: ReactNode
 }
 
-const Container = styled.main``
-
 const Template = ({ title, description, url, children }: TemplateProps) => {
   return (
-    <Container>
+    <main>
       <Helmet>
         <title>{title}</title>
 
@@ -39,7 +36,7 @@ const Template = ({ title, description, url, children }: TemplateProps) => {
 
       <GlobalStyle />
       {children}
-    </Container>
+    </main>
   )
 }
 
