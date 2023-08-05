@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import jung_avatar from '../../../static/jung_avatar.png'
+import jung_avatar from '../../../static/jeju.png'
 import { ContactContainer } from 'components/Main/Introduction'
 import { MdOutlineEmail } from 'react-icons/md'
 import { AiFillGithub } from 'react-icons/ai'
@@ -25,12 +25,15 @@ const PostFooterContainer = styled.div`
 `
 
 const FooterImg = styled.img`
-  width: 180px;
+  width: 200px;
   height: 200px;
+  border-radius: 50%;
+  margin-left: 15px;
+  object-fit: cover;
 
   @media (max-width: 768px) {
     width: 140px;
-    height: 160px;
+    height: 140px;
   }
 `
 

@@ -79,6 +79,8 @@ const ProfileImageContainer = styled(GatsbyImage)`
   @media (max-width: 480px) {
     width: 150px;
     height: 150px;
+
+    margin-left: 15px;
   }
 `
 
