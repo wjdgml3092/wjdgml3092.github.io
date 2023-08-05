@@ -14,7 +14,7 @@ const PostFooterContainer = styled.div`
   width: 768px;
   height: 100%;
   margin: 0 auto;
-  padding: 10px 0;
+  padding: 15px 0 10px 0;
   color: #000;
   border-top: 1px solid #c2c2c2;
 

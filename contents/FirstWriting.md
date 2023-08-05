@@ -1,7 +1,7 @@
 ---
 date: '2023-08-05'
 title: "Welcome to Jung's Blog"
-categories: ['first']
+categories: ['First']
 summary: "gatsby로 만든 Jung's 기록 공간에 오신 것을 환영합니다."
 ---
 

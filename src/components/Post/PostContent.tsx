@@ -28,7 +28,7 @@ const MarkdownRenderer = styled.div`
   h2,
   h3 {
     font-weight: 800;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
   }
 
   * + h1,
@@ -67,7 +67,7 @@ const MarkdownRenderer = styled.div`
   ol,
   ul {
     margin-left: 20px;
-    padding: 30px 0;
+    padding: 10px 0;
   }
 
   // Adjust Horizontal Rule style
