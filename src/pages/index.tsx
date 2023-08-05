@@ -123,7 +123,7 @@ export const getPostList = graphql`
         }
       }
     }
-    file(name: { eq: "jung_avatar" }) {
+    file(name: { eq: "jeju" }) {
       childImageSharp {
         gatsbyImageData(width: 200, height: 200)
       }

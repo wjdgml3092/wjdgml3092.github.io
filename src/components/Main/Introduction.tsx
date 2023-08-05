@@ -74,6 +74,7 @@ const ProfileImageContainer = styled(GatsbyImage)`
   height: 200px;
   object-fit: contain;
   margin-bottom: 30px;
+  border-radius: 50%;
 
   @media (max-width: 480px) {
     width: 150px;
