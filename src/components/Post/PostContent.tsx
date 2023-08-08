@@ -11,7 +11,7 @@ const MarkdownRenderer = styled.div`
   width: 768px;
   min-height: 550px;
   margin: 0 auto;
-  padding: 20px 0;
+  padding-bottom: 20px;
   word-break: break-all;
 
   // Markdown Style
@@ -34,7 +34,7 @@ const MarkdownRenderer = styled.div`
   * + h1,
   * + h2,
   * + h3 {
-    margin-top: 80px;
+    margin-top: 30px;
   }
 
   hr + h1,
@@ -55,6 +55,25 @@ const MarkdownRenderer = styled.div`
     font-size: 20px;
   }
 
+  table {
+    border: 1px solid #c2c2c2;
+    border-collapse: collapse;
+    text-align: center;
+    margin-top: 10px;
+  }
+
+  tr td:first-of-type {
+    text-align: left;
+    padding-left: 5px;
+  }
+
+  tr,
+  td,
+  th {
+    border: 1px solid #c2c2c2;
+    padding: 3px;
+  }
+
   // Adjust Quotation Element Style
   blockquote {
     margin: 30px 0;
@@ -67,7 +86,6 @@ const MarkdownRenderer = styled.div`
   ol,
   ul {
     margin-left: 20px;
-    padding: 10px 0;
   }
 
   // Adjust Horizontal Rule style
@@ -78,15 +96,24 @@ const MarkdownRenderer = styled.div`
 
   // Adjust Link Element Style
   a {
-    color: #4263eb;
-    text-decoration: underline;
+    color: #554edd;
+  }
+
+  *:not(pre) > code {
+    color: #eb5a5a;
+    background-color: #f7f6f3;
+    //background-color: #2d2d2d;
+    font-size: 14px;
+    padding: 5px;
   }
 
   // Adjust Code Style
   pre[class*='language-'] {
-    margin: 30px 0;
+    margin: 15px 0;
     padding: 15px;
     font-size: 15px;
+    //background-color: #f7f6f3;
+    background-color: #2d2d2d;
 
     ::-webkit-scrollbar-thumb {
       background: rgba(255, 255, 255, 0.5);
