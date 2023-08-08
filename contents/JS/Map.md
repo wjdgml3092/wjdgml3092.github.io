@@ -188,12 +188,12 @@ map.clear();
 
   for (const value of map.values()) {
     console.log(value);
-    // developer designer
+    // designer developer
   }
 
   for (const entry of map.entries()) {
     console.log(entry);
-    // [{name: "Lee"}, "developer"]  [{name: "Kim"}, "designer"]
+    // [{name: "Lee"}, "designer"]  [{name: "Kim"}, "developer"]
   }
 
   ```

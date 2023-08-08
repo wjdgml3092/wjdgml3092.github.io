@@ -152,6 +152,10 @@ const MarkdownRenderer = styled.div`
     hr {
       margin: 50px 0;
     }
+
+    *:not(pre) > code {
+      font-size: 13px;
+    }
   }
 `
 
