@@ -44,23 +44,23 @@ summary: '빅오 표기법, 시간복잡도'
 
 - **O(1) - Constant Time** <br/>
   입력의 크기와 상관 없이 항상 같은 시간이 걸리는 알고리즘이다.
-  👉🏻 배열, 해시테이블의 요소의 접근할 때
+  <span style='background-color: #fff5b1'>👉🏻 배열, 해시테이블의 요소의 접근할 때 </span>
 - **O(logn) - Log Time**<br/>
   연산이 한 번 실행될 때 마다 데이터의 크기가 절반 감소하는 알고리즘 (log의 지수는 항상 2)
-  👉🏻 이진탐색, 힙 삽입/삭제 등
+  <span style='background-color: #fff5b1'>👉🏻 이진탐색, 힙 삽입/삭제 등</span>
 - **O(n) - Linear Time** <br/>
   입력값(N)이 증가함에 따라 실행시간도 선형적으로 증가하는 알고리즘
-  👉🏻 1중 for문
+  <span style='background-color: #fff5b1'>👉🏻 1중 for문</span>
 - **O(nlogn) - Log linear Time**<br/>
   O(n)의 알고리즘과 O(logn)의 알고리즘이 중첩된 형태
-  👉🏻 퀵 / 병합 / 힙 정렬
+  <span style='background-color: #fff5b1'>👉🏻 퀵 / 병합 / 힙 정렬</span>
 - **O(n<sup>2</sup>) - Quadratic Time** <br/>
-  👉🏻 2중 for문, 삽입/버블/선택 정렬
+  <span style='background-color: #fff5b1'>👉🏻 2중 for문, 삽입/버블/선택 정렬</span>
 - **O(n<sup>3</sup>) - Cubic Time** <br/>
   3중 반복을 돌게되는 알고리즘, 큐빅과 같은 구조.
 - **O(2<sup>n</sup>) - Exponential Time**<br/>
   대표적으로 입력 원소로 만들 수 있는 부분집합의 모든 경우의 수를 도출할 때 지수시간을 갖는다.
-  👉🏻 피보나치
+  <span style='background-color: #fff5b1'>👉🏻 피보나치</span>
 - **O(n!)** <br/>
   가장 느린 알고리즘으로 입력값이 조금만 커도 계산이 어렵다.
 
