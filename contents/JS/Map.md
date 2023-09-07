@@ -1,7 +1,7 @@
 ---
 date: '2023-08-08'
 title: '[JavaScript] Map'
-categories: ['JavaScript']
+categories: ['JS']
 summary: 'Map 생성부터 삭제까지'
 ---
 
