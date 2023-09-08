@@ -78,7 +78,9 @@ const filePath =
   process.platform === 'linux' ? '/dev/stdin' : './backjoon/1406_test.txt'
 const input = fs.readFileSync(filePath).toString().split('\n')
 
-const lstack = input[0].split('') //입력받은 문자 배열에 넣기 -> split에 인자에 빈 single quote를 넣어주면 문자 각각 그대로 배열이 된다.
+const lstack = input[0].split('')
+//입력받은 문자 배열에 넣기
+//-> split에 인자에 빈 single quote를 넣어주면 문자 각각 그대로 배열이 된다.
 const rstack = []
 
 for (let i = 2; i <= Number(input[1]) + 1; i++) {
