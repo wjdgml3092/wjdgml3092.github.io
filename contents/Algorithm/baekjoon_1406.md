@@ -72,6 +72,8 @@ summary: '두 개의 스택을 이용한 풀이'
 주의 ! <br/>
 입력 받은 타입체크는 필수로. 처음 for문 비교부분에 `input[1] + 1`해줬다가 split에서 에러가 났다. 이유는 input[1]+1 31로 for문이 만족할때까지 돌텐데 input에 그 이상 인덱스에 담는 값이 없어서다 👉🏻 Number로 형변환해서 더해주자 !
 
+![img](Images/1406_img.png)
+
 ```javaScript
 const fs = require('fs')
 const filePath =
