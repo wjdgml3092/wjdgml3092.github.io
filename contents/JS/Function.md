@@ -1,6 +1,6 @@
 ---
 date: '2023-09-18'
-title: '함수'
+title: '[JavaScript] 함수'
 categories: ['function', 'JS']
 summary: '함수 소개와 함수 리터럴 VS 함수 선언문, 함수 호이스팅'
 ---

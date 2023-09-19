@@ -126,6 +126,12 @@ const MarkdownRenderer = styled.div`
     tab-size: 2;
   }
 
+  aside {
+    background: #f1f1ef;
+    padding: 10px;
+    border-radius: 10px;
+  }
+
   // Markdown Responsive Design
   @media (max-width: 768px) {
     width: 100%;
