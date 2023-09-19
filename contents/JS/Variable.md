@@ -1,8 +1,7 @@
 ---
 date: '2023-09-19'
-title: '[JavaScipt] 변수 선언 3가지 키워드'
+title: '변수 선언 3가지 키워드'
 categories: ['변수 선언', 'JS']
-summary: '변수 선언시 사용하는 키워드'
 ---
 
 ### 1. var 키워드

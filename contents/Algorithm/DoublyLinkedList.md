@@ -2,7 +2,6 @@
 date: '2023-09-07'
 title: '이중 연결 리스트(Doubly Linked List)'
 categories: ['Algorithm', 'JS']
-summary: '이중 연결 리스트와 메소드'
 ---
 
 ### 1. 이중 연결 리스트(Doubly Linked List)란?

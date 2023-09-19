@@ -2,7 +2,6 @@
 date: '2023-08-09'
 title: '의사 클래스(pseudo-classes)'
 categories: ['CSS', 'pseudo-classes']
-summary: '의사 클래스 종류와 사용법'
 ---
 
 ### 1. 의사 클래스(pseudo-classes)

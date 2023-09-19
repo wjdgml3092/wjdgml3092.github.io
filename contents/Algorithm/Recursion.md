@@ -2,7 +2,6 @@
 date: '2023-09-14'
 title: '재귀(Recursion)'
 categories: ['Algorithm', 'JS']
-summary: '재귀 조건과 예제'
 ---
 
 ### 1. 재귀(Recursion)

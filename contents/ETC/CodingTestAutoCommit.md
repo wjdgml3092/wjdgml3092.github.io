@@ -2,7 +2,6 @@
 date: '2023-08-06'
 title: '자동으로 백준, 프로그래머스 코드 GitHub Commit하기'
 categories: ['GitHub', 'Auto Commit']
-summary: '코딩테스트 연습문제 자동으로 GitHub Commit하기'
 ---
 
 **자동으로** 백준, 프로그래머스 코드 GitHub Commit하는 방법을 공유하고자 해당 글을 작성하게 되었습니다!
