@@ -10,6 +10,7 @@ import Footer from 'components/Common/Footer'
 
 export type PostPageItemType = {
   node: {
+    excerpt: string
     html: string
     frontmatter: PostFrontmatterType
   }
@@ -33,15 +34,16 @@ const PostTemplate = ({
 }: PostTemplateProps) => {
   const {
     node: {
+      excerpt,
       html,
-      frontmatter: { title, summary, date, categories },
+      frontmatter: { title, date, categories },
     },
   } = edges[0]
 
   return (
     <Fragment>
       <Header />
-      <Template title={title} description={summary} url={href}>
+      <Template title={title} description={excerpt} url={href}>
         <PostHead title={title} date={date} categories={categories} />
         <PostContent html={html} />
 

@@ -36,12 +36,13 @@ const PostList = ({ selectedCategory, posts }: PostListProps) => {
       {postList.map(
         ({
           node: {
+            excerpt,
             id,
             fields: { slug },
             frontmatter,
           },
         }: PostListItemType) => (
-          <PostItem {...frontmatter} link={slug} key={id} />
+          <PostItem excerpt={excerpt} {...frontmatter} link={slug} key={id} />
         ),
       )}
     </PostListWrapper>

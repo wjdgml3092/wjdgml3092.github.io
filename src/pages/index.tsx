@@ -110,13 +110,13 @@ export const getPostList = graphql`
     ) {
       edges {
         node {
+          excerpt(pruneLength: 80)
           id
           fields {
             slug
           }
           frontmatter {
             title
-            summary
             date(formatString: "YYYY.MM.DD.")
             categories
           }

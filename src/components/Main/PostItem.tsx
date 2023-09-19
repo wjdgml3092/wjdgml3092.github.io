@@ -3,7 +3,9 @@ import { Category, CategoryItem } from 'components/Post/emotionComponents'
 import { Link } from 'gatsby'
 import { PostFrontmatterType } from 'types/Post'
 
-type PostItemProps = PostFrontmatterType & { link: string }
+type PostItemProps = PostFrontmatterType & { link: string } & {
+  excerpt: string
+}
 
 const PostItemWrapper = styled(Link)`
   display: flex;
@@ -45,7 +47,7 @@ const Date = styled.div`
   opacity: 0.7;
 `
 
-const Summary = styled.div`
+const Excerpt = styled.div`
   display: -webkit-box;
   overflow: hidden;
   margin-top: auto;
@@ -62,8 +64,8 @@ const PostItem = ({
   title,
   date,
   categories,
-  summary,
   link,
+  excerpt,
 }: PostItemProps) => {
   return (
     <PostItemWrapper to={link}>
@@ -75,7 +77,7 @@ const PostItem = ({
             <CategoryItem key={category}>{category}</CategoryItem>
           ))}
         </Category>
-        <Summary>{summary}</Summary>
+        <Excerpt>{excerpt}</Excerpt>
       </PostItemContent>
     </PostItemWrapper>
   )
