@@ -1,10 +1,10 @@
 import { Global, css } from '@emotion/react'
 
 const defaultStyle = css`
-
   @font-face {
-    font-family: 'nanum-square';
-    src: url('https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css')
+    font-family: 'Pretendard-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff')
+      format('woff');
     font-weight: 400;
     font-style: normal;
   }
@@ -13,7 +13,7 @@ const defaultStyle = css`
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: nanum-square serif;
+    font-family: Pretendard-Regular, serif;
   }
 
   a,
