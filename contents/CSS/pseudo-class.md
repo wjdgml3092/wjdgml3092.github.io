@@ -44,7 +44,7 @@ categories: ['CSS', 'pseudo-classes']
  <div style="border: 1px solid #c2c2c2; padding: 5px 10px; margin-bottom: 5px;">
  <b  style="background: #fff5b1">even</b>: 짝수 / 
  <b  style="background: #fff5b1">odd</b>: 홀수 <br/>
- <b  style="background: #fff5b1">An+B</b> 👉🏻
+ <b  style="background: #fff5b1">An+B</b> &rarr;
      A : 정수 단계 크기 /
      B : 정수 오프셋 /
      n : 0부터 시작하는 음이 아닌 정수

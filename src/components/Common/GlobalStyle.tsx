@@ -1,12 +1,10 @@
 import { Global, css } from '@emotion/react'
 
 const defaultStyle = css`
-  @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap');
 
   @font-face {
-    font-family: 'SUITE-Regular';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-2@1.0/SUITE-Regular.woff2')
-      format('woff2');
+    font-family: 'nanum-square';
+    src: url('https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css')
     font-weight: 400;
     font-style: normal;
   }
@@ -15,7 +13,7 @@ const defaultStyle = css`
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: 'SUITE-Regular', serif;
+    font-family: nanum-square serif;
   }
 
   a,

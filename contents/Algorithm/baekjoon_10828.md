@@ -86,7 +86,7 @@ for (let i = 1; i <= input[0]; i++) {
 시간초과가 떴다. 이유는 루프를 돌 때마다 switch안에서 찍은 console이 문제였다.
 
 https://stackoverflow.com/questions/2934509/exclude-debug-javascript-code-during-minification
-👉🏻 console.log는 디버깅용으로 쓰는 함수라서 사용할 때 속도가 저하될 수 있다고 한다. => 즉, 매 for문 마다 console.log()를 돌리는 것은 비효율적이다! ~~멍충멍충~~
+&rarr; console.log는 디버깅용으로 쓰는 함수라서 사용할 때 속도가 저하될 수 있다고 한다. => 즉, 매 for문 마다 console.log()를 돌리는 것은 비효율적이다! ~~멍충멍충~~
 <br/><br/>
 
 - 두번째 수정 코드 <br/>

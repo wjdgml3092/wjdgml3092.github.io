@@ -11,7 +11,7 @@ categories: ['Algorithm', 'JS']
 1. <b>Base Case</b>: 재귀가 종료되는 시점
    ↳ base case가 없다면, 에러를 뱉는다. <br/>
    `Uncaught RangeError: Maximum call stack size exceeded` <br/> → 스택 오버플로 발생, 최대 호출 스택 크기를 초과한다.
-2. <b>Different Input</b>: 다른 입력 값 👉🏻 함수를 호출할 때마다 다른 입력값으로 호출되어야한다.
+2. <b>Different Input</b>: 다른 입력 값 &rarr; 함수를 호출할 때마다 다른 입력값으로 호출되어야한다.
 
 ### 2. 호출 스택(Call Stack)
 
