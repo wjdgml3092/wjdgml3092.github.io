@@ -77,7 +77,8 @@ export const getPostList = graphql`
 
 - `allMarkdownRemark` 는 GraphQL 프로퍼티인데 모든 마크다운 노드를 의미한다. 페이지 레벨의 gql 쿼리를 통해 한꺼번에 모든 포스트를 요청해서 가져오지만 원하는 정보만 가져올 수 있다.
 - `allMarkdownRemark` 프로퍼티 밑에 `edges.node`가 있다. 이 node가 각 md 파일을 의미하고, 여기에 적혀진 쿼리대로 요청한 정보를 가져오게 된다. node 아래에 <span style="background: #fff5b1">**excerpt 를 넣어주면 된다!**</span>
-- 원하는 글자 수까지 잘라낼 수도 있다. 기본적으로 140자를 잘라 데이터를 보내주지만, 원할 때는 위와 같이 작성하면 된다. 나는 지저분해보여 좀 짧게 가져왔다. `(pruneLength: 80)` 또한 `excerpt_separator` 세퍼레이터도 설정가능하다.
+- 원하는 글자 수까지 잘라낼 수도 있다. 기본적으로 140자를 잘라 데이터를 보내주지만, 원할 때는 위와 같이 작성하면 된다. 나는 지저분해보여 좀 짧게 가져왔다. `(pruneLength: 80, truncate: true)` 또한 `excerpt_separator` 세퍼레이터도 설정가능하다.
+  > `truncate: true` 해주는 이유는? (09.28 추가) <br/> > `pruneLength`의 경우 `non lation language`에서는 동작하지 않는다. 한글만 사용했을때는 pruneLength를 하면, ...으로 말을 잇지 못한다. <br/>09.28에 작성한 글에서 한글만 있다보니 바로 ... 줄임표가 생겨 `truncate` 추가로 해결했다. 해결방법으로 `excerpt_separator`도 있지만 모든 글에 항상 내가 원하는 부분에서 자를수 있도록 작성해야하는 번거로움이 있어 `truncate`를 추천한다.
 
 ### 2. Post.ts 수정
 
