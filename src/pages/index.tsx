@@ -110,7 +110,7 @@ export const getPostList = graphql`
     ) {
       edges {
         node {
-          excerpt(pruneLength: 80)
+          excerpt(pruneLength: 80, truncate: true)
           id
           fields {
             slug
