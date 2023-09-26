@@ -76,7 +76,7 @@ const MarkdownRenderer = styled.div`
 
   // Adjust Quotation Element Style
   blockquote {
-    margin: 30px 0;
+    margin: 20px 0;
     padding: 5px 15px;
     border-left: 2px solid #000000;
     font-weight: 800;
@@ -130,6 +130,10 @@ const MarkdownRenderer = styled.div`
     background: #f1f1ef;
     padding: 10px;
     border-radius: 10px;
+  }
+
+  ol > li {
+    padding: 5px 0;
   }
 
   // Markdown Responsive Design
