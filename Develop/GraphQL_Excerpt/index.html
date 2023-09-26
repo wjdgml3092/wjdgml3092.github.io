@@ -86,7 +86,11 @@
 <ul>
 <li><code class="language-text">allMarkdownRemark</code> 는 GraphQL 프로퍼티인데 모든 마크다운 노드를 의미한다. 페이지 레벨의 gql 쿼리를 통해 한꺼번에 모든 포스트를 요청해서 가져오지만 원하는 정보만 가져올 수 있다.</li>
 <li><code class="language-text">allMarkdownRemark</code> 프로퍼티 밑에 <code class="language-text">edges.node</code>가 있다. 이 node가 각 md 파일을 의미하고, 여기에 적혀진 쿼리대로 요청한 정보를 가져오게 된다. node 아래에 <span style="background: #fff5b1"><strong>excerpt 를 넣어주면 된다!</strong></span></li>
-<li>원하는 글자 수까지 잘라낼 수도 있다. 기본적으로 140자를 잘라 데이터를 보내주지만, 원할 때는 위와 같이 작성하면 된다. 나는 지저분해보여 좀 짧게 가져왔다. <code class="language-text">(pruneLength: 80)</code> 또한 <code class="language-text">excerpt_separator</code> 세퍼레이터도 설정가능하다.</li>
+<li>원하는 글자 수까지 잘라낼 수도 있다. 기본적으로 140자를 잘라 데이터를 보내주지만, 원할 때는 위와 같이 작성하면 된다. 나는 지저분해보여 좀 짧게 가져왔다. <code class="language-text">(pruneLength: 80, truncate: true)</code> 또한 <code class="language-text">excerpt_separator</code> 세퍼레이터도 설정가능하다.
+<blockquote>
+<p><code class="language-text">truncate: true</code> 해주는 이유는? (09.28 추가) <br/> > <code class="language-text">pruneLength</code>의 경우 <code class="language-text">non lation language</code>에서는 동작하지 않는다. 한글만 사용했을때는 pruneLength를 하면, …으로 말을 잇지 못한다. <br/>09.28에 작성한 글에서 한글만 있다보니 바로 … 줄임표가 생겨 <code class="language-text">truncate</code> 추가로 해결했다. 해결방법으로 <code class="language-text">excerpt_separator</code>도 있지만 모든 글에 항상 내가 원하는 부분에서 자를수 있도록 작성해야하는 번거로움이 있어 <code class="language-text">truncate</code>를 추천한다.</p>
+</blockquote>
+</li>
 </ul>
 <h3>2. Post.ts 수정</h3>
 <p>정의한 <code class="language-text">PostListItemType</code>에 <code class="language-text">excerpt</code>만 추가하면 끝</p>
@@ -191,4 +195,4 @@
           >
             window.___chunkMapping="{\"app\":[\"/app-08074adf15b7891bd645.js\"],\"component---src-pages-404-tsx\":[\"/component---src-pages-404-tsx-ca96d1cb96403e50416b.js\"],\"component---src-pages-index-tsx\":[\"/component---src-pages-index-tsx-95660c3cb87112aed5e7.js\"],\"component---src-templates-post-template-tsx\":[\"/component---src-templates-post-template-tsx-96a488a52de4673d4b59.js\"]}";
           </script>
-        <script>window.___webpackCompilationHash="d7821442d80c2e7444b6";</script><script src="/webpack-runtime-1aba191cd1d30ffdb40b.js" async></script><script src="/framework-6a525285796fb83f2864.js" async></script><script src="/app-08074adf15b7891bd645.js" async></script><!-- slice-end id="_gatsby-scripts-1" --></body></html>
+        <script>window.___webpackCompilationHash="d0371d41743dea9c0367";</script><script src="/webpack-runtime-83e539b12743bbaf8eb5.js" async></script><script src="/framework-6a525285796fb83f2864.js" async></script><script src="/app-08074adf15b7891bd645.js" async></script><!-- slice-end id="_gatsby-scripts-1" --></body></html>
