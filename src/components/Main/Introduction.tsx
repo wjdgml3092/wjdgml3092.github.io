@@ -9,13 +9,14 @@ type IntroductionProps = {
 
 const Background = styled.div`
   width: 100%;
+  padding-top: 55px;
 `
 
 const Container = styled.div`
   display: flex;
   align-items: center;
   width: 768px;
-  padding: 30px 0;
+  padding: 30px 0 10px;
 
   margin: 0 auto;
 
@@ -81,8 +82,7 @@ const ProfileImageContainer = styled(GatsbyImage)`
     width: 150px;
     height: 150px;
 
-    margin-bottom: 10px;
-    margin-left: 15px;
+    margin: 10px 0 20px 15px;
   }
 `
 

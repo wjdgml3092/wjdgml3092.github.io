@@ -6,6 +6,8 @@ type PostHeadProps = PostHeadInfoProps
 const PostHeadWrapper = styled.div`
   position: relative;
   width: 100%;
+
+  padding-top: 55px;
 `
 
 const PostHead = ({ title, date, categories }: PostHeadProps) => {
