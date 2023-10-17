@@ -49,7 +49,8 @@ const RightContainer = styled.div`
     padding: 0 20px;
 
     h1 {
-      font-size: 1.7rem;
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
     }
 
     h3 {
@@ -80,6 +81,7 @@ const ProfileImageContainer = styled(GatsbyImage)`
     width: 150px;
     height: 150px;
 
+    margin-bottom: 10px;
     margin-left: 15px;
   }
 `

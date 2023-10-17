@@ -37,8 +37,12 @@ const Title = styled.div`
   overflow-wrap: break-word;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
-  font-size: 20px;
+  font-size: 1.25rem;
   font-weight: 700;
+
+  @media (max-width: 480px) {
+    font-size: 1.15rem;
+  }
 `
 
 const Date = styled.div`
