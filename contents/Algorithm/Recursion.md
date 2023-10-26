@@ -1,7 +1,8 @@
 ---
 date: '2023-09-14'
 title: '재귀(Recursion)'
-categories: ['Algorithm', 'JS']
+tag: ['recursion']
+category: 'Algorithm'
 ---
 
 ### 1. 재귀(Recursion)

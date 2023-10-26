@@ -1,7 +1,8 @@
 ---
 date: '2023-08-06'
 title: '자동으로 백준, 프로그래머스 코드 GitHub Commit하기'
-categories: ['GitHub', 'Auto Commit']
+tag: ['GitHub', 'Auto Commit']
+category: 'ETC'
 ---
 
 **자동으로** 백준, 프로그래머스 코드 GitHub Commit하는 방법을 공유하고자 해당 글을 작성하게 되었습니다!
@@ -15,7 +16,7 @@ categories: ['GitHub', 'Auto Commit']
 백준 허브는 백준이랑 프로그래머스에서 제출한 코드를 깃허브에 자동으로 커밋해주는 역할을 수행하고 있습니다.
 
 [설치 링크 바로가기](https://chrome.google.com/webstore/detail/%EB%B0%B1%EC%A4%80%ED%97%88%EB%B8%8Cbaekjoonhub/ccammcjdkpgjmcpijpahlehmapgmphmk?hl=ko)
-![img](Images/Baekjoonhub.png)
+![img](./Images/Baekjoonhub.png)
 
 ### 2. 백준 허브 연결 과정
 

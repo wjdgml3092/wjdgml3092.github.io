@@ -1,7 +1,8 @@
 ---
 date: '2023-09-19'
 title: '변수 선언 3가지 키워드'
-categories: ['변수 선언', 'JS']
+tag: ['JS']
+category: 'TIL'
 ---
 
 ### 1. var 키워드

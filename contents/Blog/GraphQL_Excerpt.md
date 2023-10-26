@@ -1,7 +1,8 @@
 ---
 date: '2023-09-19'
 title: '게츠비 블로그에 excerpt 추가하기'
-categories: ['GraphQL', 'Gatsby', 'Blog']
+tag: ['GraphQL', 'Gatsby']
+category: 'Blog'
 ---
 
 excerpt를 추가하기 전 블로그는 직접 글을 작성할 때마다 summary값을 넣었고, 요약이 생각나지 않았던 글들도 있다. <br/>

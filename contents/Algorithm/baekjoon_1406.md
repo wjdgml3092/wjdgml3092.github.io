@@ -1,7 +1,8 @@
 ---
 date: '2023-09-08'
 title: '백준 1406번 에디터'
-categories: ['Algorithm', 'JS']
+tag: ['Baekjoon']
+category: 'Algorithm'
 ---
 
 두 개의 스택을 이용해서 해당 문제를 풀었다.

@@ -14,7 +14,7 @@ const PostFooterContainer = styled.div`
   width: 768px;
   height: 100%;
   margin: 0 auto;
-  padding: 15px 0 10px 0;
+  padding: 20px 0 10px 0;
   color: #000;
   border-top: 1px solid #c2c2c2;
 
@@ -69,7 +69,7 @@ const PrevPageIcon = styled.div`
   width: 30px;
   height: 30px;
   background: inherit;
-  color: #000000;
+  color: #757575;
   font-size: 20px;
   cursor: pointer;
   margin-right: 6px;
@@ -96,7 +96,8 @@ const IndexContainer = styled.div`
   }
 `
 const IndexBackgroundContainer = styled(Link)`
-  background: #e4e4e4;
+  background: #eeeeee;
+  color: #757575;
   border-radius: 10px;
   display: flex;
   align-items: center;

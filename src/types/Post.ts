@@ -1,7 +1,8 @@
 export type PostFrontmatterType = {
   title: string
   date: string
-  categories: string[]
+  tag: string[]
+  category: string
 }
 
 export type PostListItemType = {

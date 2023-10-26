@@ -1,9 +1,10 @@
 import styled from '@emotion/styled'
-import { Category, CategoryItem } from 'components/Post/emotionComponents'
+import { Tag, TagItem } from 'components/Post/emotionComponents'
 export type PostHeadInfoProps = {
   title: string
   date: string
-  categories: string[]
+  category: string
+  tag: string[]
 }
 const PostHeadInfoWrapper = styled.div`
   display: flex;
@@ -13,6 +14,8 @@ const PostHeadInfoWrapper = styled.div`
   margin: 0 auto;
   padding: 30px 0;
   color: #000;
+  border-bottom: 1px solid #c2c2c2;
+
   @media (max-width: 768px) {
     width: 100%;
     padding: 40px 15px;
@@ -41,17 +44,18 @@ const DateTxt = styled.div`
   color: #4c4c4c;
 `
 
-const PostHeadInfo = ({ title, date, categories }: PostHeadInfoProps) => {
+const PostHeadInfo = ({ title, date, category, tag }: PostHeadInfoProps) => {
   return (
     <PostHeadInfoWrapper>
+      {category}
       <Title>{title}</Title>
 
       <div>
-        <Category>
-          {categories.map(category => (
-            <CategoryItem key={category}>{category}</CategoryItem>
+        <Tag>
+          {tag.map(item => (
+            <TagItem key={item}>{item}</TagItem>
           ))}
-        </Category>
+        </Tag>
 
         <DateTxt>{date}</DateTxt>
       </div>

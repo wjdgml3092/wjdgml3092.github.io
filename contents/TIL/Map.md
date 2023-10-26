@@ -1,7 +1,8 @@
 ---
 date: '2023-08-08'
 title: 'Map'
-categories: ['JS']
+tag: ['JS']
+category: 'TIL'
 ---
 
 ### 1. 소개

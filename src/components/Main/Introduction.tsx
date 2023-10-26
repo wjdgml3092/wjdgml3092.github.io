@@ -47,7 +47,7 @@ const RightContainer = styled.div`
 
   @media (max-width: 480px) {
     margin-left: 0px;
-    padding: 0 20px;
+    padding: 0 20px 0px 15px;
 
     h1 {
       font-size: 1.25rem;

@@ -10,10 +10,10 @@ const PostHeadWrapper = styled.div`
   padding-top: 55px;
 `
 
-const PostHead = ({ title, date, categories }: PostHeadProps) => {
+const PostHead = ({ title, date, category, tag }: PostHeadProps) => {
   return (
     <PostHeadWrapper>
-      <PostHeadInfo title={title} date={date} categories={categories} />
+      <PostHeadInfo title={title} date={date} category={category} tag={tag} />
     </PostHeadWrapper>
   )
 }

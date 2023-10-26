@@ -1,7 +1,8 @@
 ---
 date: '2023-08-05'
 title: "Welcome to Jung's Blog"
-categories: ['First']
+tag: ['First']
+category: 'Blog'
 ---
 
 안녕하세요:)

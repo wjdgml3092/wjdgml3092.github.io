@@ -1,7 +1,8 @@
 ---
 date: '2023-09-26'
 title: '실행 컨텍스트(Execution Context) 1'
-categories: ['Execution_Context', 'JS']
+tag: ['Execution_Context', 'JS']
+category: 'TIL'
 ---
 
 중요한 부분이라 두 부분으로 나눠서 포스팅하고자 한다. <br/>

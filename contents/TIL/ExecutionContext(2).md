@@ -1,7 +1,8 @@
 ---
 date: '2023-09-26'
 title: '실행 컨텍스트(Execution Context) 2'
-categories: ['Execution_Context', 'JS']
+tag: ['Execution_Context', 'JS']
+category: 'TIL'
 ---
 
 - 순서를 간략하게 정리하자면 아래와 같다.

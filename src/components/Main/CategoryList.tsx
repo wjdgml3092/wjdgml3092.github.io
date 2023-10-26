@@ -28,7 +28,6 @@ const CategoryListWrapper = styled.div`
   @media (max-width: 768px) {
     width: 100%;
     margin-top: 50px;
-    padding: 0 20px;
   }
 
   @media (max-width: 480px) {
@@ -40,18 +39,29 @@ const CategoryListWrapper = styled.div`
 const CategoryItem = styled(({ active, ...props }: GatsbyLinkProps) => (
   <Link {...props} />
 ))<CategoryItemProps>`
-  margin-right: 20px;
+  width: 20%;
+  text-align: center;
   padding: 5px 0;
   font-size: 18px;
-  font-weight: ${({ active }) => (active ? '800' : '400')};
-  cursor: pointer;
 
-  &:last-of-type {
-    margin-right: 0;
+  span {
+    ${({ active }) =>
+      active
+        ? 'font-size: 20px; background: linear-gradient(180deg,rgba(255,255,255,0) 70%, #fff5b1 50%);'
+        : ''}
   }
+
+  cursor: pointer;
 
   @media (max-width: 768px) {
     font-size: 15px;
+
+    span {
+      ${({ active }) =>
+        active
+          ? 'font-size: 17px; background: linear-gradient(180deg,rgba(255,255,255,0) 70%, #fff5b1 50%);'
+          : ''}
+    }
   }
 `
 
@@ -67,7 +77,10 @@ const CategoryList = ({
           active={name === selectedCategory}
           key={name}
         >
-          #{name}({count})
+          <span>
+            {name}
+            {/* ({count}) */}
+          </span>
         </CategoryItem>
       ))}
     </CategoryListWrapper>

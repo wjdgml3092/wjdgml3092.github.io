@@ -59,14 +59,12 @@ const IndexPage = ({
           list: CategoryListProps['categoryList'],
           {
             node: {
-              frontmatter: { categories },
+              frontmatter: { category },
             },
           }: PostListItemType,
         ) => {
-          categories.forEach(category => {
-            if (list[category] === undefined) list[category] = 1
-            else list[category]++
-          })
+          if (list[category] === undefined) list[category] = 1
+          else list[category]++
 
           list['All']++
 
@@ -118,7 +116,8 @@ export const getPostList = graphql`
           frontmatter {
             title
             date(formatString: "YYYY.MM.DD.")
-            categories
+            category
+            tag
           }
         }
       }

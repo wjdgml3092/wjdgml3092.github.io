@@ -1,7 +1,8 @@
 ---
 date: '2023-09-23'
 title: '검색 알고리즘(Search Algorithm)'
-categories: ['Algorithm', 'JS']
+tag: ['search_algorithm']
+category: 'Algorithm'
 ---
 
 ### 1. 선형 검색(Linear Search)

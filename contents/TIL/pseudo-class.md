@@ -1,7 +1,8 @@
 ---
 date: '2023-08-09'
 title: '의사 클래스(pseudo-classes)'
-categories: ['CSS', 'pseudo-classes']
+tag: ['css']
+category: 'TIL'
 ---
 
 ### 1. 의사 클래스(pseudo-classes)

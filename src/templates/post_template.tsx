@@ -36,7 +36,7 @@ const PostTemplate = ({
     node: {
       excerpt,
       html,
-      frontmatter: { title, date, categories },
+      frontmatter: { title, date, category, tag },
     },
   } = edges[0]
 
@@ -44,7 +44,7 @@ const PostTemplate = ({
     <Fragment>
       <Header />
       <Template title={title} description={excerpt} url={href}>
-        <PostHead title={title} date={date} categories={categories} />
+        <PostHead title={title} date={date} tag={tag} category={category} />
         <PostContent html={html} />
 
         <PostFooter />
@@ -65,7 +65,8 @@ export const queryMarkdownDataBySlug = graphql`
           frontmatter {
             title
             date(formatString: "YYYY.MM.DD.")
-            categories
+            category
+            tag
           }
         }
       }

@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import { Category, CategoryItem } from 'components/Post/emotionComponents'
+import { Tag, TagItem } from 'components/Post/emotionComponents'
 import { Link } from 'gatsby'
 import { PostFrontmatterType } from 'types/Post'
 
@@ -10,14 +10,19 @@ type PostItemProps = PostFrontmatterType & { link: string } & {
 const PostItemWrapper = styled(Link)`
   display: flex;
   flex-direction: column;
-  border-radius: 10px;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.15);
+  border-bottom: 1px solid #c2c2c2;
   transition: 0.3s box-shadow;
   cursor: pointer;
   margin-bottom: 10px;
 
   &:hover {
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    div:nth-child(1) span {
+      background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0) 70%,
+        #fff5b1 50%
+      );
+    }
   }
 `
 
@@ -25,10 +30,10 @@ const PostItemContent = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;
-  padding: 15px;
+  padding: 15px 0px;
 `
 
-const Title = styled.div`
+const TitleWrapper = styled.div`
   display: -webkit-box;
   overflow: hidden;
   margin-bottom: 3px;
@@ -67,20 +72,25 @@ const Excerpt = styled.div`
 const PostItem = ({
   title,
   date,
-  categories,
+  category,
+  tag,
   link,
   excerpt,
 }: PostItemProps) => {
   return (
     <PostItemWrapper to={link}>
       <PostItemContent>
-        <Title>{title}</Title>
+        {/* <div>{category}</div> */}
+        <TitleWrapper>
+          <span>{title}</span>
+        </TitleWrapper>
         <Date>{date}</Date>
-        <Category>
-          {categories.map(category => (
-            <CategoryItem key={category}>{category}</CategoryItem>
+        <Tag>
+          <span>{category}</span>
+          {tag.map(item => (
+            <TagItem key={item}>{item}</TagItem>
           ))}
-        </Category>
+        </Tag>
         <Excerpt>{excerpt}</Excerpt>
       </PostItemContent>
     </PostItemWrapper>

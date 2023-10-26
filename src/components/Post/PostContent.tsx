@@ -11,7 +11,7 @@ const MarkdownRenderer = styled.div`
   width: 768px;
   min-height: 550px;
   margin: 0 auto;
-  padding-bottom: 20px;
+  padding: 20px 0px;
   word-break: break-all;
 
   // Markdown Style

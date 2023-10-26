@@ -4,6 +4,7 @@ import { PostListItemType } from 'types/Post'
 import useInfiniteScroll, {
   useInfiniteScrollType,
 } from 'hooks/useInfiniteScroll'
+import { useState } from 'react'
 
 type PostListProps = {
   selectedCategory: string
@@ -18,7 +19,7 @@ const PostListWrapper = styled.div`
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
     width: 100%;
-    padding: 30px 20px;
+    padding: 30px 15px;
   }
 `
 const PostList = ({ selectedCategory, posts }: PostListProps) => {
