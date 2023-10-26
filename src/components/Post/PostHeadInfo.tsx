@@ -19,6 +19,7 @@ const PostHeadInfoWrapper = styled.div`
   @media (max-width: 768px) {
     width: 100%;
     padding: 40px 15px;
+    border-bottom: none;
   }
 `
 
