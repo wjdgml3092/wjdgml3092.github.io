@@ -16,7 +16,7 @@ const PostItemWrapper = styled(Link)`
   margin-bottom: 10px;
 
   &:hover {
-    div:nth-child(1) span {
+    div:nth-of-type(1) span {
       background: linear-gradient(
         180deg,
         rgba(255, 255, 255, 0) 70%,
@@ -67,6 +67,7 @@ const Excerpt = styled.div`
   -webkit-box-orient: vertical;
   font-size: 16px;
   opacity: 0.8;
+  margin-bottom: 10px;
 `
 
 const PostItem = ({

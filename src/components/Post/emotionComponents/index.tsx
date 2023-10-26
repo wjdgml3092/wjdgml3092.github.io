@@ -4,7 +4,7 @@ export const Tag = styled.div`
   display: flex;
   flex-wrap: wrap;
   margin-top: 10px;
-  margin: 10px 0px;
+  margin: 15px 0px;
   font-size: 12px;
   align-items: center;
   color: #757575;
