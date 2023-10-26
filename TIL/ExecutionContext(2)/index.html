@@ -1,0 +1,191 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><meta name="generator" content="Gatsby 5.11.0"/><meta data-react-helmet="true" name="description"/><meta data-react-helmet="true" name="viewport" content="width=device-width, initial-scale=1.0"/><meta data-react-helmet="true" http-equiv="Content-Type" content="text/html;charset=UTF-8"/><meta data-react-helmet="true" property="og:type" content="website"/><meta data-react-helmet="true" property="og:title" content="실행 컨텍스트(Execution Context) 2"/><meta data-react-helmet="true" property="og:description"/><meta data-react-helmet="true" property="og:url"/><meta data-react-helmet="true" property="og:site_name" content="실행 컨텍스트(Execution Context) 2"/><meta data-react-helmet="true" name="twitter:card" content="summary"/><meta data-react-helmet="true" name="twitter:title" content="실행 컨텍스트(Execution Context) 2"/><meta data-react-helmet="true" name="twitter:description"/><meta data-react-helmet="true" name="twitter:site" content="@사용자이름"/><meta data-react-helmet="true" name="twitter:creator" content="@사용자이름"/><style data-href="/styles.9e907bc32054b7771552.css" data-identity="gatsby-global-css">code[class*=language-],pre[class*=language-]{word-wrap:normal;background:none;color:#ccc;font-family:Consolas,Monaco,Andale Mono,Ubuntu Mono,monospace;font-size:1em;-webkit-hyphens:none;hyphens:none;line-height:1.5;tab-size:4;text-align:left;white-space:pre;word-break:normal;word-spacing:normal}pre[class*=language-]{margin:.5em 0;overflow:auto;padding:1em}:not(pre)>code[class*=language-],pre[class*=language-]{background:#2d2d2d}:not(pre)>code[class*=language-]{border-radius:.3em;padding:.1em;white-space:normal}.token.block-comment,.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#999}.token.punctuation{color:#ccc}.token.attr-name,.token.deleted,.token.namespace,.token.tag{color:#e2777a}.token.function-name{color:#6196cc}.token.boolean,.token.function,.token.number{color:#f08d49}.token.class-name,.token.constant,.token.property,.token.symbol{color:#f8c555}.token.atrule,.token.builtin,.token.important,.token.keyword,.token.selector{color:#cc99cd}.token.attr-value,.token.char,.token.regex,.token.string,.token.variable{color:#7ec699}.token.entity,.token.operator,.token.url{color:#67cdcc}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}.token.inserted{color:green}</style><link rel="icon" href="/favicon-32x32.png?v=461c6bab9c01f1efac6a41274c0af64d" type="image/png"/><link rel="manifest" href="/manifest.webmanifest" crossorigin="anonymous"/><link rel="apple-touch-icon" sizes="48x48" href="/icons/icon-48x48.png?v=461c6bab9c01f1efac6a41274c0af64d"/><link rel="apple-touch-icon" sizes="72x72" href="/icons/icon-72x72.png?v=461c6bab9c01f1efac6a41274c0af64d"/><link rel="apple-touch-icon" sizes="96x96" href="/icons/icon-96x96.png?v=461c6bab9c01f1efac6a41274c0af64d"/><link rel="apple-touch-icon" sizes="144x144" href="/icons/icon-144x144.png?v=461c6bab9c01f1efac6a41274c0af64d"/><link rel="apple-touch-icon" sizes="192x192" href="/icons/icon-192x192.png?v=461c6bab9c01f1efac6a41274c0af64d"/><link rel="apple-touch-icon" sizes="256x256" href="/icons/icon-256x256.png?v=461c6bab9c01f1efac6a41274c0af64d"/><link rel="apple-touch-icon" sizes="384x384" href="/icons/icon-384x384.png?v=461c6bab9c01f1efac6a41274c0af64d"/><link rel="apple-touch-icon" sizes="512x512" href="/icons/icon-512x512.png?v=461c6bab9c01f1efac6a41274c0af64d"/><title data-react-helmet="true">실행 컨텍스트(Execution Context) 2</title><style>.gatsby-image-wrapper{position:relative;overflow:hidden}.gatsby-image-wrapper picture.object-fit-polyfill{position:static!important}.gatsby-image-wrapper img{bottom:0;height:100%;left:0;margin:0;max-width:none;padding:0;position:absolute;right:0;top:0;width:100%;object-fit:cover}.gatsby-image-wrapper [data-main-image]{opacity:0;transform:translateZ(0);transition:opacity .25s linear;will-change:opacity}.gatsby-image-wrapper-constrained{display:inline-block;vertical-align:top}</style><noscript><style>.gatsby-image-wrapper noscript [data-main-image]{opacity:1!important}.gatsby-image-wrapper [data-placeholder-image]{opacity:0!important}</style></noscript><script type="module">const e="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;e&&document.body.addEventListener("load",(function(e){const t=e.target;if(void 0===t.dataset.mainImage)return;if(void 0===t.dataset.gatsbyImageSsr)return;let a=null,n=t;for(;null===a&&n;)void 0!==n.parentNode.dataset.gatsbyImageWrapper&&(a=n.parentNode),n=n.parentNode;const o=a.querySelector("[data-placeholder-image]"),r=new Image;r.src=t.currentSrc,r.decode().catch((()=>{})).then((()=>{t.style.opacity=1,o&&(o.style.opacity=0,o.style.transition="opacity 500ms linear")}))}),!0);</script><link rel="canonical" href="https://wjdgml3092.github.io/TIL/ExecutionContext(2)/" data-baseprotocol="https:" data-basehost="wjdgml3092.github.io"/><link rel="sitemap" type="application/xml" href="/sitemap-index.xml"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><style data-emotion="css 1wphj7">.css-1wphj7{border-bottom:1px solid #d9d9d9;background-color:#fff;position:fixed;top:0;left:0;right:0;z-index:31;}</style><header class="css-1wphj7 e1ke0ojz1"><style data-emotion="css 11k95q">.css-11k95q{width:768px;padding:15px 15px 15px 0;margin:auto;font-size:1.25rem;font-weight:700;}@media (max-width: 768px){.css-11k95q{width:100%;}}@media (max-width: 480px){.css-11k95q{padding:15px;}}</style><div class="css-11k95q e1ke0ojz0"><a href="/">Jung&#x27;s Blog</a></div></header><main><style data-emotion="css-global 1mogwaj">@font-face{font-family:'Pretendard-Regular';src:url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');font-weight:400;font-style:normal;}*{padding:0;margin:0;box-sizing:border-box;font-family:Pretendard-Regular,serif;}a,a:hover{color:inherit;-webkit-text-decoration:none;text-decoration:none;cursor:pointer;}main{min-height:calc(100vh - 100px);}</style><style data-emotion="css 11sab20">.css-11sab20{position:relative;width:100%;padding-top:55px;}</style><div class="css-11sab20 e1opi4mu0"><style data-emotion="css 1k70phw">.css-1k70phw{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;width:768px;height:100%;margin:0 auto;padding:30px 0;color:#000;border-bottom:1px solid #c2c2c2;}@media (max-width: 768px){.css-1k70phw{width:100%;padding:40px 15px;}}</style><div class="css-1k70phw e1st1jau2">TIL<style data-emotion="css 14vxb46">.css-14vxb46{display:-webkit-box;overflow:hidden;overflow-wrap:break-word;margin-top:10px;text-overflow:ellipsis;white-space:normal;-webkit-line-clamp:2;-webkit-box-orient:vertical;font-size:45px;font-weight:700;}@media (max-width: 768px){.css-14vxb46{font-size:30px;}}</style><div class="css-14vxb46 e1st1jau1">실행 컨텍스트(Execution Context) 2</div><div><style data-emotion="css 13mai2q">.css-13mai2q{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-flex-wrap:wrap;-webkit-flex-wrap:wrap;-ms-flex-wrap:wrap;flex-wrap:wrap;margin-top:10px;margin:10px 0px;font-size:12px;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;color:#757575;line-height:20px;}.css-13mai2q span{margin-right:10px;}</style><div class="css-13mai2q e10e25mq1"><style data-emotion="css qh5nh2">.css-qh5nh2{margin-right:5px;padding:2px 10px;border-radius:10px;background:#eeeeee;font-weight:700;}</style><div class="css-qh5nh2 e10e25mq0">Execution_Context</div><div class="css-qh5nh2 e10e25mq0">JS</div></div><style data-emotion="css 4n1uve">.css-4n1uve{margin-top:10px;color:#4c4c4c;}</style><div class="css-4n1uve e1st1jau0">2023.09.26.</div></div></div></div><style data-emotion="css 1hh7jjv">.css-1hh7jjv{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;width:768px;min-height:550px;margin:0 auto;padding:20px 0px;word-break:break-all;line-height:1.8;font-size:16px;font-weight:400;}.css-1hh7jjv p{padding:5px 0;}.css-1hh7jjv h1,.css-1hh7jjv h2,.css-1hh7jjv h3{font-weight:800;margin-bottom:10px;}.css-1hh7jjv *+h1,.css-1hh7jjv *+h2,.css-1hh7jjv *+h3{margin-top:30px;}.css-1hh7jjv hr+h1,.css-1hh7jjv hr+h2,.css-1hh7jjv hr+h3{margin-top:0;}.css-1hh7jjv h1{font-size:30px;}.css-1hh7jjv h2{font-size:25px;}.css-1hh7jjv h3{font-size:20px;}.css-1hh7jjv table{border:1px solid #c2c2c2;border-collapse:collapse;text-align:center;margin-top:10px;}.css-1hh7jjv tr td:first-of-type{text-align:left;padding-left:5px;}.css-1hh7jjv tr,.css-1hh7jjv td,.css-1hh7jjv th{border:1px solid #c2c2c2;padding:3px;}.css-1hh7jjv blockquote{margin:20px 0;padding:5px 15px;border-left:2px solid #000000;font-weight:800;}.css-1hh7jjv ol,.css-1hh7jjv ul{margin-left:20px;}.css-1hh7jjv hr{border:1px solid #000000;margin:100px 0;}.css-1hh7jjv a{color:#554edd;}.css-1hh7jjv *:not(pre)>code{color:#eb5a5a;background-color:#f7f6f3;font-size:14px;padding:5px;}.css-1hh7jjv pre[class*='language-']{margin:15px 0;padding:15px;font-size:15px;background-color:#2d2d2d;}.css-1hh7jjv pre[class*='language-']::-webkit-scrollbar-thumb{background:rgba(255, 255, 255, 0.5);border-radius:3px;}.css-1hh7jjv code[class*='language-'],.css-1hh7jjv pre[class*='language-']{tab-size:2;}.css-1hh7jjv aside{background:#f1f1ef;padding:10px;border-radius:10px;}.css-1hh7jjv ol>li{padding:5px 0;}@media (max-width: 768px){.css-1hh7jjv{width:100%;padding:15px;line-height:1.6;font-size:14px;}.css-1hh7jjv h1{font-size:23px;}.css-1hh7jjv h2{font-size:20px;}.css-1hh7jjv h3{font-size:17px;}.css-1hh7jjv img{width:100%;}.css-1hh7jjv hr{margin:50px 0;}.css-1hh7jjv *:not(pre)>code{font-size:13px;}}</style><div class="css-1hh7jjv e1ijh0y10"><ul>
+<li>순서를 간략하게 정리하자면 아래와 같다.</li>
+</ul>
+<div class="gatsby-highlight" data-language="powershell"><pre class="language-powershell"><code class="language-powershell">1<span class="token punctuation">.</span> 전역 객체 생성 <span class="token operator">-</span>> 2<span class="token punctuation">.</span> 전역 코드 평가 <span class="token operator">-</span>> 3<span class="token punctuation">.</span> 전역 코드 실행
+<span class="token operator">-</span>> 4<span class="token punctuation">.</span> 함수 코드 평가 <span class="token operator">-</span>> 5<span class="token punctuation">.</span> 함수 코드 실행
+<span class="token operator">-</span>> 새로 실행되는 함수가 있다면 앞 단계를 반복 <span class="token operator">-</span>> 종료 시점에 스택에서 pop <span class="token operator">-</span>> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span></code></pre></div>
+<h3>1. 전역 객체 생성</h3>
+<ul>
+<li><u>전역 코드가 평가되기 이전에 생성</u>된다.
+<ul>
+<li><strong>전역 객체란?</strong>
+<ul>
+<li>빌트인 전역 프로퍼티, 빌트인 전역 함수, 표준 빌트인 객체가 추가되면 동작환경에 따라 클라이언트 사이드 Web API(DOM, fetch 등) 또는 특정 환경을 위한 호스트 객체를 포함한다.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Object.prototype을 상속받는다.
+<ul>
+<li>즉, <u>전역 객체도 프로토타입 체인의 일원이다.</u></li>
+</ul>
+</li>
+</ul>
+<h3>2. 전역 코드 평가</h3>
+<ul>
+<li>순서
+  <ol>
+      <li>
+          <b>Global Execution Context(전역 실행 컨텍스트) 생성</b> 
+          <br/>→ 실행 컨텍스트 스택에 push 
+      </li>  
+      <li> 
+          <b>Global Lexical Environment(전역 렉시컬 환경) 생성</b>
+          <br/> → 렉시컬 환경을 생성하고 전역 실행 컨텍스트에 바인딩한다.
+          <ol style="margin: 0; list-style: none">
+              <li> <b>2.1. GlobalEnvironmentRecord(전역 환경 레코드)생성</b>
+                  <ol style="list-style: none">
+                      <li> <b>2.1.1. Object Environment Record(객체 환경 레코드) 생성</b></li>
+                      <li> <b>2.1.2. Declarative Environment Record(선언전 환경 레코드) 생성</b></li>
+              </ol>
+          </li>
+          <li>
+              <b>2-2. this 바인딩</b> <br/>
+              → [[GlobalThisValue]] 내부 슬롯에 this가 바인딩되는데 <u>일반적으로 전역 코드에서 this는 전역 객체를 가리킨다.</u>
+              <br/>
+              → this 바인딩은 전역 환경 레코드를 구성하는 객체/선언적 환경 레코드에는 없고, 전역 환경 레코드와 함수 환경 레코드에만 존재한다.
+          </li>
+          <li>
+             <b> 2.3. Outer Lexical Enviromnment Reference(외부 렉시컬 환경에 대한 참조) 결정</b> <br/>
+              → 전역에서는 상위 스코프는 없다. → 즉, 스코프 체인에 종점이므로 null을 할당한다.
+          </li>
+       </ol>
+      </li>
+  </ol>
+</li>
+</ul>
+<blockquote>
+<p>전역 환경 레코드에서 왜 2가지로 나눠진걸까?</p>
+</blockquote>
+<ul>
+<li>전역 변수를 관리하는 전역 스코프, 전역 객체의 빌트인 전역 프로퍼티와 빌트인 전역 함수, 표준 빌트인 객체를 제공한다.</li>
+<li>모든 전역 변수가 전역 객체의 프로퍼티가 되는 ES6 이전에는 전역 객체가 전역 환경 레코드의 역할을 수행했다. (기존의 전역 객체가 관리하던 var 키워드)
+↔ ES6의 let, const키워드로 선언한 전역 변수는 전역 객체의 프로티가 되지 않고 개념적인 블록 내에 존재하게 된다. <br/></li>
+</ul>
+<p>⇒ <span style='background-color: #fff5b1'>객체 환경 레코드</span>는 var 키워드로 선언한 전역 변수(함수 선언문으로 정의한 전역 함수 등) <br/>
+⇒ <span style='background-color: #fff5b1'>선언전 환경 레코드</span>는 let/const 키워드로 선언한 전역 변수 <br/>로 구분하여 관리하기 위해 2가지로 나뉜다.</p>
+<blockquote>
+<p><code class="language-text">BindingObject</code>는 어디서 생성되고, 어디와 연결되는가?</p>
+</blockquote>
+<ul>
+<li>전역 객체 생성에서 생성된 전역 객체이다.</li>
+<li><span style='background-color: #fff5b1'>var 키워드로 선언한 전역 변수, 함수 선언문의 정의된 전역 함수는 전역 환경 레코드의 객체 환경 레코드에 연결된 BindingObject를 통해 <b>전역 객체의 프로퍼티와 메서드</b></span>가 된다.</li>
+</ul>
+<p>⇒ var 키워드로 선언된 전역 변수와 함수 선언문으로 정의된 전역 함수가 전역 객체의 프로퍼티와 메서드가 되고 <u>전역 객체를 가리키는 식별자(window)없이 전역 객체의 프로퍼티를 참조할 수 있는 메커니즘</u>이다. (ex. window.alert를 alert로 참조하는)</p>
+<blockquote>
+<p>변수 호이스팅, 함수 호이스팅</p>
+</blockquote>
+<ul>
+<li>var 키워드로 선언한 변수는 선언 단계와 초기화 단계가 동시에 진행된다!
+<ul>
+<li>객체 환경 레코드에 바인딩된 <code class="language-text">bindingObject</code>를 통해 전역 객체에 변수 식별자를 키로 등록한 다음 undeined로 바인딩한다 → 참조 가능(선언문 전에)
+⇒ <span style='background-color: #fff5b1'>변수 호이스팅 </span></li>
+</ul>
+</li>
+<li>함수 선언문으로 정의한 함수도 마찬가지로 bindingObject를 통해 키가 등록되고, 생성된 함수 객체를 즉시 할당한다 → 참조,호출 가능(선언문 전에)
+⇒ <span style='background-color: #fff5b1'>함수 호이스팅 (변수 호이스팅과 차이) </span></li>
+</ul>
+<blockquote>
+<p>const와 let 키워드로 선언한 전역 변수는 전역 객체의 프로퍼티가 될 수 없다.</p>
+</blockquote>
+<ul>
+<li>전역 객체 프로퍼티가 되지 않기 때문에 window.y와 같이 전역 객체의 프로퍼티로서 참조할 수 없다.</li>
+<li>const 키워드는 <span style='background-color: #fff5b1'><u>선언과 초기화 단계가 분리</u></span>되어있어, 런타임에 변수 선언문에 도달하기 전까지 TDZ에 빠지며 <code class="language-text">uninitialized</code>로 바인딩된다. <br/> (<code class="language-text">uninitialized</code> : 초기화 단계가 진행되지 않아 변수에 접근할 수 없음을 나타낼 때 사용한다.)</li>
+</ul>
+<h3>3. 전역 코드 실행</h3>
+<ul>
+<li>
+<p>코드가 순차적으로 실행되면서 변수 할당문이 실행되어 값을 할당한다.</p>
+</li>
+<li>
+<p>이 때, 선언된 식별자인지 확인해야한다.</p>
+</li>
+<li>
+<p>식별자가 동일한 이름으로 다른 스코프에 여러개 존재할 수 도 있어, <u>어느 스코프의 식별자를 참조하면 되는지 결정하는 것을 <strong>식별자 결정</strong> </u>이라 한다.</p>
+<ul>
+<li>식별자 결정을 위해 식별자를 검색할 때는 실행 중인 실행 컨텍스트에서 식별자를 검색한다
+<ul>
+<li>실행 컨텍스트의 렉시컬 환경의 환경 레코드에 등록되어있다 → 선언되었다면!</li>
+</ul>
+</li>
+<li>검색 시 없다면 상위 스코프로 이동해서 식별자를 검색한다.
+⇒ 스코프 체인의 동작 원리다.</li>
+<li>만약, 전역 환경에서도 없다면 참조 에러를 발생시킨다.</li>
+</ul>
+ <aside>
+ 💡 소스코드를 실행하기 위해 필요한 환경을 제공하고 코드의 실행 결과를 실제로 관리하는 영역이다
+ <br/>⇒ 실행 컨텍스트!!
+ </aside>
+</li>
+</ul>
+<h3>4. 함수 코드 평가</h3>
+<ul>
+<li>함수 호출 시 전역 코드의 실행을 일시 중단하고 해당 함수 내부도 코드 제어권이 이동한다.</li>
+<li>순서
+  <ol>
+      <li> <b>fun1 Execution Context(fun1 실행 컨텍스트) 생성 </b> <br/> → 실행 컨텍스트 스택에 `push`
+      </li>
+      <li>
+          <b>fun1 Lexical Environment(fun1 렉시컬 환경) 생성</b>  <br/>
+          → 렉시컬 환경을 생성하고 전역 실행 컨텍스트에 바인딩한다.
+           <ol style="margin: 0; list-style: none">
+              <li> 
+                  <b>2.1. FunctionEnvironmentRecord(함수 환경 레코드)생성</b> <br/> 
+                  → 매개변수, arguments 객체, 함수 내부에서 선언한 지역 변수와 중첩함수를 등록하고 관리한다. 
+              </li>
+              <li>
+                  <b>2-2. this 바인딩</b> <br/> → 일반 함수로 호출되었다면, this는 전역 객체를 가리킨다
+              </li>
+              <li>
+              <b> 2.3. Outer Lexical Enviromnment Reference(외부 렉시컬 환경에 대한 참조) 결정</b>
+              </li>
+          </ol>
+      </li>
+  </ol>
+</li>
+</ul>
+<blockquote>
+<p>외부 렉시컬 환경에 대한 참조 결정 시 상위 스코프는 어떻게 아는가?</p>
+</blockquote>
+<ul>
+<li>자바스크립트는 <u> 함수를 어디서 호출했는지가 아니라 어디에 정의했는지에 따라 상위 스코프를 결정</u>한다.</li>
+<li>함수 객체는 자신이 정의된 스코프(상위 스코프)를 기억한다.</li>
+<li><u>자바스크립트 엔진은 함수 정의를 평가하여 함수 객체를 생성할 때 현재 실행 중인 실행 컨텍스트의렉시컬 환경, 즉 함수의 상위 스코프를 함수 객체의 내부 슬록 [[Environment]]에 저장</u>한다.</li>
+<li>함수 렉시컬 환경의 외부 렉시컬 환경에 대한 참조에 할당되는 것은 바로 함수의 상위 스코프를 가리키는 함수 객체의 내부 슬롯 [[Environment]]에 저장된 렉시컬 환경의 참조다.</li>
+<li>즉, <span style="background: #fff1b5;">함수 객체의 내부 슬롯 [[Environment]]가 바로 렉시컬 스코프를 구현하는 메커니즘이다.</span></li>
+</ul>
+<h3>5. 함수 코드 실행</h3>
+<ul>
+<li>변수 값 할당 등 진행</li>
+</ul>
+<br/>
+<h3>마무리</h3>
+<p>또 다른 함수를 실행하고 한다면, 함수 코드 평가와 실행을 반복할 것이다.</p>
+<p>더 이상 실행할 코드가 없다면, 해당 함수는 실행이 종료되고 컨텍스트 스택에서 <code class="language-text">pop</code> 제거된다.</p>
+<p><u>렉시컬 환경은 실행 컨텍스트에 의해 참조되기는 하지만 독립적인 객체다.</u> 객체를 포함한 모든 값은 누군가에 의해 참조되지 않을 때 비로소 가바리 컬렉터에 의해 메모리 공간의 확보가 해제되어 소멸한다.</p>
+<p>위처럼 pop을 진행하다보면, <u>실행 컨텍스트 스택에는 아무것도 남이있지 않게 된다.</u></p>
+<blockquote>
+<p>console.log는 어떻게 처리가 되는가?</p>
+</blockquote>
+<div class="gatsby-highlight" data-language="jsx"><pre class="language-jsx"><code class="language-jsx">console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span></code></pre></div>
+<ul>
+<li>console 식별자를 스코프 체인에서 검색한다.</li>
+<li>console 식별자는 객체 환경 레코드의 bindingObject를 통해 전역 객체에서 찾을 수 있다.</li>
+<li>console 객체에서 log 메서드를 검색한다.
+<ul>
+<li>console 객체의 프로토타입 체인을 통해 메서드를 검색한다.</li>
+<li><u>log 메서드는 상속된 프로퍼티가 아니라 console 객체가 직접 소유하는 프로퍼티다.</u>
+<div class="gatsby-highlight" data-language="jsx"><pre class="language-jsx"><code class="language-jsx">console<span class="token punctuation">.</span><span class="token function">hasOwnProperty</span><span class="token punctuation">(</span><span class="token string">'log'</span><span class="token punctuation">)</span> <span class="token comment">// true</span></code></pre></div>
+</li>
+</ul>
+</li>
+<li>괄호 안에 있는 변수도 스코프 체인에서 검색해서 반환한다.</li>
+</ul>
+<br/>
+<p>이전글 : <a href="https://wjdgml3092.github.io/JS/ExecutionContext(1)">실행 컨텍스트 개념과 역할, 스택 그리고 렉시컬 환경</a></p></div><style data-emotion="css gp7agt">.css-gp7agt{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;width:768px;height:100%;margin:0 auto;padding:20px 0 10px 0;color:#000;border-top:1px solid #c2c2c2;}@media (max-width: 768px){.css-gp7agt{width:100%;padding:20px 0px;}}</style><div class="css-gp7agt e25qew85"><style data-emotion="css lmxbvb">.css-lmxbvb{width:200px;height:200px;border-radius:50%;margin-left:15px;object-fit:cover;}@media (max-width: 768px){.css-lmxbvb{width:140px;height:140px;}}</style><img src="/static/jeju-21afd13274da686432b89cb2a08d0102.png" class="css-lmxbvb e25qew84"/><style data-emotion="css 1xni05h">.css-1xni05h{display:block;margin:auto 0 auto 40px;}.css-1xni05h h3{margin-bottom:2rem;}.css-1xni05h h3 br{display:none;}@media (max-width: 768px){.css-1xni05h{margin:auto 0 auto 10px;}}@media (max-width: 480px){.css-1xni05h h3 br{display:block;}}</style><div class="css-1xni05h e25qew83"><h3>사람 좋아하는 개발자의 <br/> 기록 공간입니다.<!-- --> </h3><style data-emotion="css kcdlr1">.css-kcdlr1{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;margin-bottom:10px;}.css-kcdlr1 svg{width:20px;height:20px;margin-right:5px;}</style><div class="css-kcdlr1 e160b011"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="none" d="M0 0h24v24H0V0z"></path><path d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6zm-2 0l-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z"></path></svg><a href="mailto: junghee@gmail.com">junghee@gmail.com</a></div><div class="css-kcdlr1 e160b011"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M511.6 76.3C264.3 76.2 64 276.4 64 523.5 64 718.9 189.3 885 363.8 946c23.5 5.9 19.9-10.8 19.9-22.2v-77.5c-135.7 15.9-141.2-73.9-150.3-88.9C215 726 171.5 718 184.5 703c30.9-15.9 62.4 4 98.9 57.9 26.4 39.1 77.9 32.5 104 26 5.7-23.5 17.9-44.5 34.7-60.8-140.6-25.2-199.2-111-199.2-213 0-49.5 16.3-95 48.3-131.7-20.4-60.5 1.9-112.3 4.9-120 58.1-5.2 118.5 41.6 123.2 45.3 33-8.9 70.7-13.6 112.9-13.6 42.4 0 80.2 4.9 113.5 13.9 11.3-8.6 67.3-48.8 121.3-43.9 2.9 7.7 24.7 58.3 5.5 118 32.4 36.8 48.9 82.7 48.9 132.3 0 102.2-59 188.1-200 212.9a127.5 127.5 0 0 1 38.1 91v112.5c.8 9 0 17.9 15 17.9 177.1-59.7 304.6-227 304.6-424.1 0-247.2-200.4-447.3-447.5-447.3z"></path></svg><a href="https://github.com/wjdgml3092">wjdgml3092</a></div></div></div><style data-emotion="css dk2qkn">.css-dk2qkn{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;width:768px;margin:10px auto 0 auto;padding-left:20px;}@media (max-width: 768px){.css-dk2qkn{width:100%;padding:10px;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;-webkit-justify-content:center;justify-content:center;margin:auto;}}</style><div class="css-dk2qkn e25qew81"><style data-emotion="css srzjcw">.css-srzjcw{background:#eeeeee;color:#757575;border-radius:10px;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;padding:5px 10px;margin-bottom:20px;}</style><a class="css-srzjcw e25qew80" href="/"><style data-emotion="css xn74x3">.css-xn74x3{display:grid;place-items:center;width:30px;height:30px;background:inherit;color:#757575;font-size:20px;cursor:pointer;margin-right:6px;}@media (max-width: 768px){.css-xn74x3{width:20px;height:20px;font-size:16px;}}</style><div class="css-xn74x3 e25qew82"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="arrow-left" class="svg-inline--fa fa-arrow-left " role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"></path></svg></div>글 목록보기</a></div></main><style data-emotion="css 4s4tr7">.css-4s4tr7{display:grid;place-items:center;font-size:15px;text-align:center;line-height:1.5;width:100%;height:50px;}@media (max-width: 768px){.css-4s4tr7{font-size:13px;}}</style><footer class="css-4s4tr7 e1oae0v80">Jung&#x27;s Blog © 2023 FrontDeveloper JungHee Kim.</footer></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/TIL/ExecutionContext(2)/";/*]]>*/</script><!-- slice-start id="_gatsby-scripts-1" -->
+          <script
+            id="gatsby-chunk-mapping"
+          >
+            window.___chunkMapping="{\"app\":[\"/app-08074adf15b7891bd645.js\"],\"component---src-pages-404-tsx\":[\"/component---src-pages-404-tsx-ca96d1cb96403e50416b.js\"],\"component---src-pages-index-tsx\":[\"/component---src-pages-index-tsx-6327615c0390a2c845d7.js\"],\"component---src-templates-post-template-tsx\":[\"/component---src-templates-post-template-tsx-bbdc5c76a8bddf2f6e18.js\"]}";
+          </script>
+        <script>window.___webpackCompilationHash="911893dd5b3ca6ca7360";</script><script src="/webpack-runtime-705bbd2077727e4d2f69.js" async></script><script src="/framework-6a525285796fb83f2864.js" async></script><script src="/app-08074adf15b7891bd645.js" async></script><!-- slice-end id="_gatsby-scripts-1" --></body></html>
