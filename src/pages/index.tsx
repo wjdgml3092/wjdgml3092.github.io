@@ -87,7 +87,7 @@ const IndexPage = ({
         <PostList
           selectedCategory={selectedCategory}
           posts={edges}
-          location={location.search}
+          location={search}
         />
       </Template>
 

@@ -106,6 +106,11 @@ const IndexBackgroundContainer = styled(Link)`
 `
 
 const PostFooter = () => {
+  let historyLink
+  if (typeof window !== 'undefined') {
+    historyLink = sessionStorage.getItem('selected_link')
+  }
+
   return (
     <Fragment>
       <PostFooterContainer>
@@ -126,9 +131,7 @@ const PostFooter = () => {
       </PostFooterContainer>
 
       <IndexContainer>
-        <IndexBackgroundContainer
-          to={sessionStorage.getItem('selected_link') ?? '/'}
-        >
+        <IndexBackgroundContainer to={historyLink ?? '/'}>
           <PrevPageIcon>
             <FontAwesomeIcon icon={faArrowLeft} />
           </PrevPageIcon>
