@@ -106,8 +106,6 @@ const IndexBackgroundContainer = styled(Link)`
 `
 
 const PostFooter = () => {
-  const goBackPage = () => window.history.back()
-
   return (
     <Fragment>
       <PostFooterContainer>
@@ -128,8 +126,10 @@ const PostFooter = () => {
       </PostFooterContainer>
 
       <IndexContainer>
-        <IndexBackgroundContainer to="/">
-          <PrevPageIcon onClick={goBackPage}>
+        <IndexBackgroundContainer
+          to={sessionStorage.getItem('selected_link') ?? '/'}
+        >
+          <PrevPageIcon>
             <FontAwesomeIcon icon={faArrowLeft} />
           </PrevPageIcon>
           글 목록보기

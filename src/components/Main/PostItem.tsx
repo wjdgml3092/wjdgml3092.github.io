@@ -5,7 +5,7 @@ import { PostFrontmatterType } from 'types/Post'
 
 type PostItemProps = PostFrontmatterType & { link: string } & {
   excerpt: string
-}
+} & { selectedLink: string }
 
 const PostItemWrapper = styled(Link)`
   display: flex;
@@ -77,9 +77,15 @@ const PostItem = ({
   tag,
   link,
   excerpt,
+  selectedLink,
 }: PostItemProps) => {
   return (
-    <PostItemWrapper to={link}>
+    <PostItemWrapper
+      to={link}
+      onClick={() => {
+        sessionStorage.setItem('selected_link', selectedLink)
+      }}
+    >
       <PostItemContent>
         {/* <div>{category}</div> */}
         <TitleWrapper>

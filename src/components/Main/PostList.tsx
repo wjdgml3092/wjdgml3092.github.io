@@ -153,7 +153,13 @@ const PostList = ({ selectedCategory, posts, location }: PostListProps) => {
               frontmatter,
             },
           }: PostListItemType) => (
-            <PostItem excerpt={excerpt} {...frontmatter} link={slug} key={id} />
+            <PostItem
+              excerpt={excerpt}
+              {...frontmatter}
+              link={slug}
+              key={id}
+              selectedLink={`/?category=${selectedCategory}&tag=${selectedTag}`}
+            />
           ),
         )}
       </div>
@@ -168,7 +174,7 @@ const PostList = ({ selectedCategory, posts, location }: PostListProps) => {
               key={name}
             >
               <TagItem
-                to={`?category=${selectedCategory}&tag=${name}`}
+                to={`/?category=${selectedCategory}&tag=${name}`}
                 active={name === selectedTag}
                 key={name}
               >
