@@ -1,7 +1,7 @@
 ---
 date: '2023-08-06'
 title: '자동으로 백준, 프로그래머스 코드 GitHub Commit하기'
-tag: ['GitHub', 'Auto Commit']
+tag: ['GitHub', 'Auto_Commit']
 category: 'ETC'
 ---
 

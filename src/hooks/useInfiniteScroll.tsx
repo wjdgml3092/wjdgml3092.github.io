@@ -9,6 +9,7 @@ export type useInfiniteScrollType = {
 const NUMBER_OF_ITEMS_PER_PAGE = 10
 
 const useInfiniteScroll = (
+  selectedTag: string,
   selectedCategory: string,
   posts: PostListItemType[],
 ): useInfiniteScrollType => {
@@ -23,14 +24,21 @@ const useInfiniteScroll = (
       posts.filter(
         ({
           node: {
-            frontmatter: { category },
+            frontmatter: { category, tag },
           },
-        }: PostListItemType) =>
-          selectedCategory !== 'All'
-            ? category.includes(selectedCategory)
-            : true,
+        }: PostListItemType) => {
+          const controlCategoryy =
+            selectedCategory !== 'All'
+              ? category.includes(selectedCategory)
+              : true
+
+          const controlTag =
+            selectedTag !== 'All' ? tag.includes(selectedTag) : true
+
+          return controlCategoryy && controlTag
+        },
       ),
-    [selectedCategory],
+    [selectedCategory, selectedTag],
   )
 
   useEffect(() => {
