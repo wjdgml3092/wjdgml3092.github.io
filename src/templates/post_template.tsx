@@ -7,6 +7,7 @@ import Header from 'components/Common/Header'
 import PostFooter from 'components/Post/PostFooter'
 import { Fragment } from 'react'
 import Footer from 'components/Common/Footer'
+import CommentWidget from 'components/Post/CommentWidget'
 
 export type PostPageItemType = {
   node: {
@@ -48,6 +49,8 @@ const PostTemplate = ({
         <PostContent html={html} />
 
         <PostFooter />
+
+        <CommentWidget />
       </Template>
       <Footer />
     </Fragment>
