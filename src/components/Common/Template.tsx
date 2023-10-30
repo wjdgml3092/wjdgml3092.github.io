@@ -28,8 +28,13 @@ const Template = ({ title, description, url, children }: TemplateProps) => {
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:title" content={title} />
         <meta name="twitter:description" content={description} />
-        <meta name="twitter:site" content="@사용자이름" />
-        <meta name="twitter:creator" content="@사용자이름" />
+        <meta name="twitter:site" content="@wjdgml3092" />
+        <meta name="twitter:creator" content="@wjdgml3092" />
+
+        <meta
+          name="google-site-verification"
+          content="NXRnBj7QbFAt0AhNZegJ75v9j1mNGsBQ8fQvff9aDBA"
+        />
 
         <html lang="ko" />
       </Helmet>

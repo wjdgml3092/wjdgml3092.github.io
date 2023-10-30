@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: `Jung's Blog`,
-    description: `기록하기 위한 나만의 공간.`,
+    description: `사람 좋아하고, 컨벤션을 중요시하는 프론트 개발자의 기록 공간입니다.`,
     author: `@wjdgml3092`,
     siteUrl: 'https://wjdgml3092.github.io/',
   },
@@ -13,11 +13,11 @@ module.exports = {
         name: `Jung's Blog`,
         short_name: `Jung's Blog`,
         start_url: '/',
-        icon: 'static/jung_avatar.png'
+        icon: 'static/jung_avatar.png',
       },
     },
     {
-      resolve: "gatsby-plugin-typescript",
+      resolve: 'gatsby-plugin-typescript',
       options: {
         isTSX: true,
         allExtensions: true,
@@ -46,8 +46,8 @@ module.exports = {
           formats: ['auto', 'webp'],
           quality: 100,
           placeholder: 'blurred',
-        }
-      }
+        },
+      },
     },
     `gatsby-transformer-sharp`,
     'gatsby-plugin-image',
