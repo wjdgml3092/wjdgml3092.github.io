@@ -60,14 +60,20 @@ const RightContainer = styled.div`
     }
   }
 `
-export const ContactContainer = styled.div`
+export const ContactContainer = styled.div<{ isFooter?: boolean }>`
   display: flex;
   align-items: center;
   margin-bottom: 10px;
 
+  a {
+    ${props => (props.isFooter ? 'font-size: 14px;' : '')}
+  }
+
   svg {
-    width: 20px;
-    height: 20px;
+    ${props =>
+      props.isFooter
+        ? 'width: 25px; height: 25px;'
+        : 'width: 20px; height: 20px;'}
     margin-right: 5px;
   }
 `

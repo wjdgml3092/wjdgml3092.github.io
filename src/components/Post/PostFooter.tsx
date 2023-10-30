@@ -19,30 +19,24 @@ const PostFooterContainer = styled.div`
   border-top: 1px solid #c2c2c2;
 
   @media (max-width: 768px) {
-    width: 100%;
-    padding: 20px 0px;
+    display: none;
   }
 `
 
 const FooterImg = styled.img`
-  width: 200px;
-  height: 200px;
+  width: 120px;
+  height: 120px;
   border-radius: 50%;
   margin-left: 15px;
   object-fit: cover;
-
-  @media (max-width: 768px) {
-    width: 140px;
-    height: 140px;
-  }
 `
 
 const DesContainer = styled.div`
   display: block;
   margin: auto 0 auto 40px;
 
-  h3 {
-    margin-bottom: 2rem;
+  h4 {
+    margin-bottom: 1rem;
 
     br {
       display: none;
@@ -66,11 +60,11 @@ const DesContainer = styled.div`
 const PrevPageIcon = styled.div`
   display: grid;
   place-items: center;
-  width: 30px;
-  height: 30px;
+  width: 20px;
+  height: 20px;
   background: inherit;
   color: #757575;
-  font-size: 20px;
+  font-size: 1rem;2
   cursor: pointer;
   margin-right: 6px;
 
@@ -86,6 +80,7 @@ const IndexContainer = styled.div`
   width: 768px;
   margin: 10px auto 0 auto;
   padding-left: 20px;
+  font-size: 14px;
 
   @media (max-width: 768px) {
     width: 100%;
@@ -116,17 +111,17 @@ const PostFooter = () => {
       <PostFooterContainer>
         <FooterImg src={jung_avatar} />
         <DesContainer>
-          <h3>
-            사람 좋아하는 개발자의 <br /> 기록 공간입니다.{' '}
-          </h3>
-          <ContactContainer>
-            <MdOutlineEmail />
-            <a href="mailto: junghee@gmail.com">junghee@gmail.com</a>
-          </ContactContainer>
-          <ContactContainer>
-            <AiFillGithub />
-            <a href="https://github.com/wjdgml3092">wjdgml3092</a>
-          </ContactContainer>
+          <h4>사람 좋아하는 개발자의 기록 공간입니다. </h4>
+          <div style={{ display: 'flex', columnGap: '5px' }}>
+            <ContactContainer isFooter>
+              <MdOutlineEmail />
+              <a href="mailto: junghee@gmail.com"></a>
+            </ContactContainer>
+            <ContactContainer isFooter>
+              <AiFillGithub />
+              <a href="https://github.com/wjdgml3092"></a>
+            </ContactContainer>
+          </div>
         </DesContainer>
       </PostFooterContainer>
 
@@ -135,7 +130,7 @@ const PostFooter = () => {
           <PrevPageIcon>
             <FontAwesomeIcon icon={faArrowLeft} />
           </PrevPageIcon>
-          글 목록보기
+          <span>글 목록보기</span>
         </IndexBackgroundContainer>
       </IndexContainer>
     </Fragment>
