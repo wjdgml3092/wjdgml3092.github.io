@@ -10,7 +10,9 @@
 
 ### History
 - 23.10.30
-  - SEO mata tag 추가
+  - SEO meta tag 추가
+  - utterances 추가
+  - post footer css 수정
 - 23.10.29
   - 각 카테고리별 태그 리스트 추가
   - 글 리스트로 돌아갈 시 선택했던 카테고리, 태그 선택했던 값 저장 후 세팅
