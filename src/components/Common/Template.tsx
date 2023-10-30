@@ -36,6 +36,11 @@ const Template = ({ title, description, url, children }: TemplateProps) => {
           content="NXRnBj7QbFAt0AhNZegJ75v9j1mNGsBQ8fQvff9aDBA"
         />
 
+        <meta
+          name="naver-site-verification"
+          content="2e1bd635204729c9695cf690455946481044a616"
+        />
+
         <html lang="ko" />
       </Helmet>
 
