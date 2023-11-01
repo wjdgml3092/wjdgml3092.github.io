@@ -252,6 +252,10 @@ const MobileTocWrapper = styled.div`
 
   @media (max-width: 1365px) {
     display: flex;
+
+    span {
+      width: 60px;
+    }
   }
 `
 
