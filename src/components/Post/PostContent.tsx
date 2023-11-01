@@ -236,14 +236,27 @@ const TocMarkdown = styled.div<{ mobileTocShow: boolean }>`
   }
 `
 
+const TocTotalWrapper = styled.div`
+  @media (max-width: 1365px) {
+    width: 100%;
+    padding: 15px;
+  }
+`
+
 const TocWrapper = styled.div`
   @media (max-width: 1365px) {
+    font-size: 14px;
     background: #eeeeee;
     width: 768px;
     margin: 20px auto;
     padding: 20px;
     border-radius: 10px;
     color: #757575;
+  }
+
+  @media (max-width: 480px) {
+    width: 100%;
+    margin: 0 auto;
   }
 `
 
@@ -257,6 +270,12 @@ const MobileTocWrapper = styled.div`
       width: 60px;
     }
   }
+`
+
+const MobileTocArrow = styled.div`
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
 `
 
 const PostContent = ({ html, toc }: PostContentProps) => {
@@ -331,19 +350,13 @@ const PostContent = ({ html, toc }: PostContentProps) => {
 
   return (
     <div>
-      <div>
+      <TocTotalWrapper>
         <TocWrapper>
           <MobileTocWrapper onClick={() => setMobileTocShow(!mobileTocShow)}>
             <span>{!mobileTocShow ? '목차보기' : '숨기기'}</span>
-            <div
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                marginLeft: '10px',
-              }}
-            >
+            <MobileTocArrow>
               {!mobileTocShow ? <IoIosArrowDown /> : <IoIosArrowUp />}
-            </div>
+            </MobileTocArrow>
           </MobileTocWrapper>
           <TocMarkdown
             mobileTocShow={mobileTocShow}
@@ -351,7 +364,7 @@ const PostContent = ({ html, toc }: PostContentProps) => {
             dangerouslySetInnerHTML={{ __html: toc }}
           ></TocMarkdown>
         </TocWrapper>
-      </div>
+      </TocTotalWrapper>
       <MarkdownRenderer
         ref={ref as React.RefObject<HTMLDivElement>}
         dangerouslySetInnerHTML={{ __html: html }}
