@@ -9,6 +9,8 @@
 </div>
 
 ### History
+- 23.11.01
+  - TOC 추가 (pc, mobile)
 - 23.10.30
   - SEO meta tag 추가
   - utterances 추가
