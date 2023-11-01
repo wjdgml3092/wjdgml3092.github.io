@@ -13,6 +13,7 @@ export type PostPageItemType = {
   node: {
     excerpt: string
     html: string
+    tableOfContents: string
     frontmatter: PostFrontmatterType
   }
 }
@@ -37,6 +38,7 @@ const PostTemplate = ({
     node: {
       excerpt,
       html,
+      tableOfContents,
       frontmatter: { title, date, category, tag },
     },
   } = edges[0]
@@ -44,14 +46,18 @@ const PostTemplate = ({
   return (
     <Fragment>
       <Header />
-      <Template title={title} description={excerpt} url={href}>
-        <PostHead title={title} date={date} tag={tag} category={category} />
-        <PostContent html={html} />
+      <div>
+        <Template title={title} description={excerpt} url={href}>
+          <PostHead title={title} date={date} tag={tag} category={category} />
 
-        <PostFooter />
+          <PostContent html={html} toc={tableOfContents} />
 
-        <CommentWidget />
-      </Template>
+          <PostFooter />
+
+          <CommentWidget />
+        </Template>
+      </div>
+
       <Footer />
     </Fragment>
   )
@@ -65,6 +71,7 @@ export const queryMarkdownDataBySlug = graphql`
       edges {
         node {
           html
+          tableOfContents
           frontmatter {
             title
             date(formatString: "YYYY.MM.DD.")

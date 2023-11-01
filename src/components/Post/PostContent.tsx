@@ -1,7 +1,10 @@
 import styled from '@emotion/styled'
+import { useEffect, useRef, useState } from 'react'
+import { IoIosArrowUp, IoIosArrowDown } from 'react-icons/io'
 
 interface PostContentProps {
   html: string
+  toc: string
 }
 
 const MarkdownRenderer = styled.div`
@@ -35,6 +38,7 @@ const MarkdownRenderer = styled.div`
   * + h2,
   * + h3 {
     margin-top: 30px;
+    scroll-margin-top: 60px;
   }
 
   hr + h1,
@@ -168,9 +172,188 @@ const MarkdownRenderer = styled.div`
     }
   }
 `
+const TocMarkdown = styled.div<{ mobileTocShow: boolean }>`
+  @keyframes fadeInDown {
+    from {
+      opacity: 0;
+      transform: translate3d(0, -100%, 0);
+    }
+    to {
+      opacity: 1;
+      transform: translateZ(0);
+    }
+  }
+  animation: fadeInDown 1.5s;
 
-const PostContent = ({ html }: PostContentProps) => {
-  return <MarkdownRenderer dangerouslySetInnerHTML={{ __html: html }} />
+  position: fixed;
+  left: calc(50% + 380px);
+
+  height: 100%;
+  margin: 20px 0px 0px 20px;
+  line-height: 1.5;
+  font-size: 0.875rem;
+  width: 285px;
+
+  ul {
+    top: 10px;
+    list-style: none;
+    padding-left: 20px;
+    color: #757575;
+    border-left: 1px solid #eeeeee;
+  }
+
+  ul > li {
+    padding: 0px 0px 5px;
+
+    &:hover {
+      transition: all 0.125s ease-in 0s;
+      color: #757575;
+      transform: scale(1.05);
+    }
+  }
+
+  .highlight {
+    text-decoration: underline;
+    display: block;
+    transition: all 0.125s ease-in 0s;
+    color: #757575;
+    transform: scale(1.05);
+  }
+
+  @media (max-width: 1365px) {
+    display: ${props => (!props.mobileTocShow ? `none` : `block`)};
+
+    border-top: 1px solid #c2c2c2;
+    margin: 10px 0px 0;
+    position: inherit;
+    width: 100%;
+    padding-top: 10px;
+    animation: none;
+
+    ul {
+      padding-left: 0px;
+    }
+  }
+`
+
+const TocWrapper = styled.div`
+  @media (max-width: 1365px) {
+    background: #eeeeee;
+    width: 768px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 10px;
+    color: #757575;
+  }
+`
+
+const MobileTocWrapper = styled.div`
+  display: none;
+
+  @media (max-width: 1365px) {
+    display: flex;
+  }
+`
+
+const PostContent = ({ html, toc }: PostContentProps) => {
+  // 마크다운 컨텐츠 컨테이너의 ref
+  const ref = useRef<HTMLDivElement>()
+  const ref2 = useRef<HTMLDivElement>()
+
+  const [mobileTocShow, setMobileTocShow] = useState(false)
+
+  useEffect(() => {
+    const headingElements = ref.current?.querySelectorAll<HTMLElement>('h3')
+
+    ref2.current
+      ?.querySelectorAll('.highlight')
+      .forEach(element => element.classList.remove('highlight'))
+
+    const observer = new IntersectionObserver(
+      () => {
+        if (!headingElements) {
+          return
+        }
+
+        const offset = 120
+        const scrollTop = document.documentElement.scrollTop + offset
+
+        let targetHeading
+        for (let i = 0; i < headingElements.length; i++) {
+          // scrollTop보다 더 아래에 있는 엘리먼트를 발견한 순간,
+          if (headingElements[i].offsetTop > scrollTop) {
+            // 바로 그 직전의 헤딩 엘리먼트를 targetHeading 변수에 저장한다.
+            // 화면 최상단의 표시되는 컨텐츠의 제목이 바로 이 엘리먼트다.
+            // 만약 없다면 `null` 을 넣어줘서 제일 위 제목보다도 윗 영역에
+            // 스크롤되었다는 것을 표시한다.
+            targetHeading = headingElements[i - 1] ?? null
+            break
+          }
+        }
+
+        if (targetHeading === undefined) {
+          targetHeading = headingElements[headingElements.length - 1]
+        }
+
+        ref2.current
+          ?.querySelectorAll('.highlight')
+          .forEach(element => element.classList.remove('highlight'))
+
+        // targetHeading와 연결된 목차의 링크를 하이라이팅 해준다.
+        if (targetHeading) {
+          const targetId = targetHeading.getAttribute('id')
+          const linkSelector = `a[href='#${encodeURI(targetId ?? '')}']`
+
+          const linkElement = ref2.current?.querySelector(linkSelector)
+          linkElement?.classList.add('highlight')
+        }
+      },
+      {
+        rootMargin: '-55px 0px -50% 0px', //옵저버 영역
+        threshold: [0, 1.0],
+      },
+    )
+
+    headingElements?.forEach(element => {
+      return observer.observe(element)
+    })
+
+    return () => {
+      headingElements?.forEach(element => {
+        observer.unobserve(element)
+      })
+    }
+  }, [])
+
+  return (
+    <div>
+      <div>
+        <TocWrapper>
+          <MobileTocWrapper onClick={() => setMobileTocShow(!mobileTocShow)}>
+            <span>{!mobileTocShow ? '목차보기' : '숨기기'}</span>
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                marginLeft: '10px',
+              }}
+            >
+              {!mobileTocShow ? <IoIosArrowDown /> : <IoIosArrowUp />}
+            </div>
+          </MobileTocWrapper>
+          <TocMarkdown
+            mobileTocShow={mobileTocShow}
+            ref={ref2 as React.RefObject<HTMLDivElement>}
+            dangerouslySetInnerHTML={{ __html: toc }}
+          ></TocMarkdown>
+        </TocWrapper>
+      </div>
+      <MarkdownRenderer
+        ref={ref as React.RefObject<HTMLDivElement>}
+        dangerouslySetInnerHTML={{ __html: html }}
+      />
+    </div>
+  )
 }
 
 export default PostContent
