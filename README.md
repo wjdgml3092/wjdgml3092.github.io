@@ -9,6 +9,8 @@
 </div>
 
 ### History
+- 23.11.03
+  - giscus 추가
 - 23.11.01
   - TOC 추가 (pc, mobile)
 - 23.10.30
