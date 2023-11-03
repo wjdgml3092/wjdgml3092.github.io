@@ -11,6 +11,25 @@ const CommentWrapper = styled.div`
   }
 `
 
+const src = 'https://giscus.app/client.js'
+
+type GiscusAttributesType = {
+  src: string
+  'data-repo': string
+  'data-repo-id': string
+  'data-category': string
+  'data-category-id': string
+  'data-mapping': string
+  'data-strict': string
+  'data-reactions-enabled': string
+  'data-emit-metadata': string
+  'data-input-position': string
+  'data-theme': string
+  'data-lang': string
+  crossorigin: string
+  async: string
+}
+
 const CommentWidget = () => {
   const element = createRef<HTMLDivElement>()
 
@@ -19,12 +38,12 @@ const CommentWidget = () => {
 
     const giscus: HTMLScriptElement = document.createElement('script')
 
-    const attributes = {
-      src: 'https://giscus.app/client.js',
-      'data-repo': 'wjdgml3092/blog-comment-giscus',
-      'data-repo-id': 'R_kgDOKoqQmA',
-      'data-category': 'Announcements',
-      'data-category-id': 'DIC_kwDOKoqQmM4Capt_',
+    const attributes: GiscusAttributesType = {
+      src,
+      'data-repo': 'wjdgml3092/wjdgml3092.github.io',
+      'data-repo-id': 'R_kgDOJ0fPzg',
+      'data-category': 'Giscus',
+      'data-category-id': 'DIC_kwDOJ0fPzs4CapzG',
       'data-mapping': 'pathname',
       'data-strict': '0',
       'data-reactions-enabled': '1',

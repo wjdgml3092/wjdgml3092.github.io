@@ -325,7 +325,9 @@ const PostContent = ({ html, toc }: PostContentProps) => {
         // targetHeading와 연결된 목차의 링크를 하이라이팅 해준다.
         if (targetHeading) {
           const targetId = targetHeading.getAttribute('id')
-          const linkSelector = `a[href='#${encodeURI(targetId ?? '')}']`
+          const linkSelector = `a[href='#${encodeURI(
+            targetId?.toLowerCase() ?? '',
+          )}']`
 
           const linkElement = ref2.current?.querySelector(linkSelector)
           linkElement?.classList.add('highlight')
