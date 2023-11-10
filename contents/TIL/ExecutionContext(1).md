@@ -119,4 +119,4 @@ fun1()
 
 <br/>
 
-다음글 : [실행 컨텍스트 생성과 식별자 검색 과정](<https://wjdgml3092.github.io/JS/ExecutionContext(2)>)
+다음글 : [실행 컨텍스트 생성과 식별자 검색 과정](<https://wjdgml3092.github.io/TIL/ExecutionContext(2)>)

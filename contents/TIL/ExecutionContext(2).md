@@ -167,4 +167,4 @@ console.log(a)
 
 <br/>
 
-이전글 : [실행 컨텍스트 개념과 역할, 스택 그리고 렉시컬 환경](<https://wjdgml3092.github.io/JS/ExecutionContext(1)>)
+이전글 : [실행 컨텍스트 개념과 역할, 스택 그리고 렉시컬 환경](<https://wjdgml3092.github.io/TIL/ExecutionContext(1)>)
