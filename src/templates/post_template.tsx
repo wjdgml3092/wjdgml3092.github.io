@@ -13,7 +13,6 @@ export type PostPageItemType = {
   node: {
     excerpt: string
     html: string
-    tableOfContents: string
     frontmatter: PostFrontmatterType
   }
 }
@@ -38,7 +37,6 @@ const PostTemplate = ({
     node: {
       excerpt,
       html,
-      tableOfContents,
       frontmatter: { title, date, category, tag },
     },
   } = edges[0]
@@ -50,7 +48,7 @@ const PostTemplate = ({
         <Template title={title} description={excerpt} url={href}>
           <PostHead title={title} date={date} tag={tag} category={category} />
 
-          <PostContent html={html} toc={tableOfContents} />
+          <PostContent html={html} />
 
           <PostFooter />
 
@@ -71,7 +69,6 @@ export const queryMarkdownDataBySlug = graphql`
       edges {
         node {
           html
-          tableOfContents
           frontmatter {
             title
             date(formatString: "YYYY.MM.DD.")

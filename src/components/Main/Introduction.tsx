@@ -100,7 +100,7 @@ const Introduction = ({ profileImage }: IntroductionProps) => {
 
         <RightContainer>
           <h1>Welcome to Jung's Blog</h1>
-          <h3>사람 좋아하는 개발자의 기록 공간입니다. </h3>
+          <h3>컨벤션을 중요시하는 프론트 개발자의 기록 공간입니다. </h3>
           <ContactContainer>
             <MdOutlineEmail />
             <a href="mailto: junghee@gmail.com">junghee@gmail.com</a>
