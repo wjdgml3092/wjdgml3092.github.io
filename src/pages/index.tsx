@@ -9,6 +9,7 @@ import queryString, { ParsedQuery } from 'query-string'
 import Template from 'components/Common/Template'
 import Header from 'components/Common/Header'
 import Footer from 'components/Common/Footer'
+import { ThemeContextProvider } from 'components/Context/ThemeContext'
 
 type IndexPageProps = {
   location: {
@@ -77,21 +78,24 @@ const IndexPage = ({
 
   return (
     <Fragment>
-      <Header />
-      <Template title={title} description={description} url={siteUrl}>
-        <Introduction profileImage={gatsbyImageData} />
-        <CategoryList
-          selectedCategory={selectedCategory}
-          categoryList={categoryList}
-        />
-        <PostList
-          selectedCategory={selectedCategory}
-          posts={edges}
-          location={search}
-        />
-      </Template>
+      <ThemeContextProvider>
+        <Header />
+        <Template title={title} description={description} url={siteUrl}>
+          <Introduction profileImage={gatsbyImageData} />
 
-      <Footer />
+          <CategoryList
+            selectedCategory={selectedCategory}
+            categoryList={categoryList}
+          />
+          <PostList
+            selectedCategory={selectedCategory}
+            posts={edges}
+            location={search}
+          />
+        </Template>
+
+        <Footer />
+      </ThemeContextProvider>
     </Fragment>
   )
 }

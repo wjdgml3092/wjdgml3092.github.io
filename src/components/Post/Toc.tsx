@@ -1,8 +1,11 @@
 import styled from '@emotion/styled'
+import { Color } from 'assets/styles/color'
+import { useThemeContext } from 'components/Context/ThemeContext'
 import { useEffect, useState } from 'react'
 import { IoIosArrowUp, IoIosArrowDown } from 'react-icons/io'
+import { ThemeProps } from 'types/Post'
 
-const TocMarkdown = styled.div<{ mobileTocShow: boolean }>`
+const TocMarkdown = styled.div<{ mobileTocShow: boolean } & ThemeProps>`
   @keyframes fadeInDown {
     from {
       opacity: 0;
@@ -18,42 +21,49 @@ const TocMarkdown = styled.div<{ mobileTocShow: boolean }>`
   position: fixed;
   left: calc(50% + 380px);
 
+  width: 285px;
   height: 100%;
   margin: 20px 0px 0px 20px;
   line-height: 1.5;
   font-size: 0.875rem;
-  width: 285px;
 
   ul {
     top: 10px;
     list-style: none;
     padding-left: 20px;
-    color: #757575;
-    border-left: 1px solid #eeeeee;
+    color: ${({ theme }) =>
+      theme === 'dark' ? 'inherit' : Color.light.secondColor};
+    border-left: 1px solid ${Color.light.secondBackground};
   }
 
   ul > li {
     padding: 0px 0px 5px;
+    cursor: pointer;
 
     &:hover {
       transition: all 0.125s ease-in 0s;
-      color: #757575;
+      color: ${({ theme }) =>
+        theme === 'dark' ? 'inherit' : Color.light.secondColor};
       transform: scale(1.05);
     }
   }
 
-  .highlight {
+  .selectedIndex {
     text-decoration: underline;
     display: block;
     transition: all 0.125s ease-in 0s;
-    color: #757575;
     transform: scale(1.05);
+  }
+
+  a {
+    width: 100%;
+    display: block;
   }
 
   @media (max-width: 1365px) {
     display: ${props => (!props.mobileTocShow ? `none` : `block`)};
 
-    border-top: 1px solid #c2c2c2;
+    border-top: 1px solid ${Color.borderGray};
     margin: 10px 0px 0;
     position: inherit;
     width: 100%;
@@ -62,6 +72,26 @@ const TocMarkdown = styled.div<{ mobileTocShow: boolean }>`
 
     ul {
       padding-left: 0px;
+      border-left: none;
+    }
+
+    ul > li {
+      padding: 0px 0px 5px;
+      cursor: pointer;
+
+      &:hover {
+        transition: none;
+        transform: none;
+        text-decoration: underline;
+      }
+    }
+
+    .selectedIndex {
+      text-decoration: ${({ theme }) => (theme === 'dark' ? 'none' : '')};
+      transition: none;
+      transform: none;
+      background: ${({ theme }) =>
+        theme === 'dark' ? Color.dark.highlight : 'inherit'};
     }
   }
 `
@@ -73,15 +103,18 @@ const TocTotalWrapper = styled.div`
   }
 `
 
-const TocWrapper = styled.div`
+const TocWrapper = styled.div<ThemeProps>`
   @media (max-width: 1365px) {
     font-size: 14px;
-    background: #eeeeee;
+    background: ${({ theme }) =>
+      theme === 'dark'
+        ? Color.dark.secondBackground
+        : Color.light.secondBackground};
     width: 768px;
     margin: 20px auto;
     padding: 20px;
     border-radius: 10px;
-    color: #757575;
+    color: ${Color.light.secondColor};
   }
 
   @media (max-width: 480px) {
@@ -92,6 +125,7 @@ const TocWrapper = styled.div`
 
 const MobileTocWrapper = styled.div`
   display: none;
+  cursor: pointer;
 
   @media (max-width: 1365px) {
     display: flex;
@@ -109,6 +143,8 @@ const MobileTocArrow = styled.div`
 `
 
 const Toc = () => {
+  const { theme } = useThemeContext()
+
   const [currentId, setCurrentId] = useState('')
   const [headingEls, setHeadingEls] = useState<Element[]>([])
 
@@ -147,19 +183,19 @@ const Toc = () => {
 
   return (
     <TocTotalWrapper>
-      <TocWrapper>
+      <TocWrapper theme={theme}>
         <MobileTocWrapper onClick={() => setMobileTocShow(!mobileTocShow)}>
           <span>{!mobileTocShow ? '목차보기' : '숨기기'}</span>
           <MobileTocArrow>
             {!mobileTocShow ? <IoIosArrowDown /> : <IoIosArrowUp />}
           </MobileTocArrow>
         </MobileTocWrapper>
-        <TocMarkdown mobileTocShow={mobileTocShow}>
+        <TocMarkdown mobileTocShow={mobileTocShow} theme={theme}>
           <ul>
             {headingEls.map((heading, idx) => (
               <li
                 key={idx}
-                className={currentId === heading.id ? 'highlight' : ''}
+                className={currentId === heading.id ? 'selectedIndex' : ''}
               >
                 <a
                   href={`#${heading.id}`}

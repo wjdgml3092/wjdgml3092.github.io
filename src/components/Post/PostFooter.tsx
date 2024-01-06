@@ -8,6 +8,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 import { Fragment } from 'react'
 import { Link } from 'gatsby'
+import { ThemeProps } from 'types/Post'
+import { Color } from 'assets/styles/color'
+import { useThemeContext } from 'components/Context/ThemeContext'
 
 const PostFooterContainer = styled.div`
   display: flex;
@@ -16,7 +19,7 @@ const PostFooterContainer = styled.div`
   margin: 0 auto;
   padding: 20px 0 10px 0;
   color: #000;
-  border-top: 1px solid #c2c2c2;
+  border-top: 1px solid ${Color.borderGray};
 
   @media (max-width: 768px) {
     display: none;
@@ -63,7 +66,7 @@ const PrevPageIcon = styled.div`
   width: 20px;
   height: 20px;
   background: inherit;
-  color: #757575;
+  color:  ${Color.light.secondColor};
   font-size: 1rem;2
   cursor: pointer;
   margin-right: 6px;
@@ -90,9 +93,12 @@ const IndexContainer = styled.div`
     margin: auto;
   }
 `
-const IndexBackgroundContainer = styled(Link)`
-  background: #eeeeee;
-  color: #757575;
+const IndexBackgroundContainer = styled(Link)<ThemeProps>`
+  background: ${({ theme }) =>
+    theme === 'dark'
+      ? Color.dark.secondBackground
+      : Color.light.secondBackground};
+  color: ${Color.light.secondColor};
   border-radius: 10px;
   display: flex;
   align-items: center;
@@ -101,6 +107,8 @@ const IndexBackgroundContainer = styled(Link)`
 `
 
 const PostFooter = () => {
+  const { theme } = useThemeContext()
+
   let historyLink
   if (typeof window !== 'undefined') {
     historyLink = sessionStorage.getItem('selected_link')
@@ -126,7 +134,7 @@ const PostFooter = () => {
       </PostFooterContainer>
 
       <IndexContainer>
-        <IndexBackgroundContainer to={historyLink ?? '/'}>
+        <IndexBackgroundContainer to={historyLink ?? '/'} theme={theme}>
           <PrevPageIcon>
             <FontAwesomeIcon icon={faArrowLeft} />
           </PrevPageIcon>

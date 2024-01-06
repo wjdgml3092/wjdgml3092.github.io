@@ -1,11 +1,14 @@
 import styled from '@emotion/styled'
 import Toc from './Toc'
+import { Color } from 'assets/styles/color'
+import { ThemeProps } from 'types/Post'
+import { useThemeContext } from 'components/Context/ThemeContext'
 
 interface PostContentProps {
   html: string
 }
 
-const MarkdownRenderer = styled.div`
+const MarkdownRenderer = styled.div<ThemeProps>`
   // Renderer Style
   display: flex;
   flex-direction: column;
@@ -63,7 +66,7 @@ const MarkdownRenderer = styled.div`
   }
 
   table {
-    border: 1px solid #c2c2c2;
+    border: 1px solid ${Color.borderGray};
     border-collapse: collapse;
     text-align: center;
     margin-top: 10px;
@@ -77,7 +80,7 @@ const MarkdownRenderer = styled.div`
   tr,
   td,
   th {
-    border: 1px solid #c2c2c2;
+    border: 1px solid ${Color.borderGray};
     padding: 3px;
   }
 
@@ -85,7 +88,7 @@ const MarkdownRenderer = styled.div`
   blockquote {
     margin: 10px 0;
     padding: 5px 10px;
-    border-left: 2px solid #757575;
+    border-left: 2px solid ${Color.light.secondColor};
     font-weight: 800;
   }
 
@@ -97,7 +100,7 @@ const MarkdownRenderer = styled.div`
 
   // Adjust Horizontal Rule style
   hr {
-    border: 1px solid #000000;
+    border: 1px solid ${Color.black};
     margin: 100px 0;
   }
 
@@ -107,9 +110,11 @@ const MarkdownRenderer = styled.div`
   }
 
   *:not(pre) > code {
-    color: #eb5a5a;
-    background-color: #f7f6f3;
-    //background-color: #2d2d2d;
+    ${({ theme }) =>
+      theme === 'dark'
+        ? `color: ${Color.dark.codeColor}; background-color: ${Color.dark.codeBackground};`
+        : `color: ${Color.light.codeColor}; background-color: ${Color.light.codeBackground};`}
+
     font-size: 14px;
     padding: 5px;
   }
@@ -119,8 +124,7 @@ const MarkdownRenderer = styled.div`
     margin: 15px 0;
     padding: 15px;
     font-size: 15px;
-    //background-color: #f7f6f3;
-    background-color: #2d2d2d;
+    background-color: ${Color.dark.codeBackground};
 
     ::-webkit-scrollbar-thumb {
       background: rgba(255, 255, 255, 0.5);
@@ -134,7 +138,8 @@ const MarkdownRenderer = styled.div`
   }
 
   aside {
-    background: #f1f1ef;
+    border: 3px solid #f1f1ef;
+    margin-top: 10px;
     padding: 10px;
     border-radius: 10px;
   }
@@ -177,10 +182,14 @@ const MarkdownRenderer = styled.div`
 `
 
 const PostContent = ({ html }: PostContentProps) => {
+  const { theme } = useThemeContext()
   return (
     <div>
       <Toc />
-      <MarkdownRenderer dangerouslySetInnerHTML={{ __html: html }} />
+      <MarkdownRenderer
+        theme={theme}
+        dangerouslySetInnerHTML={{ __html: html }}
+      />
     </div>
   )
 }

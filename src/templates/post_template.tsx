@@ -8,6 +8,7 @@ import PostFooter from 'components/Post/PostFooter'
 import { Fragment } from 'react'
 import Footer from 'components/Common/Footer'
 import CommentWidget from 'components/Post/CommentWidget'
+import { ThemeContextProvider } from 'components/Context/ThemeContext'
 
 export type PostPageItemType = {
   node: {
@@ -43,20 +44,22 @@ const PostTemplate = ({
 
   return (
     <Fragment>
-      <Header />
-      <div>
-        <Template title={title} description={excerpt} url={href}>
-          <PostHead title={title} date={date} tag={tag} category={category} />
+      <ThemeContextProvider>
+        <Header />
+        <div>
+          <Template title={title} description={excerpt} url={href}>
+            <PostHead title={title} date={date} tag={tag} category={category} />
 
-          <PostContent html={html} />
+            <PostContent html={html} />
 
-          <PostFooter />
+            <PostFooter />
 
-          <CommentWidget />
-        </Template>
-      </div>
+            <CommentWidget />
+          </Template>
+        </div>
 
-      <Footer />
+        <Footer />
+      </ThemeContextProvider>
     </Fragment>
   )
 }

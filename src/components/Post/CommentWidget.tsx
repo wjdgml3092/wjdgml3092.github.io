@@ -1,4 +1,5 @@
 import styled from '@emotion/styled'
+import { useThemeContext } from 'components/Context/ThemeContext'
 import React, { createRef, useEffect } from 'react'
 
 const CommentWrapper = styled.div`
@@ -33,6 +34,8 @@ type GiscusAttributesType = {
 const CommentWidget = () => {
   const element = createRef<HTMLDivElement>()
 
+  const { theme } = useThemeContext()
+
   useEffect(() => {
     if (element.current === null) return
 
@@ -49,7 +52,7 @@ const CommentWidget = () => {
       'data-reactions-enabled': '1',
       'data-emit-metadata': '0',
       'data-input-position': 'top',
-      'data-theme': 'preferred_color_scheme',
+      'data-theme': `${theme}_protanopia`,
       'data-lang': 'ko',
       crossorigin: 'anonymous',
       async: 'true',
@@ -61,6 +64,22 @@ const CommentWidget = () => {
 
     element.current.appendChild(giscus)
   }, [])
+
+  useEffect(() => {
+    const iframe = document.querySelector<HTMLIFrameElement>(
+      'iframe.giscus-frame',
+    )
+    iframe?.contentWindow?.postMessage(
+      {
+        giscus: {
+          setConfig: {
+            theme: `${theme}_protanopia`,
+          },
+        },
+      },
+      'https://giscus.app',
+    )
+  }, [theme])
 
   return <CommentWrapper ref={element} />
 }

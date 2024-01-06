@@ -1,4 +1,7 @@
 import { Global, css } from '@emotion/react'
+import { useThemeContext } from 'components/Context/ThemeContext'
+
+import { Color } from 'assets/styles/color'
 
 const defaultStyle = css`
   @font-face {
@@ -16,8 +19,17 @@ const defaultStyle = css`
     font-family: Pretendard-Regular, serif;
   }
 
+  ul,
+  li,
+  div,
+  span,
+  svg {
+    background: inherit;
+  }
+
   a,
   a:hover {
+    background: inherit;
     color: inherit;
     text-decoration: none;
     cursor: pointer;
@@ -29,7 +41,31 @@ const defaultStyle = css`
 `
 
 const GlobalStyle = () => {
-  return <Global styles={defaultStyle} />
+  const { theme } = useThemeContext()
+
+  const colorTheme = theme === 'dark' ? Color.dark : Color.light
+
+  return (
+    <Global
+      styles={[
+        defaultStyle,
+        css`
+          * {
+            color: ${colorTheme.defaultColor};
+            background: ${colorTheme.background};
+          }
+
+          .highlight {
+            background-color: ${colorTheme.highlight};
+          }
+
+          // div {
+          //   color: #fff;
+          // }
+        `,
+      ]}
+    />
+  )
 }
 
 export default GlobalStyle

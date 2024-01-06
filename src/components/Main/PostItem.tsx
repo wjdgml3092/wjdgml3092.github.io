@@ -1,4 +1,6 @@
 import styled from '@emotion/styled'
+import { Color } from 'assets/styles/color'
+import { useThemeContext } from 'components/Context/ThemeContext'
 import { Tag, TagItem } from 'components/Post/emotionComponents'
 import { Link } from 'gatsby'
 import { PostFrontmatterType } from 'types/Post'
@@ -7,10 +9,10 @@ type PostItemProps = PostFrontmatterType & { link: string } & {
   excerpt: string
 } & { selectedLink: string }
 
-const PostItemWrapper = styled(Link)`
+const PostItemWrapper = styled(Link)<{ theme: string }>`
   display: flex;
   flex-direction: column;
-  border-bottom: 1px solid #c2c2c2;
+  border-bottom: 1px solid ${Color.borderGray};
   transition: 0.3s box-shadow;
   cursor: pointer;
   margin-bottom: 10px;
@@ -20,7 +22,11 @@ const PostItemWrapper = styled(Link)`
       background: linear-gradient(
         180deg,
         rgba(255, 255, 255, 0) 70%,
-        #fff5b1 50%
+        ${props =>
+            props.theme === 'dark'
+              ? Color.dark.highlight
+              : Color.light.highlight}
+          50%
       );
     }
   }
@@ -79,12 +85,15 @@ const PostItem = ({
   excerpt,
   selectedLink,
 }: PostItemProps) => {
+  const { theme } = useThemeContext()
+
   return (
     <PostItemWrapper
       to={link}
       onClick={() => {
         sessionStorage.setItem('selected_link', selectedLink)
       }}
+      theme={theme}
     >
       <PostItemContent>
         {/* <div>{category}</div> */}
@@ -95,7 +104,9 @@ const PostItem = ({
         <Tag>
           <span>{category}</span>
           {tag.map(item => (
-            <TagItem key={item}>{item}</TagItem>
+            <TagItem key={item} theme={theme}>
+              {item}
+            </TagItem>
           ))}
         </Tag>
         <Excerpt>{excerpt}</Excerpt>
