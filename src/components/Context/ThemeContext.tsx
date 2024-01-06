@@ -16,8 +16,12 @@ export const ThemeContextProvider = ({
 }: {
   children: React.ReactNode
 }) => {
-  const init = localStorage.getItem('theme')
-  const [theme, setTheme] = useState(init ? init : 'light')
+  let storageTheme
+  if (typeof window !== 'undefined') {
+    storageTheme = localStorage.getItem('theme')
+  }
+
+  const [theme, setTheme] = useState(storageTheme ? storageTheme : 'light')
 
   const toggleTheme = () => {
     if (theme === 'dark') {
