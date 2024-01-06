@@ -86,7 +86,7 @@ const CommentWidget = () => {
 export default CommentWidget
 ```
 
-댓글 기능을 초기화해주는 컴포넌트를 하나 만들어주고 postContent(댓글을 넣을)부분 아래에 붙여주면 끝이다.
+댓글 기능을 초기화해주는 컴포넌트를 하나 만들어주고 `postContent(댓글을 넣을)`부분 아래에 붙여주면 끝이다.
 
 <br/>
 

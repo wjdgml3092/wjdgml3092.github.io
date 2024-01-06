@@ -59,13 +59,13 @@ category: 'TIL'
 - 모든 전역 변수가 전역 객체의 프로퍼티가 되는 ES6 이전에는 전역 객체가 전역 환경 레코드의 역할을 수행했다. (기존의 전역 객체가 관리하던 var 키워드)
   ↔ ES6의 let, const키워드로 선언한 전역 변수는 전역 객체의 프로티가 되지 않고 개념적인 블록 내에 존재하게 된다. <br/>
 
-⇒ <span style='background-color: #fff5b1'>객체 환경 레코드</span>는 var 키워드로 선언한 전역 변수(함수 선언문으로 정의한 전역 함수 등) <br/>
-⇒ <span style='background-color: #fff5b1'>선언전 환경 레코드</span>는 let/const 키워드로 선언한 전역 변수 <br/>로 구분하여 관리하기 위해 2가지로 나뉜다.
+⇒ <span class='highlight'>객체 환경 레코드</span>는 var 키워드로 선언한 전역 변수(함수 선언문으로 정의한 전역 함수 등) <br/>
+⇒ <span class='highlight'>선언전 환경 레코드</span>는 let/const 키워드로 선언한 전역 변수 <br/>로 구분하여 관리하기 위해 2가지로 나뉜다.
 
 > `BindingObject`는 어디서 생성되고, 어디와 연결되는가?
 
 - 전역 객체 생성에서 생성된 전역 객체이다.
-- <span style='background-color: #fff5b1'>var 키워드로 선언한 전역 변수, 함수 선언문의 정의된 전역 함수는 전역 환경 레코드의 객체 환경 레코드에 연결된 BindingObject를 통해 <b>전역 객체의 프로퍼티와 메서드</b></span>가 된다.
+- <span class='highlight'>var 키워드로 선언한 전역 변수, 함수 선언문의 정의된 전역 함수는 전역 환경 레코드의 객체 환경 레코드에 연결된 BindingObject를 통해 <b>전역 객체의 프로퍼티와 메서드</b></span>가 된다.
 
 ⇒ var 키워드로 선언된 전역 변수와 함수 선언문으로 정의된 전역 함수가 전역 객체의 프로퍼티와 메서드가 되고 <u>전역 객체를 가리키는 식별자(window)없이 전역 객체의 프로퍼티를 참조할 수 있는 메커니즘</u>이다. (ex. window.alert를 alert로 참조하는)
 
@@ -73,14 +73,14 @@ category: 'TIL'
 
 - var 키워드로 선언한 변수는 선언 단계와 초기화 단계가 동시에 진행된다!
   - 객체 환경 레코드에 바인딩된 `bindingObject`를 통해 전역 객체에 변수 식별자를 키로 등록한 다음 undeined로 바인딩한다 → 참조 가능(선언문 전에)
-    ⇒ <span style='background-color: #fff5b1'>변수 호이스팅 </span>
+    ⇒ <span class='highlight'>변수 호이스팅 </span>
 - 함수 선언문으로 정의한 함수도 마찬가지로 bindingObject를 통해 키가 등록되고, 생성된 함수 객체를 즉시 할당한다 → 참조,호출 가능(선언문 전에)
-  ⇒ <span style='background-color: #fff5b1'>함수 호이스팅 (변수 호이스팅과 차이) </span>
+  ⇒ <span class='highlight'>함수 호이스팅 (변수 호이스팅과 차이) </span>
 
 > const와 let 키워드로 선언한 전역 변수는 전역 객체의 프로퍼티가 될 수 없다.
 
 - 전역 객체 프로퍼티가 되지 않기 때문에 window.y와 같이 전역 객체의 프로퍼티로서 참조할 수 없다.
-- const 키워드는 <span style='background-color: #fff5b1'><u>선언과 초기화 단계가 분리</u></span>되어있어, 런타임에 변수 선언문에 도달하기 전까지 TDZ에 빠지며 `uninitialized`로 바인딩된다. <br/> (`uninitialized` : 초기화 단계가 진행되지 않아 변수에 접근할 수 없음을 나타낼 때 사용한다.)
+- const 키워드는 <span class='highlight'><u>선언과 초기화 단계가 분리</u></span>되어있어, 런타임에 변수 선언문에 도달하기 전까지 TDZ에 빠지며 `uninitialized`로 바인딩된다. <br/> (`uninitialized` : 초기화 단계가 진행되지 않아 변수에 접근할 수 없음을 나타낼 때 사용한다.)
 
 ### 3. 전역 코드 실행
 
@@ -131,7 +131,7 @@ category: 'TIL'
 - 함수 객체는 자신이 정의된 스코프(상위 스코프)를 기억한다.
 - <u>자바스크립트 엔진은 함수 정의를 평가하여 함수 객체를 생성할 때 현재 실행 중인 실행 컨텍스트의렉시컬 환경, 즉 함수의 상위 스코프를 함수 객체의 내부 슬록 [[Environment]]에 저장</u>한다.
 - 함수 렉시컬 환경의 외부 렉시컬 환경에 대한 참조에 할당되는 것은 바로 함수의 상위 스코프를 가리키는 함수 객체의 내부 슬롯 [[Environment]]에 저장된 렉시컬 환경의 참조다.
-- 즉, <span style="background: #fff1b5;">함수 객체의 내부 슬롯 [[Environment]]가 바로 렉시컬 스코프를 구현하는 메커니즘이다.</span>
+- 즉, <span class='highlight'>함수 객체의 내부 슬롯 [[Environment]]가 바로 렉시컬 스코프를 구현하는 메커니즘이다.</span>
 
 ### 5. 함수 코드 실행
 

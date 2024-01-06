@@ -7,7 +7,7 @@ category: 'TIL'
 
 ### 1. var 키워드
 
-- <span style='background-color: #fff5b1;'>**중복 선언 가능.**</span>
+- <span class='highlight'>**중복 선언 가능.**</span>
 - **초기화문 유무**에 따라 중복 선언은 다르게 동작한다.
 
   ```javaScript
@@ -26,7 +26,7 @@ category: 'TIL'
 
 - 함수 레벨 스코프
 
-  - var 키워드로 선언한 변수는 <span style='background-color: #fff5b1'>**함수의 코드 블록만**을 지역 스코프로 인정한다.</span>
+  - var 키워드로 선언한 변수는 <span class='highlight'>**함수의 코드 블록만**을 지역 스코프로 인정한다.</span>
   - 함수 외부에서 선언한 var 키워드 변수는 코드 블록 내에서 선언해도 모두 전연 변수가 된다.
 
   ```javaScript
@@ -45,7 +45,7 @@ category: 'TIL'
 - **변수 호이스팅.**
   - var 키워드로 변수를 선언하면 변수 호이스팅에 의해 런타임 이전에 undefined로 만들어진다.
   - 변수 선언문 이전에 참조할 수 있으나, 언제나 undefined를 반환한다.
-    - <span style='background-color: #fff5b1'>암묵적으로 자바스크립트 엔진이 선언단계, 초기화 단계가 한번에 진행한다.</span>
+    - <span class='highlight'>암묵적으로 자바스크립트 엔진이 선언단계, 초기화 단계가 한번에 진행한다.</span>
 
 ### 2. let 키워드
 
@@ -55,7 +55,7 @@ category: 'TIL'
   <div style="width: 80%;"><img src="./Images/SyntaxErrorLet.png"/></div>
 - **블록 레벨 스코프.**
 
-  - <span style='background-color: #fff5b1'>모든 코드 블록(함수, if, for, while 등)을 지역 스코프로 인정한다.</span>
+  - <span class='highlight'>모든 코드 블록(함수, if, for, while 등)을 지역 스코프로 인정한다.</span>
 
   ```javaScript
   let foo = 1 //전역 변수
@@ -72,7 +72,7 @@ category: 'TIL'
 - **변수 호이스팅.**
   - var 키워드와 달리 변수 호이스팅이 발생하지 않는 것처럼 동작한다.
   - let 키워드로 선언한 변수는 `선언 단계` 와 `초기화 단계`가 분리되어 진행된다.
-  - <span style='background-color: #fff5b1; font-weight: 700'>런타임 이전에 자바스크립트 엔진에 의해 암묵적으로 선언단계는 진행되지만, 초기화 단계는 변수 선언문에 도달했을 때 실행된다.</span>
+  - <span class='highlight' style='font-weight: 700'>런타임 이전에 자바스크립트 엔진에 의해 암묵적으로 선언단계는 진행되지만, 초기화 단계는 변수 선언문에 도달했을 때 실행된다.</span>
     - 초기화 단계 전에 변수 접근 시 참조 에러(ReferenceError)가 발생한다.
   - 스코프의 시작 지점부터 초기화 시작 지점까지 변수를 참조할 수 없는 구간을 `일시적 사각지대`(TDZ: Temporal Dead Zone)이라고 한다.
 
@@ -80,14 +80,14 @@ category: 'TIL'
 
 - **ES6**에서 등장.
 - **let 키워드와 거의 동일**하게 블록 레벨 스코프를 가지며, 변수 호이스팅이 발생하지 않는 것처럼 동작한다.
-- const 키워드로 선언한 변수는 <span style='background-color: #fff5b1'>**반드시 선언과 동시에 초기화**</span>해야 한다.
+- const 키워드로 선언한 변수는 <span class='highlight'>**반드시 선언과 동시에 초기화**</span>해야 한다.
 - **재할당 금지.**
 - 재할당 금지의 특징을 이용해서 const 키워드는 **상수를 표현**하는데 사용하기도 한다.
   - 상수의 이름은 **대문자**로 선언한다.
   - 여러 단어로 이뤄진 경우, **스네이크 케이스**로 표현하는 것이 일반적이다.
 - 객체
 
-  - const 키워드로 선언된 변수는 재할당이 불가하지만,<span style='background-color: #fff5b1'> **객체를 할당한 경우 값을 변경할 수 있다.** </span> <br/> &rarr; 원시값(변경 불가능한 값)은 재할당 없이 변경할 수 있는 방법이 없지만, 변경 가능한 객체는 재할당 없이도 직접 변경이 가능하기 때문이다.
+  - const 키워드로 선언된 변수는 재할당이 불가하지만,<span class='highlight'> **객체를 할당한 경우 값을 변경할 수 있다.** </span> <br/> &rarr; 원시값(변경 불가능한 값)은 재할당 없이 변경할 수 있는 방법이 없지만, 변경 가능한 객체는 재할당 없이도 직접 변경이 가능하기 때문이다.
 
     ```javaScript
     const persone = {

@@ -119,7 +119,7 @@ shift() {
 
 - 특정 위치에 속한 노드를 반환한다.
 - 단일 연결 리스트와 다른점 <br/>
-  효율적으로 루프롤 돌기 위해, <span style="background: #fff5b1; font-weight: 700;">찾는 idx가 해당 리스트의 중앙을 기준으로 어디에 있는지 확인</span>하고, 그 결과에 따라 앞(head)에서부터 루프를 시작할지, 뒤(tail)에서부터 루프를 시작할지 결정한다.
+  효율적으로 루프롤 돌기 위해, <span style="font-weight: 700;" class='highlight'>찾는 idx가 해당 리스트의 중앙을 기준으로 어디에 있는지 확인</span>하고, 그 결과에 따라 앞(head)에서부터 루프를 시작할지, 뒤(tail)에서부터 루프를 시작할지 결정한다.
 
 ```javaScript
 get(idx) {

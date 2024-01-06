@@ -16,7 +16,7 @@ category: 'Algorithm'
 
 ### 2. 호출 스택(Call Stack)
 
-재귀 함수가 자기를 계속 호출하면서 올바른 순서대로 실행이 되어야 한다. 이걸 담당하는 <span style='background-color: #fff5b1; font-weight: 700'> 데이터 구조가 JS의 경우 호출 스택(Call Stack)이다.</span> 호출 스택은 JS가 보이지 않는곳에서 작동하는 <u>정적 데이터 구조(static data structure)</u>다. <br/>스택이므로 LIFO, 마지막에 들어온게 먼저 나간다. JS가 함수 안에 더이상 실행할 코드가 없거나 return 할 것이 없다면, 컴파일러가 스택 제일 위에꺼를 제거해서 실행한다. (개발자도구를 열어서 디버깅으로 실행하면 오른쪽에 call stack이 어떻게 작동하는지 확인할 수 있다.)
+재귀 함수가 자기를 계속 호출하면서 올바른 순서대로 실행이 되어야 한다. 이걸 담당하는 <span style='font-weight: 700' class='highlight'> 데이터 구조가 JS의 경우 호출 스택(Call Stack)이다.</span> 호출 스택은 JS가 보이지 않는곳에서 작동하는 <u>정적 데이터 구조(static data structure)</u>다. <br/>스택이므로 LIFO, 마지막에 들어온게 먼저 나간다. JS가 함수 안에 더이상 실행할 코드가 없거나 return 할 것이 없다면, 컴파일러가 스택 제일 위에꺼를 제거해서 실행한다. (개발자도구를 열어서 디버깅으로 실행하면 오른쪽에 call stack이 어떻게 작동하는지 확인할 수 있다.)
 
 ### 3. 예제(example)
 

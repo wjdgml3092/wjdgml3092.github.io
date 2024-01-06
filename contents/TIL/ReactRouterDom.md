@@ -13,7 +13,7 @@ category: 'TIL'
 
 > anchor 태그가 있는데 라우터를 정의하는 이유는?
 
-<span style='background-color: #fff5b1'>SPA 사용자 경험 향상의 목적이다. </span>
+<span class='highlight'>SPA 사용자 경험 향상의 목적이다. </span>
 <br/>
 anchor 태그 사용 시 페이지 전체가 새로 로딩 되면서 <b>화면이 깜빡임이 발생하여</b> 사용자 경험을 떨어뜨린다.
 <br/>
@@ -28,7 +28,7 @@ anchor 태그 사용 시 페이지 전체가 새로 로딩 되면서 <b>화면�
 
 이런 환경에서 <u>사용자는 원하는 페이지를 즐겨찾기 할 수도 없고, 히스토리가 생기지도 않아서 뒤로가기가 불가능하다. 또한 새로고침 시 사용자가 보던 페이지가 아닌 처음 페이지로 렌더링된다.</u>
 
-<span style='background-color: #fff5b1'>🔥 이러한 단점들이 리액트 라우터를 사용하면 보완될 수 있다. </span>
+<span class='highlight'>🔥 이러한 단점들이 리액트 라우터를 사용하면 보완될 수 있다. </span>
 
 ### Install & Using
 
@@ -66,11 +66,11 @@ anchor 태그 사용 시 페이지 전체가 새로 로딩 되면서 <b>화면�
 
   - history API를 활용해 history 객체를 생성한다.
   - history API는 <u>내부적으로 사용자가 방문한 url 기록들을 저장</u>한다.
-  - <span style='background-color: #fff5b1'>라우팅을 진행할 컴포넌트 상위에 BrowserRouter 컴포넌트를 생성하고 감싸주어야 한다.</span>
+  - <span class='highlight'>라우팅을 진행할 컴포넌트 상위에 BrowserRouter 컴포넌트를 생성하고 감싸주어야 한다.</span>
 
   2. <b>Routes</b>
 
-  - <span style='background-color: #fff5b1'>모든 Route의 상위 경로에 존재해야 한다.</span>
+  - <span class='highlight'>모든 Route의 상위 경로에 존재해야 한다.</span>
   - location 변경 시 하위에 있는 모든 Route를 조회해 현재 location과 맞는 Route를 찾아준다.
 
   3. <b>Route</b>
@@ -82,7 +82,7 @@ anchor 태그 사용 시 페이지 전체가 새로 로딩 되면서 <b>화면�
 
 1. Link
 
-   - <span style='background-color: #fff5b1'>라우터 내에서 직접적으로 페이지 이동을 하고자 할 때 사용되는 컴포넌트.</span>
+   - <span class='highlight'>라우터 내에서 직접적으로 페이지 이동을 하고자 할 때 사용되는 컴포넌트.</span>
 
    ```javaScript
    import { Link } from 'react-router-dom'
@@ -102,7 +102,7 @@ anchor 태그 사용 시 페이지 전체가 새로 로딩 되면서 <b>화면�
 
 2. useNavigate()
 
-   - <span style='background-color: #fff5b1'>일반 article 요소를 클릭해서 이동할 때 사용하는 훅.</span>
+   - <span class='highlight'>일반 article 요소를 클릭해서 이동할 때 사용하는 훅.</span>
 
    ```javaScript
    import { useState } from 'react'
@@ -135,7 +135,7 @@ anchor 태그 사용 시 페이지 전체가 새로 로딩 되면서 <b>화면�
 
 1. Outlet 컴포넌트 사용
 
-   - 라우터 정의 시 <span style='background-color: #fff5b1'>자식 태그로 중첩하는 라우터를 명시, 중첩 라우터에서 Outlet 컴포넌트 사용</span>
+   - 라우터 정의 시 <span class='highlight'>자식 태그로 중첩하는 라우터를 명시, 중첩 라우터에서 Outlet 컴포넌트 사용</span>
 
    ```javaScript
    import { BrowserRouter, Route, Routes } from 'react-router-dom'
@@ -189,7 +189,7 @@ anchor 태그 사용 시 페이지 전체가 새로 로딩 되면서 <b>화면�
 
 2. Outlet컴포넌트 사용하지 않고, 바로 작성
 
-- 라우터에서 <span style='background-color: #fff5b1'> 중첩 라우팅을 하고자 하는 주소에 `*` 을 추가해주어 중첩 라우팅이 발생할 주소임을 명시</span>한다.
+- 라우터에서 <span class='highlight'> 중첩 라우팅을 하고자 하는 주소에 \* 을 추가해주어 중첩 라우팅이 발생할 주소임을 명시</span>한다.
 
   ```javaScript
   import { BrowserRouter, Route, Routes } from 'react-router-dom'
