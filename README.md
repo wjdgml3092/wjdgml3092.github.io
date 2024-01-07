@@ -9,6 +9,8 @@
 </div>
 
 ### History
+- 24.01.08
+  - dark mode 추가
 - 23.11.03
   - giscus 추가
 - 23.11.01
