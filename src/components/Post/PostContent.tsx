@@ -167,6 +167,10 @@ const MarkdownRenderer = styled.div<ThemeProps>`
       font-size: 17px;
     }
 
+    h3:nth-of-type(1) {
+      padding-top: 0px;
+    }
+
     img {
       width: 100%;
     }
