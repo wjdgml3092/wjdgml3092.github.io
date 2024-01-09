@@ -3,14 +3,10 @@ import jung_avatar from '../../../static/jeju.png'
 import { ContactContainer } from 'components/Main/Introduction'
 import { MdOutlineEmail } from 'react-icons/md'
 import { AiFillGithub } from 'react-icons/ai'
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 import { Fragment } from 'react'
 import { Link } from 'gatsby'
-import { ThemeProps } from 'types/Post'
-import { Color } from 'assets/styles/color'
-import { useThemeContext } from 'components/Context/ThemeContext'
 
 const PostFooterContainer = styled.div`
   display: flex;
@@ -18,8 +14,7 @@ const PostFooterContainer = styled.div`
   height: 100%;
   margin: 0 auto;
   padding: 20px 0 10px 0;
-  color: #000;
-  border-top: 1px solid ${Color.borderGray};
+  border-top: 1px solid var(--gray2);
 
   @media (max-width: 768px) {
     display: none;
@@ -66,7 +61,6 @@ const PrevPageIcon = styled.div`
   width: 20px;
   height: 20px;
   background: inherit;
-  color:  ${Color.light.secondColor};
   font-size: 1rem;2
   cursor: pointer;
   margin-right: 6px;
@@ -93,22 +87,23 @@ const IndexContainer = styled.div`
     margin: auto;
   }
 `
-const IndexBackgroundContainer = styled(Link)<ThemeProps>`
-  background: ${({ theme }) =>
-    theme === 'dark'
-      ? Color.dark.secondBackground
-      : Color.light.secondBackground};
-  color: ${Color.light.secondColor};
+const IndexBackgroundContainer = styled(Link)`
+  background: var(--second-bg);
+  color: var(--second-color);
+
   border-radius: 10px;
   display: flex;
   align-items: center;
   padding: 5px 10px;
   margin-bottom: 20px;
+
+  &:hover {
+    background: var(--tag-hover-bg);
+    color: var(--white);
+  }
 `
 
 const PostFooter = () => {
-  const { theme } = useThemeContext()
-
   let historyLink
   if (typeof window !== 'undefined') {
     historyLink = sessionStorage.getItem('selected_link')
@@ -119,7 +114,7 @@ const PostFooter = () => {
       <PostFooterContainer>
         <FooterImg src={jung_avatar} />
         <DesContainer>
-          <h4>사람 좋아하는 개발자의 기록 공간입니다. </h4>
+          <h4>Front Developer 김정희 😊 </h4>
           <div style={{ display: 'flex', columnGap: '5px' }}>
             <ContactContainer isFooter>
               <MdOutlineEmail />
@@ -134,7 +129,7 @@ const PostFooter = () => {
       </PostFooterContainer>
 
       <IndexContainer>
-        <IndexBackgroundContainer to={historyLink ?? '/'} theme={theme}>
+        <IndexBackgroundContainer to={historyLink ?? '/'}>
           <PrevPageIcon>
             <FontAwesomeIcon icon={faArrowLeft} />
           </PrevPageIcon>

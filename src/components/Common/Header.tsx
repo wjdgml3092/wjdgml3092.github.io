@@ -1,21 +1,17 @@
 import styled from '@emotion/styled'
-import { Color } from 'assets/styles/color'
 import { useThemeContext } from 'components/Context/ThemeContext'
 import { Link } from 'gatsby'
+import { useEffect } from 'react'
 import { BsFillSunFill, BsMoonFill } from 'react-icons/bs'
-import { ThemeProps } from 'types/Post'
 
-const HeaderContainer = styled.header<ThemeProps>`
-  border-bottom: 1px solid ${Color.headerLineGray};
-
+const HeaderContainer = styled.header`
+  border-bottom: 1px solid var(--gray1);
+  background: var(--primary-bg);
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 31;
-
-  background: ${({ theme }) =>
-    theme === 'dark' ? Color.dark.background : Color.white};
 `
 
 const Container = styled.div`
@@ -39,7 +35,7 @@ const Container = styled.div`
     cursor: pointer;
 
     svg:hover {
-      color: ${Color.yellow};
+      color: var(--yellow);
     }
   }
 `
@@ -48,12 +44,12 @@ const Header = () => {
   const { theme, toggleTheme } = useThemeContext()
 
   return (
-    <HeaderContainer theme={theme}>
+    <HeaderContainer>
       <Container>
         <Link to="/">Jung's Blog</Link>
 
         <div onClick={toggleTheme}>
-          {theme === 'light' ? <BsMoonFill /> : <BsFillSunFill />}
+          {theme === 'dark' ? <BsFillSunFill /> : <BsMoonFill />}
         </div>
       </Container>
     </HeaderContainer>

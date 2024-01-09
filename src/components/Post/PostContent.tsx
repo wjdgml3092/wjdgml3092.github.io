@@ -1,14 +1,11 @@
 import styled from '@emotion/styled'
 import Toc from './Toc'
-import { Color } from 'assets/styles/color'
-import { ThemeProps } from 'types/Post'
-import { useThemeContext } from 'components/Context/ThemeContext'
 
 interface PostContentProps {
   html: string
 }
 
-const MarkdownRenderer = styled.div<ThemeProps>`
+const MarkdownRenderer = styled.div`
   // Renderer Style
   display: flex;
   flex-direction: column;
@@ -19,7 +16,7 @@ const MarkdownRenderer = styled.div<ThemeProps>`
   word-break: break-all;
 
   // Markdown Style
-  line-height: 1.8;
+  line-height: 2;
   font-size: 16px;
   font-weight: 400;
 
@@ -66,7 +63,7 @@ const MarkdownRenderer = styled.div<ThemeProps>`
   }
 
   table {
-    border: 1px solid ${Color.borderGray};
+    border: 1px solid var(--gray2);
     border-collapse: collapse;
     text-align: center;
     margin-top: 10px;
@@ -80,7 +77,7 @@ const MarkdownRenderer = styled.div<ThemeProps>`
   tr,
   td,
   th {
-    border: 1px solid ${Color.borderGray};
+    border: 1px solid var(--gray2);
     padding: 3px;
   }
 
@@ -88,7 +85,7 @@ const MarkdownRenderer = styled.div<ThemeProps>`
   blockquote {
     margin: 10px 0;
     padding: 5px 10px;
-    border-left: 2px solid ${Color.light.secondColor};
+    border-left: 2px solid var(--gray3);
     font-weight: 800;
   }
 
@@ -100,7 +97,7 @@ const MarkdownRenderer = styled.div<ThemeProps>`
 
   // Adjust Horizontal Rule style
   hr {
-    border: 1px solid ${Color.black};
+    border: 1px solid var(--black);
     margin: 100px 0;
   }
 
@@ -110,10 +107,8 @@ const MarkdownRenderer = styled.div<ThemeProps>`
   }
 
   *:not(pre) > code {
-    ${({ theme }) =>
-      theme === 'dark'
-        ? `color: ${Color.dark.codeColor}; background-color: ${Color.dark.codeBackground};`
-        : `color: ${Color.light.codeColor}; background-color: ${Color.light.codeBackground};`}
+    color: var(--code-color);
+    background-color: var(--code-bg);
 
     font-size: 14px;
     padding: 5px;
@@ -124,7 +119,7 @@ const MarkdownRenderer = styled.div<ThemeProps>`
     margin: 15px 0;
     padding: 15px;
     font-size: 15px;
-    background-color: ${Color.dark.codeBackground};
+    background-color: var(--code-default);
 
     ::-webkit-scrollbar-thumb {
       background: rgba(255, 255, 255, 0.5);
@@ -186,14 +181,10 @@ const MarkdownRenderer = styled.div<ThemeProps>`
 `
 
 const PostContent = ({ html }: PostContentProps) => {
-  const { theme } = useThemeContext()
   return (
     <div>
       <Toc />
-      <MarkdownRenderer
-        theme={theme}
-        dangerouslySetInnerHTML={{ __html: html }}
-      />
+      <MarkdownRenderer dangerouslySetInnerHTML={{ __html: html }} />
     </div>
   )
 }

@@ -1,23 +1,20 @@
 import styled from '@emotion/styled'
-import { Color } from 'assets/styles/color'
-import { useThemeContext } from 'components/Context/ThemeContext'
 import { Tag, TagItem } from 'components/Post/emotionComponents'
-import { ThemeProps } from 'types/Post'
+
 export type PostHeadInfoProps = {
   title: string
   date: string
   category: string
   tag: string[]
 }
-const PostHeadInfoWrapper = styled.div<ThemeProps>`
+const PostHeadInfoWrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: 768px;
   height: 100%;
   margin: 0 auto;
   padding: 30px 0;
-  color: ${({ theme }) => (theme === 'dark' ? Color.white : Color.black)}
-  border-bottom: 1px solid  ${Color.borderGray};
+  border-bottom: 1px solid var(--gray2);
 
   @media (max-width: 768px) {
     width: 100%;
@@ -43,29 +40,25 @@ const Title = styled.div`
   }
 `
 
-const DateTxt = styled.div<ThemeProps>`
+const DateTxt = styled.div`
   margin-top: 10px;
-  color: ${({ theme }) => (theme === 'dark' ? Color.white : Color.lightGray)};
+  color: var(--date-color);
 `
 
 const PostHeadInfo = ({ title, date, category, tag }: PostHeadInfoProps) => {
-  const { theme } = useThemeContext()
-
   return (
-    <PostHeadInfoWrapper theme={theme}>
+    <PostHeadInfoWrapper>
       {category}
       <Title>{title}</Title>
 
       <div>
         <Tag>
           {tag.map(item => (
-            <TagItem key={item} theme={theme}>
-              {item}
-            </TagItem>
+            <TagItem key={item}>{item}</TagItem>
           ))}
         </Tag>
 
-        <DateTxt theme={theme}>{date}</DateTxt>
+        <DateTxt>{date}</DateTxt>
       </div>
     </PostHeadInfoWrapper>
   )

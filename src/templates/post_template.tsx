@@ -3,12 +3,9 @@ import { PostFrontmatterType } from 'types/Post'
 import Template from 'components/Common/Template'
 import PostHead from 'components/Post/PostHead'
 import PostContent from 'components/Post/PostContent'
-import Header from 'components/Common/Header'
 import PostFooter from 'components/Post/PostFooter'
 import { Fragment } from 'react'
-import Footer from 'components/Common/Footer'
 import CommentWidget from 'components/Post/CommentWidget'
-import { ThemeContextProvider } from 'components/Context/ThemeContext'
 
 export type PostPageItemType = {
   node: {
@@ -41,25 +38,19 @@ const PostTemplate = ({
       frontmatter: { title, date, category, tag },
     },
   } = edges[0]
-
   return (
     <Fragment>
-      <ThemeContextProvider>
-        <Header />
-        <div>
-          <Template title={title} description={excerpt} url={href}>
-            <PostHead title={title} date={date} tag={tag} category={category} />
+      <div>
+        <Template title={title} description={excerpt} url={href}>
+          <PostHead title={title} date={date} tag={tag} category={category} />
 
-            <PostContent html={html} />
+          <PostContent html={html} />
 
-            <PostFooter />
+          <PostFooter />
 
-            <CommentWidget />
-          </Template>
-        </div>
-
-        <Footer />
-      </ThemeContextProvider>
+          <CommentWidget />
+        </Template>
+      </div>
     </Fragment>
   )
 }

@@ -1,7 +1,4 @@
 import { Global, css } from '@emotion/react'
-import { useThemeContext } from 'components/Context/ThemeContext'
-
-import { Color } from 'assets/styles/color'
 
 const defaultStyle = css`
   @font-face {
@@ -12,6 +9,73 @@ const defaultStyle = css`
     font-style: normal;
   }
 
+  :root {
+    --white: #ffffff;
+    --black: #000000;
+    --gray0: #eeeeee;
+    --gray1: #d9d9d9;
+    --gray2: #c2c2c2;
+    --gray3: #757575;
+    --gray4: #4c4c4c;
+    --yellow: #f2cb61;
+
+    --code-default: #2d2d2d;
+  }
+
+  [data-theme='dark'] {
+    --primary-bg: #0e1117;
+    --second-bg: #797979;
+
+    --second-color: var(--white);
+    --highlight: #cc99cd;
+    --date-color: var(--white);
+
+    --code-color: #cc99cd;
+    --code-bg: #2d2d2d;
+
+    --tag-selected-bg: #cc99cd;
+    --tag-selected-color: var(--white);
+    --tag-hover-bg: #4b4e53;
+    --tag-hover-color: var(--white);
+    --tag-color: var(--white);
+
+    --toc-color: var(--white);
+
+    background: var(--primary-bg);
+    color: var(--white);
+
+    .highlight {
+      background: #cc99cd;
+    }
+  }
+
+  [data-theme='light'] {
+    --primary-bg: var(--white);
+    --second-bg: var(--gray0);
+
+    --second-color: var(--gray3);
+    --highlight: #ffcccc;
+    --date-color: var(--gray4);
+
+    --code-color: #eb5a5a;
+    --code-bg: #f7f6f3;
+
+    --tag-selected-bg: var(--highlight);
+    --tag-selected-color: var(--black);
+    --tag-hover-bg: var(--gray3);
+    --tag-hover-color: var(--gray0);
+    --tag-color: var(--gray3);
+
+    --toc-color: var(--gray3);
+
+    background: var(--white);
+    color: inherit;
+
+    .highlight {
+      background: var(--highlight);
+    }
+  }
+
   * {
     padding: 0;
     margin: 0;
@@ -19,17 +83,8 @@ const defaultStyle = css`
     font-family: Pretendard-Regular, serif;
   }
 
-  ul,
-  li,
-  div,
-  span,
-  svg {
-    background: inherit;
-  }
-
   a,
   a:hover {
-    background: inherit;
     color: inherit;
     text-decoration: none;
     cursor: pointer;
@@ -41,31 +96,7 @@ const defaultStyle = css`
 `
 
 const GlobalStyle = () => {
-  const { theme } = useThemeContext()
-
-  const colorTheme = theme === 'dark' ? Color.dark : Color.light
-
-  return (
-    <Global
-      styles={[
-        defaultStyle,
-        css`
-          * {
-            color: ${colorTheme.defaultColor};
-            background: ${colorTheme.background};
-          }
-
-          .highlight {
-            background-color: ${colorTheme.highlight};
-          }
-
-          // div {
-          //   color: #fff;
-          // }
-        `,
-      ]}
-    />
-  )
+  return <Global styles={defaultStyle} />
 }
 
 export default GlobalStyle

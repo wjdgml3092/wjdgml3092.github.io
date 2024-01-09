@@ -1,4 +1,3 @@
-import React from 'react'
 import { createContext, useContext, useState } from 'react'
 
 type ThemeType = {
@@ -16,21 +15,20 @@ export const ThemeContextProvider = ({
 }: {
   children: React.ReactNode
 }) => {
-  let storageTheme
+  let initialTheme
   if (typeof window !== 'undefined') {
-    storageTheme = localStorage.getItem('theme')
+    initialTheme = localStorage.getItem('theme')
   }
 
-  const [theme, setTheme] = useState(storageTheme ? storageTheme : 'light')
+  const [theme, setTheme] = useState(initialTheme ?? 'light')
 
   const toggleTheme = () => {
-    if (theme === 'dark') {
-      localStorage.setItem('theme', 'light')
-      setTheme('light')
-    } else {
-      localStorage.setItem('theme', 'dark')
-      setTheme('dark')
-    }
+    const newTheme = theme === 'dark' ? 'light' : 'dark'
+    setTheme(newTheme)
+
+    document.documentElement.dataset.theme = newTheme
+
+    window.localStorage.setItem('theme', newTheme)
   }
 
   return (

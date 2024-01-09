@@ -1,13 +1,11 @@
 import styled from '@emotion/styled'
 import PostItem from 'components/Main/PostItem'
-import { GatsbyLinkProps, ItemProps, PostListItemType } from 'types/Post'
+import { GatsbyLinkProps, PostListItemType } from 'types/Post'
 import useInfiniteScroll, {
   useInfiniteScrollType,
 } from 'hooks/useInfiniteScroll'
 import { useEffect, useMemo, useState } from 'react'
 import { Link } from 'gatsby'
-import { useThemeContext } from 'components/Context/ThemeContext'
-import { Color } from 'assets/styles/color'
 
 type PostListProps = {
   location: string
@@ -34,7 +32,7 @@ const TagListWrapper = styled.div`
   width: 20%;
 
   p {
-    border-bottom: 1px solid ${Color.light.secondBackground};
+    border-bottom: 1px solid var(--gray3);
     padding-bottom: 10px;
   }
 
@@ -57,36 +55,28 @@ const TagWrapper = styled.div`
 
 const TagItem = styled(({ active, ...props }: GatsbyLinkProps) => (
   <Link {...props} />
-))<ItemProps>`
+))`
   text-align: center;
   padding: 5px;
   font-size: 12px;
-  color: ${Color.light.secondColor};
-  background: ${({ theme }) =>
-    theme === 'dark'
-      ? Color.dark.secondBackground
-      : Color.light.secondBackground};
+  color: var(--tag-color);
+  background: var(--second-bg);
 
   cursor: pointer;
   border-radius: 10px;
 
-  ${({ active, theme }) =>
+  ${({ active }) =>
     active
-      ? theme === 'dark'
-        ? `background-color: ${Color.black};`
-        : `background-color: ${Color.black}; color: ${Color.white};`
+      ? `background-color: var(--tag-selected-bg); color: var(--tag-selected-color);`
       : ''}
 
   cursor: pointer;
 
   &:hover {
-    ${({ active, theme }) =>
+    ${({ active }) =>
       active
-        ? `background-color: ${Color.black}; color: ${Color.white};`
-        : theme === 'dark'
-        ? `background-color: ${Color.dark.highlight}; color: ${Color.dark.defaultColor};`
-        : `background-color: ${Color.light.highlight}; color: ${Color.light.secondColor}`}
-  }
+        ? `background-color: var(--tag-selected-bg); color: var(--tag-selected-color);`
+        : `background-color: var(--tag-hover-bg); color: var(--tag-hover-color);`}
 
   span {
     background: inherit;
@@ -102,8 +92,6 @@ export type TagListProps = {
 
 const PostList = ({ selectedCategory, posts, location }: PostListProps) => {
   const tagHref = location.split('=')[2]
-
-  const { theme } = useThemeContext()
 
   const [selectedTag, setSelectedTag] = useState(!tagHref ? 'All' : tagHref)
 
@@ -186,7 +174,6 @@ const PostList = ({ selectedCategory, posts, location }: PostListProps) => {
                 to={`/?category=${selectedCategory}&tag=${name}`}
                 active={name === selectedTag}
                 key={name}
-                theme={theme}
               >
                 <span>
                   {name}({count})

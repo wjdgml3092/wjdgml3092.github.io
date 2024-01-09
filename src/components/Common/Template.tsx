@@ -1,5 +1,4 @@
 import { ReactNode } from 'react'
-import GlobalStyle from 'components/Common/GlobalStyle'
 import { Helmet } from 'react-helmet'
 
 type TemplateProps = {
@@ -44,7 +43,6 @@ const Template = ({ title, description, url, children }: TemplateProps) => {
         <html lang="ko" />
       </Helmet>
 
-      <GlobalStyle />
       {children}
     </main>
   )

@@ -7,9 +7,6 @@ import { IGatsbyImageData } from 'gatsby-plugin-image'
 import { PostListItemType } from 'types/Post'
 import queryString, { ParsedQuery } from 'query-string'
 import Template from 'components/Common/Template'
-import Header from 'components/Common/Header'
-import Footer from 'components/Common/Footer'
-import { ThemeContextProvider } from 'components/Context/ThemeContext'
 
 type IndexPageProps = {
   location: {
@@ -75,27 +72,21 @@ const IndexPage = ({
       ),
     [],
   )
-
   return (
     <Fragment>
-      <ThemeContextProvider>
-        <Header />
-        <Template title={title} description={description} url={siteUrl}>
-          <Introduction profileImage={gatsbyImageData} />
+      <Template title={title} description={description} url={siteUrl}>
+        <Introduction profileImage={gatsbyImageData} />
 
-          <CategoryList
-            selectedCategory={selectedCategory}
-            categoryList={categoryList}
-          />
-          <PostList
-            selectedCategory={selectedCategory}
-            posts={edges}
-            location={search}
-          />
-        </Template>
-
-        <Footer />
-      </ThemeContextProvider>
+        <CategoryList
+          selectedCategory={selectedCategory}
+          categoryList={categoryList}
+        />
+        <PostList
+          selectedCategory={selectedCategory}
+          posts={edges}
+          location={search}
+        />
+      </Template>
     </Fragment>
   )
 }

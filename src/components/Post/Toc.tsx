@@ -1,11 +1,8 @@
 import styled from '@emotion/styled'
-import { Color } from 'assets/styles/color'
-import { useThemeContext } from 'components/Context/ThemeContext'
 import { useEffect, useState } from 'react'
 import { IoIosArrowUp, IoIosArrowDown } from 'react-icons/io'
-import { ThemeProps } from 'types/Post'
 
-const TocMarkdown = styled.div<{ mobileTocShow: boolean } & ThemeProps>`
+const TocMarkdown = styled.div<{ mobileTocShow: boolean }>`
   @keyframes fadeInDown {
     from {
       opacity: 0;
@@ -26,14 +23,13 @@ const TocMarkdown = styled.div<{ mobileTocShow: boolean } & ThemeProps>`
   margin: 20px 0px 0px 20px;
   line-height: 1.5;
   font-size: 0.875rem;
+  color: var(--toc-color);
 
   ul {
     top: 10px;
     list-style: none;
     padding-left: 20px;
-    color: ${({ theme }) =>
-      theme === 'dark' ? 'inherit' : Color.light.secondColor};
-    border-left: 1px solid ${Color.light.secondBackground};
+    border-left: 1px solid var(--gray0);
   }
 
   ul > li {
@@ -42,8 +38,6 @@ const TocMarkdown = styled.div<{ mobileTocShow: boolean } & ThemeProps>`
 
     &:hover {
       transition: all 0.125s ease-in 0s;
-      color: ${({ theme }) =>
-        theme === 'dark' ? 'inherit' : Color.light.secondColor};
       transform: scale(1.05);
     }
   }
@@ -63,7 +57,7 @@ const TocMarkdown = styled.div<{ mobileTocShow: boolean } & ThemeProps>`
   @media (max-width: 1365px) {
     display: ${props => (!props.mobileTocShow ? `none` : `block`)};
 
-    border-top: 1px solid ${Color.borderGray};
+    border-top: 1px solid var(--gray2);
     margin: 10px 0px 0;
     position: inherit;
     width: 100%;
@@ -87,11 +81,10 @@ const TocMarkdown = styled.div<{ mobileTocShow: boolean } & ThemeProps>`
     }
 
     .selectedIndex {
-      text-decoration: ${({ theme }) => (theme === 'dark' ? 'none' : '')};
+      // text-decoration:
       transition: none;
       transform: none;
-      background: ${({ theme }) =>
-        theme === 'dark' ? Color.dark.highlight : 'inherit'};
+      // background:
     }
   }
 `
@@ -103,18 +96,18 @@ const TocTotalWrapper = styled.div`
   }
 `
 
-const TocWrapper = styled.div<ThemeProps>`
+const TocWrapper = styled.div`
   @media (max-width: 1365px) {
     font-size: 14px;
-    background: ${({ theme }) =>
-      theme === 'dark'
-        ? Color.dark.secondBackground
-        : Color.light.secondBackground};
+    background: var(--second-bg);
     width: 768px;
     margin: 20px auto;
     padding: 20px;
     border-radius: 10px;
-    color: ${Color.light.secondColor};
+
+    div {
+      background: inherit;
+    }
   }
 
   @media (max-width: 480px) {
@@ -132,6 +125,7 @@ const MobileTocWrapper = styled.div`
 
     span {
       width: 60px;
+      color: var(--toc-color);
     }
   }
 `
@@ -140,11 +134,10 @@ const MobileTocArrow = styled.div`
   display: flex;
   align-items: center;
   margin-left: 10px;
+  color: var(--toc-color);
 `
 
 const Toc = () => {
-  const { theme } = useThemeContext()
-
   const [currentId, setCurrentId] = useState('')
   const [headingEls, setHeadingEls] = useState<Element[]>([])
 
@@ -183,14 +176,14 @@ const Toc = () => {
 
   return (
     <TocTotalWrapper>
-      <TocWrapper theme={theme}>
+      <TocWrapper>
         <MobileTocWrapper onClick={() => setMobileTocShow(!mobileTocShow)}>
           <span>{!mobileTocShow ? '목차보기' : '숨기기'}</span>
           <MobileTocArrow>
             {!mobileTocShow ? <IoIosArrowDown /> : <IoIosArrowUp />}
           </MobileTocArrow>
         </MobileTocWrapper>
-        <TocMarkdown mobileTocShow={mobileTocShow} theme={theme}>
+        <TocMarkdown mobileTocShow={mobileTocShow}>
           <ul>
             {headingEls.map((heading, idx) => (
               <li
