@@ -47,6 +47,10 @@ const defaultStyle = css`
     .highlight {
       background: #cc99cd;
     }
+
+    .darkIcon {
+      display: block;
+    }
   }
 
   [data-theme='light'] {
@@ -74,6 +78,10 @@ const defaultStyle = css`
     .highlight {
       background: var(--highlight);
     }
+
+    .lightIcon {
+      display: block;
+    }
   }
 
   * {
@@ -81,6 +89,11 @@ const defaultStyle = css`
     margin: 0;
     box-sizing: border-box;
     font-family: Pretendard-Regular, serif;
+
+    .lightIcon,
+    .darkIcon {
+      display: none;
+    }
   }
 
   a,

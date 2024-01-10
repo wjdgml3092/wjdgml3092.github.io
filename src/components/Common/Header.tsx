@@ -1,7 +1,6 @@
 import styled from '@emotion/styled'
 import { useThemeContext } from 'components/Context/ThemeContext'
 import { Link } from 'gatsby'
-import { useEffect, useState } from 'react'
 import { BsFillSunFill, BsMoonFill } from 'react-icons/bs'
 
 const HeaderContainer = styled.header`
@@ -41,14 +40,7 @@ const Container = styled.div`
 `
 
 const Header = () => {
-  const { theme, toggleTheme } = useThemeContext()
-
-  const [themeMode, setThemeMode] = useState(theme)
-
-  useEffect(() => {
-    setThemeMode(theme)
-    console.log(theme)
-  }, [theme])
+  const { toggleTheme } = useThemeContext()
 
   return (
     <HeaderContainer>
@@ -56,7 +48,8 @@ const Header = () => {
         <Link to="/">Jung's Blog</Link>
 
         <div onClick={toggleTheme}>
-          {theme === 'dark' ? <BsFillSunFill /> : <BsMoonFill />}
+          <BsFillSunFill className="darkIcon" />
+          <BsMoonFill className="lightIcon" />
         </div>
       </Container>
     </HeaderContainer>
