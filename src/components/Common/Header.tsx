@@ -47,7 +47,7 @@ const Header = () => {
       <Container>
         <Link to="/">Jung's Blog</Link>
 
-        <div onClick={toggleTheme}>
+        <div onClick={toggleTheme} className="clickIconAction">
           <BsFillSunFill className="darkIcon" />
           <BsMoonFill className="lightIcon" />
         </div>

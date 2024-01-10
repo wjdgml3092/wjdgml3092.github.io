@@ -94,6 +94,29 @@ const defaultStyle = css`
     .darkIcon {
       display: none;
     }
+
+    .clickIconAction {
+      @keyframes rotateIcon {
+        from {
+          opacity: 1;
+          transform: rotate(0deg);
+        }
+        to {
+          opacity: 1;
+          transform: rotate(720deg);
+        }
+      }
+
+      padding: 5px;
+
+      &:hover {
+        border-radius: 6px;
+      }
+
+      &:active {
+        animation: rotateIcon 1s linear forwards;
+      }
+    }
   }
 
   a,
