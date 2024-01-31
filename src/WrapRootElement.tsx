@@ -1,17 +1,17 @@
 import { GatsbyBrowser } from 'gatsby'
-import { ThemeContextProvider } from 'components/Context/ThemeContext'
 import Header from 'components/Common/Header'
 import GlobalStyle from 'components/Common/GlobalStyle'
 import Footer from 'components/Common/Footer'
+import { Fragment } from 'react'
 
 const wrapRootElement: GatsbyBrowser['wrapRootElement'] = ({ element }) => {
   return (
-    <ThemeContextProvider>
+    <Fragment>
       <GlobalStyle />
       <Header />
       {element}
       <Footer />
-    </ThemeContextProvider>
+    </Fragment>
   )
 }
 

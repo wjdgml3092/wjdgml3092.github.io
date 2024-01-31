@@ -1,5 +1,4 @@
 import styled from '@emotion/styled'
-import { useThemeContext } from 'components/Context/ThemeContext'
 import { Link } from 'gatsby'
 import { BsFillSunFill, BsMoonFill } from 'react-icons/bs'
 
@@ -40,7 +39,13 @@ const Container = styled.div`
 `
 
 const Header = () => {
-  const { toggleTheme } = useThemeContext()
+  const toggleTheme = () => {
+    const newTheme =
+      localStorage.getItem('theme') === 'light' ? 'dark' : 'light'
+    localStorage.setItem('theme', newTheme)
+    document.documentElement.dataset.theme = newTheme
+    window.dispatchEvent(new StorageEvent('storage', { key: newTheme }))
+  }
 
   return (
     <HeaderContainer>

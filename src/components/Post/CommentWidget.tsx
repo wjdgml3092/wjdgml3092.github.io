@@ -1,5 +1,4 @@
 import styled from '@emotion/styled'
-import { useThemeContext } from 'components/Context/ThemeContext'
 import React, { createRef, useEffect } from 'react'
 
 const CommentWrapper = styled.div`
@@ -34,14 +33,14 @@ type GiscusAttributesType = {
 const CommentWidget = () => {
   const element = createRef<HTMLDivElement>()
 
-  const { theme } = useThemeContext()
+  //const { theme } = useThemeContext()
 
   useEffect(() => {
     if (element.current === null) return
 
     const giscus: HTMLScriptElement = document.createElement('script')
 
-    const attributes: GiscusAttributesType = {
+    let attributes: GiscusAttributesType = {
       src,
       'data-repo': 'wjdgml3092/wjdgml3092.github.io',
       'data-repo-id': 'R_kgDOJ0fPzg',
@@ -52,10 +51,15 @@ const CommentWidget = () => {
       'data-reactions-enabled': '1',
       'data-emit-metadata': '0',
       'data-input-position': 'top',
-      'data-theme': `${theme}_tritanopia`,
+      'data-theme': `light_tritanopia`,
       'data-lang': 'ko',
       crossorigin: 'anonymous',
       async: 'true',
+    }
+
+    if (typeof window !== 'undefined') {
+      const theme = localStorage.getItem('theme') || 'light'
+      attributes = { ...attributes, 'data-theme': `${theme}_tritanopia` }
     }
 
     Object.entries(attributes).forEach(([key, value]) => {
@@ -65,21 +69,33 @@ const CommentWidget = () => {
     element.current.appendChild(giscus)
   }, [])
 
-  useEffect(() => {
-    const iframe = document.querySelector<HTMLIFrameElement>(
-      'iframe.giscus-frame',
-    )
-    iframe?.contentWindow?.postMessage(
-      {
-        giscus: {
-          setConfig: {
-            theme: `${theme}_tritanopia`,
+  const handleChangeStorage = (event: StorageEvent) => {
+    if (event.key) {
+      const theme = event.key
+
+      const iframe = document.querySelector<HTMLIFrameElement>(
+        'iframe.giscus-frame',
+      )
+      iframe?.contentWindow?.postMessage(
+        {
+          giscus: {
+            setConfig: {
+              theme: `${theme}_tritanopia`,
+            },
           },
         },
-      },
-      'https://giscus.app',
-    )
-  }, [theme])
+        'https://giscus.app',
+      )
+    }
+  }
+
+  useEffect(() => {
+    window.addEventListener('storage', handleChangeStorage)
+
+    return () => {
+      window.removeEventListener('storage', () => {})
+    }
+  }, [])
 
   return <CommentWrapper ref={element} />
 }
