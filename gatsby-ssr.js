@@ -39,30 +39,3 @@ const ScriptElement = [
 export const onRenderBody = ({ setPreBodyComponents }) => {
   setPreBodyComponents(ScriptElement)
 }
-
-// exports.onRenderBody = ({ setHtmlAttributes, setPreBodyComponents }) => {
-//   setHtmlAttributes({ lang: `en` })
-//   setPreBodyComponents([
-//     React.createElement('script', {
-//       key: 'theme',
-//       dangerouslySetInnerHTML: {
-//         __html: `(() => {
-//           const savedTheme = localStorage.getItem('theme');
-
-//           console.log(savedTheme);
-
-//           let darkQuery = window.matchMedia('(prefers-color-scheme: dark)');
-
-//           // 미디어쿼리 변경시 작동할 콜백함수 설정
-//           darkQuery.addListener(function (e) {
-//            localStorage.setItem('theme', e.matches ? 'dark' : 'light')
-//           });
-
-//           if(!savedTheme){
-//             localStorage.setItem('theme', darkQuery.matches ? 'dark' : 'light');
-//           }
-//         })();`,
-//       },
-//     }),
-//   ])
-// }
