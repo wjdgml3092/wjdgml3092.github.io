@@ -61,7 +61,7 @@ const PrevPageIcon = styled.div`
   width: 20px;
   height: 20px;
   background: inherit;
-  font-size: 1rem;2
+  font-size: 1rem;
   cursor: pointer;
   margin-right: 6px;
 

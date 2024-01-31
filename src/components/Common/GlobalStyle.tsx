@@ -109,10 +109,6 @@ const defaultStyle = css`
 
       padding: 5px;
 
-      &:hover {
-        border-radius: 6px;
-      }
-
       &:active {
         animation: rotateIcon 1s linear forwards;
       }
