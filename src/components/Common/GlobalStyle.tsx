@@ -27,13 +27,13 @@ const defaultStyle = css`
     --second-bg: #797979;
 
     --second-color: var(--white);
-    --highlight: #cc99cd;
+    --highlight: #bf75e4;
     --date-color: var(--white);
 
-    --code-color: #cc99cd;
+    --code-color: #bf75e4;
     --code-bg: #2d2d2d;
 
-    --tag-selected-bg: #cc99cd;
+    --tag-selected-bg: #bf75e4;
     --tag-selected-color: var(--white);
     --tag-hover-bg: #4b4e53;
     --tag-hover-color: var(--white);
@@ -45,7 +45,7 @@ const defaultStyle = css`
     color: var(--white);
 
     .highlight {
-      background: #cc99cd;
+      background: #bf75e4;
     }
 
     .darkIcon {
