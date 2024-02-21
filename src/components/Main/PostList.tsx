@@ -78,8 +78,9 @@ const TagItem = styled(({ active, ...props }: GatsbyLinkProps) => (
         ? `background-color: var(--tag-selected-bg); color: var(--tag-selected-color);`
         : `background-color: var(--tag-hover-bg); color: var(--tag-hover-color);`}
 
-  span {
-    background: inherit;
+    span {
+      background: inherit;
+    }
   }
 `
 
