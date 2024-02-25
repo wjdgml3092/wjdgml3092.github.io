@@ -100,7 +100,10 @@ const Introduction = ({ profileImage }: IntroductionProps) => {
 
         <RightContainer>
           <h1>Welcome to Jung's Blog</h1>
-          <h3>컨벤션을 중요시하는 프론트 개발자의 기록 공간입니다. </h3>
+          <h4 style={{ marginBottom: '2rem' }}>
+            코드 한줄에 바뀌는 화면이 신기해서 <br /> 꿈을 키우게 된 프론트
+            개발자의 기록 공간입니다.
+          </h4>
           <ContactContainer>
             <MdOutlineEmail />
             <a href="mailto: junghee@gmail.com">junghee@gmail.com</a>

@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: `Jung's Blog`,
-    description: `사람 좋아하고, 컨벤션을 중요시하는 프론트 개발자의 기록 공간입니다.`,
+    description: `코드 한줄에 바뀌는 화면이 신기해서 꿈을 키우게 된 프론트 개발자의 기록 공간입니다.`,
     author: `@wjdgml3092`,
     siteUrl: 'https://wjdgml3092.github.io/',
   },
