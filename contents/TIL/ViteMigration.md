@@ -20,9 +20,9 @@ npm install -D vite @vitejs/plugin-react vite-plugin-svgr
 - svg를 사용하고 있는 프로젝트라면, `vite-plugin-svgr` 설치 필요 <br/>
   - <span class='highlight'>svgr이란 svg를 리액트의 컴포넌트로 변환시켜주는 라이브러리</span>
   - CRA로 리액트 앱을 초기화 하면 자동으로 설정이 되어있지만, vite로 리액트 앱 초기화시 직접 설정해줘야 한다. <br/>
-    (현재 기준, `vite-plugin-svgr` 버전이 4인데 3에서 업그레이드되면서 import error 발생한다. 그래서 바로 `@svgr/rollup` 설치하면 편하다. 관련한 파일 등은 [트러블 슈팅 2번](https://wjdgml3092.github.io/TIL/ViteMigration/#%ED%8A%B8%EB%9F%AC%EB%B8%94-%EC%8A%88%ED%8C%85-2---svg-import-error) 확인하기)
+    (svg가 잘 import가 안된다면 → [트러블 슈팅 2번](https://wjdgml3092.github.io/TIL/ViteMigration/#%ED%8A%B8%EB%9F%AC%EB%B8%94-%EC%8A%88%ED%8C%85-2---svg-import-error))
 
-<의존성 에러가 난다면 아래 [트러블 슈팅 1번](https://wjdgml3092.github.io/TIL/ViteMigration/#%ED%8A%B8%EB%9F%AC%EB%B8%94-%EC%8A%88%ED%8C%85-1---%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC-dependency-%EC%B6%A9%EB%8F%8C) 확인하기>
+<의존성 에러가 난다면 → [트러블 슈팅 1번](https://wjdgml3092.github.io/TIL/ViteMigration/#%ED%8A%B8%EB%9F%AC%EB%B8%94-%EC%8A%88%ED%8C%85-1---%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC-dependency-%EC%B6%A9%EB%8F%8C)>
 
 ### 2. vite.config.ts 파일 작성
 
@@ -122,44 +122,17 @@ vite 설치 시작부터 dependency 에러 발견.
 
 <br/>
 
-- 루트에 svg.d.ts 파일 생성 <br/>
-
-  - <b>.d.ts 파일</b>은 기존 js 모듈을 ts에서 사용할 수 있도록 타입을 정의할 수 있는 파일이다.
+- import 변경
 
 ```tsx
-declare module '*.svg' {
-    import React = require('react')
-    export const ReactComponent: React.FunctionComponent<React.SVGProps<SVGSVGElement
+//before
+import { ReactComponent as Minus } from '../../assets/icons/minusCircle.svg'
 
-    const src: string
-    export default src
-}
+//after
+import Minus from '../../assets/icons/minusCircle.svg?react'
 ```
 
-- tsconfing.json에 생성한 .d.ts 파일 추가 <br/>
-
-```JSON
-"include": ["src", "svg.d.ts"]
-```
-
-- 라이브러리 변경
-
-  - 4.x.x 버전에서 `ReactComponent`로 svg를 import하는데 에러가 해결되지 않는 이슈가 발행되어있었고, 나 역시 svg에 스타일링을 주기위해 `ReactComponent` import하는데 에러가 해결되지 않아 라이브러리를 변경해줬다.
-  - `vite-plugin-svgr` → `@svgr/rollup` <br/>
-
-    - vite-plugin-svgr은 삭제해주고, 해당 라이브러리 import하는부분은 삭제해주기
-    - vite.config.ts 수정
-
-    ```tsx
-    import { defineConfig } from 'vite'
-    import react from '@vitejs/plugin-react'
-    import svgr from '@svgr/rollup'
-
-    export default defineConfig({ plugins: [react(), svgr()] })
-    ```
-
-[참고링크 1](https://stackoverflow.com/questions/54121536/typescript-module-svg-has-no-exported-member-reactcomponent) <br/>
-[참고링크 2](https://github.com/pd4d10/vite-plugin-svgr/issues/109)
+[참고링크](https://github.com/pd4d10/vite-plugin-svgr)
 
 ### 트러블 슈팅 (3) - env 접근
 
