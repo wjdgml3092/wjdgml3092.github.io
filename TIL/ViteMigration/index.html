@@ -74,11 +74,11 @@
 <ul>
 <li><span class='highlight'>svgr이란 svg를 리액트의 컴포넌트로 변환시켜주는 라이브러리</span></li>
 <li>CRA로 리액트 앱을 초기화 하면 자동으로 설정이 되어있지만, vite로 리액트 앱 초기화시 직접 설정해줘야 한다. <br/>
-(현재 기준, <code class="language-text">vite-plugin-svgr</code> 버전이 4인데 3에서 업그레이드되면서 import error 발생한다. 그래서 바로 <code class="language-text">@svgr/rollup</code> 설치하면 편하다. 관련한 파일 등은 <a href="https://wjdgml3092.github.io/TIL/ViteMigration/#%ED%8A%B8%EB%9F%AC%EB%B8%94-%EC%8A%88%ED%8C%85-2---svg-import-error">트러블 슈팅 2번</a> 확인하기)</li>
+(svg가 잘 import가 안된다면 → <a href="https://wjdgml3092.github.io/TIL/ViteMigration/#%ED%8A%B8%EB%9F%AC%EB%B8%94-%EC%8A%88%ED%8C%85-2---svg-import-error">트러블 슈팅 2번</a>)</li>
 </ul>
 </li>
 </ul>
-<p>&#x3C;의존성 에러가 난다면 아래 <a href="https://wjdgml3092.github.io/TIL/ViteMigration/#%ED%8A%B8%EB%9F%AC%EB%B8%94-%EC%8A%88%ED%8C%85-1---%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC-dependency-%EC%B6%A9%EB%8F%8C">트러블 슈팅 1번</a> 확인하기></p>
+<p>&#x3C;의존성 에러가 난다면 → <a href="https://wjdgml3092.github.io/TIL/ViteMigration/#%ED%8A%B8%EB%9F%AC%EB%B8%94-%EC%8A%88%ED%8C%85-1---%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC-dependency-%EC%B6%A9%EB%8F%8C">트러블 슈팅 1번</a>></p>
 <h3 id="2-viteconfigts-파일-작성" style="position:relative;">2. vite.config.ts 파일 작성<a href="#2-viteconfigts-%ED%8C%8C%EC%9D%BC-%EC%9E%91%EC%84%B1" aria-label="2 viteconfigts 파일 작성 permalink" class="anchor after"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
 <div class="gatsby-highlight" data-language="tsx"><pre class="language-tsx"><code class="language-tsx"><span class="token keyword">import</span> <span class="token punctuation">{</span> defineConfig <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'vite'</span>
 <span class="token keyword">import</span> react <span class="token keyword">from</span> <span class="token string">'@vitejs/plugin-react'</span>
@@ -198,48 +198,14 @@ Vite로 갈아타니깐 <code class="language-text">VITE_</code>로 변경해준
 </div>
 <br/>
 <ul>
-<li>
-<p>루트에 svg.d.ts 파일 생성 <br/></p>
-<ul>
-<li><b>.d.ts 파일</b>은 기존 js 모듈을 ts에서 사용할 수 있도록 타입을 정의할 수 있는 파일이다.</li>
+<li>import 변경</li>
 </ul>
-</li>
-</ul>
-<div class="gatsby-highlight" data-language="tsx"><pre class="language-tsx"><code class="language-tsx"><span class="token keyword">declare</span> <span class="token keyword">module</span> <span class="token string">'*.svg'</span> <span class="token punctuation">{</span>
-    <span class="token keyword">import</span> React <span class="token operator">=</span> <span class="token keyword">require</span><span class="token punctuation">(</span><span class="token string">'react'</span><span class="token punctuation">)</span>
-    <span class="token keyword">export</span> <span class="token keyword">const</span> ReactComponent<span class="token operator">:</span> React<span class="token punctuation">.</span>FunctionComponent<span class="token operator">&lt;</span>React<span class="token punctuation">.</span>SVGProps<span class="token operator">&lt;</span>SVGSVGElement
+<div class="gatsby-highlight" data-language="tsx"><pre class="language-tsx"><code class="language-tsx"><span class="token comment">//before</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> ReactComponent <span class="token keyword">as</span> Minus <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'../../assets/icons/minusCircle.svg'</span>
 
-    <span class="token keyword">const</span> src<span class="token operator">:</span> <span class="token builtin">string</span>
-    <span class="token keyword">export</span> <span class="token keyword">default</span> src
-<span class="token punctuation">}</span></code></pre></div>
-<ul>
-<li>tsconfing.json에 생성한 .d.ts 파일 추가 <br/></li>
-</ul>
-<div class="gatsby-highlight" data-language="json"><pre class="language-json"><code class="language-json"><span class="token property">"include"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"src"</span><span class="token punctuation">,</span> <span class="token string">"svg.d.ts"</span><span class="token punctuation">]</span></code></pre></div>
-<ul>
-<li>
-<p>라이브러리 변경</p>
-<ul>
-<li>
-<p>4.x.x 버전에서 <code class="language-text">ReactComponent</code>로 svg를 import하는데 에러가 해결되지 않는 이슈가 발행되어있었고, 나 역시 svg에 스타일링을 주기위해 <code class="language-text">ReactComponent</code> import하는데 에러가 해결되지 않아 라이브러리를 변경해줬다.</p>
-</li>
-<li>
-<p><code class="language-text">vite-plugin-svgr</code> → <code class="language-text">@svgr/rollup</code> <br/></p>
-<ul>
-<li>vite-plugin-svgr은 삭제해주고, 해당 라이브러리 import하는부분은 삭제해주기</li>
-<li>vite.config.ts 수정</li>
-</ul>
-<div class="gatsby-highlight" data-language="tsx"><pre class="language-tsx"><code class="language-tsx"><span class="token keyword">import</span> <span class="token punctuation">{</span> defineConfig <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'vite'</span>
-<span class="token keyword">import</span> react <span class="token keyword">from</span> <span class="token string">'@vitejs/plugin-react'</span>
-<span class="token keyword">import</span> svgr <span class="token keyword">from</span> <span class="token string">'@svgr/rollup'</span>
-
-<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">defineConfig</span><span class="token punctuation">(</span><span class="token punctuation">{</span> plugins<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token function">react</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">svgr</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre></div>
-</li>
-</ul>
-</li>
-</ul>
-<p><a href="https://stackoverflow.com/questions/54121536/typescript-module-svg-has-no-exported-member-reactcomponent">참고링크 1</a> <br/>
-<a href="https://github.com/pd4d10/vite-plugin-svgr/issues/109">참고링크 2</a></p>
+<span class="token comment">//after</span>
+<span class="token keyword">import</span> Minus <span class="token keyword">from</span> <span class="token string">'../../assets/icons/minusCircle.svg?react'</span></code></pre></div>
+<p><a href="https://github.com/pd4d10/vite-plugin-svgr">참고링크</a></p>
 <h3 id="트러블-슈팅-3---env-접근" style="position:relative;">트러블 슈팅 (3) - env 접근<a href="#%ED%8A%B8%EB%9F%AC%EB%B8%94-%EC%8A%88%ED%8C%85-3---env-%EC%A0%91%EA%B7%BC" aria-label="트러블 슈팅 3   env 접근 permalink" class="anchor after"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
 <div style="width: 80%;">
     <span class="gatsby-resp-image-wrapper" style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 768px; ">
