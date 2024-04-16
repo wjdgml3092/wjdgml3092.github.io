@@ -9,6 +9,8 @@
 </div>
 
 ### History
+- 24.04.16
+  - top floating 버튼 추가
 - 24.01.08
   - dark mode 추가
 - 23.11.03
