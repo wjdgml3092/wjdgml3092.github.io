@@ -10,6 +10,8 @@ const TopBtn = styled.div`
   column-gap: 10px;
   align-items: center;
 
+  background-color: var(--primary-bg);
+  font-size: 12px;
   font-weight: bold;
 
   span {
@@ -18,8 +20,8 @@ const TopBtn = styled.div`
   }
 
   svg {
-    width: 10px;
-    height: 10px;
+    width: 8px;
+    height: 8px;
     margin-left: 10px;
   }
 
@@ -29,7 +31,7 @@ const TopBtn = styled.div`
 const TopButton = () => {
   const [isShow, setIsShow] = useState(false)
 
-  const scrollToTop = () => {
+  const handleClickTop = () => {
     window.scroll({
       top: 0,
       behavior: 'smooth',
@@ -54,7 +56,7 @@ const TopButton = () => {
   return (
     <Fragment>
       {isShow && (
-        <TopBtn onClick={scrollToTop}>
+        <TopBtn onClick={handleClickTop}>
           <span>
             TOP
             <BsFillTriangleFill />
