@@ -6,6 +6,7 @@ import PostContent from 'components/Post/PostContent'
 import PostFooter from 'components/Post/PostFooter'
 import { Fragment } from 'react'
 import CommentWidget from 'components/Post/CommentWidget'
+import TopButton from 'components/Common/TopButton'
 
 export type PostPageItemType = {
   node: {
@@ -50,6 +51,8 @@ const PostTemplate = ({
 
           <CommentWidget />
         </Template>
+
+        <TopButton />
       </div>
     </Fragment>
   )

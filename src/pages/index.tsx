@@ -7,6 +7,7 @@ import { IGatsbyImageData } from 'gatsby-plugin-image'
 import { PostListItemType } from 'types/Post'
 import queryString, { ParsedQuery } from 'query-string'
 import Template from 'components/Common/Template'
+import TopButton from 'components/Common/TopButton'
 
 type IndexPageProps = {
   location: {
@@ -72,6 +73,7 @@ const IndexPage = ({
       ),
     [],
   )
+
   return (
     <Fragment>
       <Template title={title} description={description} url={siteUrl}>
@@ -87,6 +89,8 @@ const IndexPage = ({
           location={search}
         />
       </Template>
+
+      <TopButton />
     </Fragment>
   )
 }
