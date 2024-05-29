@@ -72,21 +72,23 @@ useEffect(() => {
 ### 버튼 만들기 - css
 
 ```tsx
-const TopBtn = styled.div`
+const TopBtn = styled.button`
   position: fixed;
   right: 0;
   bottom: 5%;
   display: flex;
   column-gap: 10px;
   align-items: center;
-
   background-color: var(--primary-bg);
-  font-size: 12px;
-  font-weight: bold;
+  border: none;
+  cursor: pointer;
 
   span {
+    font-size: 12px;
+    font-weight: bold;
     border-left: 10px solid var(--highlight);
     padding: 10px;
+    color: var(--second-color);
   }
 
   svg {
@@ -94,8 +96,6 @@ const TopBtn = styled.div`
     height: 8px;
     margin-left: 10px;
   }
-
-  cursor: pointer;
 `
 ```
 
@@ -109,21 +109,23 @@ import styled from '@emotion/styled'
 import { Fragment, useEffect, useState } from 'react'
 import { BsFillTriangleFill } from 'react-icons/bs'
 
-const TopBtn = styled.div`
+const TopBtn = styled.button`
   position: fixed;
   right: 0;
   bottom: 5%;
   display: flex;
   column-gap: 10px;
   align-items: center;
-
   background-color: var(--primary-bg);
-  font-size: 12px;
-  font-weight: bold;
+  border: none;
+  cursor: pointer;
 
   span {
+    font-size: 12px;
+    font-weight: bold;
     border-left: 10px solid var(--highlight);
     padding: 10px;
+    color: var(--second-color);
   }
 
   svg {
@@ -131,8 +133,6 @@ const TopBtn = styled.div`
     height: 8px;
     margin-left: 10px;
   }
-
-  cursor: pointer;
 `
 
 const TopButton = () => {
