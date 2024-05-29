@@ -106,21 +106,23 @@ auto = 위치로 바로, smooth는 부드럽게 끌어올린다.</p>
 단, 렌더링이 되었을 때 스크롤은 맨 위에 위치하는데 바로 탑버튼이 보인다면 맞지 않으니 추가하면 좋다.</p>
 <p>스크롤의 위치를 알기 위해 scroll 이벤트를 등록하고, 언마운트 시에 remove 될수 있게 clean-up 함수 추가해줬다.</p>
 <h3 id="버튼-만들기---css" style="position:relative;">버튼 만들기 - css<a href="#%EB%B2%84%ED%8A%BC-%EB%A7%8C%EB%93%A4%EA%B8%B0---css" aria-label="버튼 만들기   css permalink" class="anchor after"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
-<div class="gatsby-highlight" data-language="tsx"><pre class="language-tsx"><code class="language-tsx"><span class="token keyword">const</span> TopBtn <span class="token operator">=</span> styled<span class="token punctuation">.</span>div<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">
+<div class="gatsby-highlight" data-language="tsx"><pre class="language-tsx"><code class="language-tsx"><span class="token keyword">const</span> TopBtn <span class="token operator">=</span> styled<span class="token punctuation">.</span>button<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">
   position: fixed;
   right: 0;
   bottom: 5%;
   display: flex;
   column-gap: 10px;
   align-items: center;
-
   background-color: var(--primary-bg);
-  font-size: 12px;
-  font-weight: bold;
+  border: none;
+  cursor: pointer;
 
   span {
+    font-size: 12px;
+    font-weight: bold;
     border-left: 10px solid var(--highlight);
     padding: 10px;
+    color: var(--second-color);
   }
 
   svg {
@@ -128,8 +130,6 @@ auto = 위치로 바로, smooth는 부드럽게 끌어올린다.</p>
     height: 8px;
     margin-left: 10px;
   }
-
-  cursor: pointer;
 </span><span class="token template-punctuation string">`</span></span></code></pre></div>
 <p>span을 사용해서 포스트잇 인덱스처럼 처리했다. <br/>
 탑버튼의 css는 여러가지로 만드는사람 취향에 따라하면 된다.</p>
@@ -138,21 +138,23 @@ auto = 위치로 바로, smooth는 부드럽게 끌어올린다.</p>
 <span class="token keyword">import</span> <span class="token punctuation">{</span> Fragment<span class="token punctuation">,</span> useEffect<span class="token punctuation">,</span> useState <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'react'</span>
 <span class="token keyword">import</span> <span class="token punctuation">{</span> BsFillTriangleFill <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'react-icons/bs'</span>
 
-<span class="token keyword">const</span> TopBtn <span class="token operator">=</span> styled<span class="token punctuation">.</span>div<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">
+<span class="token keyword">const</span> TopBtn <span class="token operator">=</span> styled<span class="token punctuation">.</span>button<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">
   position: fixed;
   right: 0;
   bottom: 5%;
   display: flex;
   column-gap: 10px;
   align-items: center;
-
   background-color: var(--primary-bg);
-  font-size: 12px;
-  font-weight: bold;
+  border: none;
+  cursor: pointer;
 
   span {
+    font-size: 12px;
+    font-weight: bold;
     border-left: 10px solid var(--highlight);
     padding: 10px;
+    color: var(--second-color);
   }
 
   svg {
@@ -160,8 +162,6 @@ auto = 위치로 바로, smooth는 부드럽게 끌어올린다.</p>
     height: 8px;
     margin-left: 10px;
   }
-
-  cursor: pointer;
 </span><span class="token template-punctuation string">`</span></span>
 
 <span class="token keyword">const</span> <span class="token function-variable function">TopButton</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
@@ -211,4 +211,4 @@ auto = 위치로 바로, smooth는 부드럽게 끌어올린다.</p>
           >
             window.___chunkMapping="{\"app\":[\"/app-55306cdc122ba6d35b04.js\"],\"component---src-pages-404-tsx\":[\"/component---src-pages-404-tsx-923acbedc5b6a283d396.js\"],\"component---src-pages-index-tsx\":[\"/component---src-pages-index-tsx-a3aefe8c30faaa2fb1ca.js\"],\"component---src-templates-post-template-tsx\":[\"/component---src-templates-post-template-tsx-08825c8bfa037e57d945.js\"]}";
           </script>
-        <script>window.___webpackCompilationHash="a6998ec7f3b3956cab5f";</script><script src="/webpack-runtime-35e0ce35466f3d09883d.js" async></script><script src="/framework-6a525285796fb83f2864.js" async></script><script src="/0c428ae2-4bfb8f8832205cd7ca54.js" async></script><script src="/app-55306cdc122ba6d35b04.js" async></script><!-- slice-end id="_gatsby-scripts-1" --></body></html>
+        <script>window.___webpackCompilationHash="3fe2ea758a8178d9ac80";</script><script src="/webpack-runtime-079ed6ad71ddefd0906a.js" async></script><script src="/framework-6a525285796fb83f2864.js" async></script><script src="/0c428ae2-4bfb8f8832205cd7ca54.js" async></script><script src="/app-55306cdc122ba6d35b04.js" async></script><!-- slice-end id="_gatsby-scripts-1" --></body></html>
