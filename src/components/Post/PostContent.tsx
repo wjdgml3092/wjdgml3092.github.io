@@ -97,8 +97,8 @@ const MarkdownRenderer = styled.div`
 
   // Adjust Horizontal Rule style
   hr {
-    border: 1px solid var(--black);
-    margin: 100px 0;
+    border: 1px solid var(--gray1);
+    margin: 20px 0;
   }
 
   // Adjust Link Element Style
@@ -171,7 +171,7 @@ const MarkdownRenderer = styled.div`
     }
 
     hr {
-      margin: 50px 0;
+      margin: 10px 0;
     }
 
     *:not(pre) > code {
